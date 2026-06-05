@@ -1,0 +1,1478 @@
+[
+  {
+    "id": 1,
+    "question": "What AWS services are used for security in the Inference Platform architecture?",
+    "expected_answer": "The AWS security services used in the Inference Platform include AWS IAM, AWS Secrets Manager, AWS KMS, and AWS WAF.",
+    "source_document": "ARCH-001"
+  },
+  {
+    "id": 2,
+    "question": "What is the Recovery Point Objective (RPO) defined for disaster recovery in the platform?",
+    "expected_answer": "The Recovery Point Objective (RPO) for disaster recovery is 15 minutes.",
+    "source_document": "ARCH-001"
+  },
+  {
+    "id": 3,
+    "question": "How does the Model Router decide which model to use for processing requests?",
+    "expected_answer": "The Model Router makes routing decisions based on cost, latency, model availability, customer configuration, and evaluation scores.",
+    "source_document": "ARCH-001"
+  },
+  {
+    "id": 4,
+    "question": "Is the Inference Worker stateful or stateless, and where does it operate?",
+    "expected_answer": "Inference Workers operate as stateless services within Amazon EKS.",
+    "source_document": "ARCH-001"
+  },
+  {
+    "id": 5,
+    "question": "What layers compose the architecture of the RAG Platform and what are their primary responsibilities?",
+    "expected_answer": "The RAG Platform architecture is divided into six logical layers: Knowledge Sources Layer (contains security policies, architecture documents, SOPs, incident reports, product documentation, customer knowledge repositories, operational runbooks), Ingestion Layer (responsible for document processing, metadata extraction, validation, classification), Embedding Layer (responsible for text chunking, embedding generation, embedding refresh workflows), Retrieval Layer (responsible for vector search, metadata filtering, hybrid retrieval), Ranking Layer (responsible for relevance scoring, result reranking, context optimization), and Generation Layer (responsible for context assembly, prompt construction, LLM interaction).",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 6,
+    "question": "Are documents stored in any format outside of Amazon S3 within the RAG Platform? If not, list the supported document types.",
+    "expected_answer": "No, documents are stored within Amazon S3 only. The supported document types include PDF, DOCX, TXT, Markdown, HTML, and JSON.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 7,
+    "question": "What is the default retrieval strategy used in the retrieval layer, and what filtering options does it support?",
+    "expected_answer": "The default retrieval strategy is hybrid retrieval, which combines vector retrieval (semantic similarity search using embeddings) and keyword retrieval (traditional lexical matching). It supports metadata filtering based on customer, document category, classification, ownership, and date ranges.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 8,
+    "question": "During the document processing pipeline, at which step does chunk generation occur and what are the standard chunk size and overlap size?",
+    "expected_answer": "Chunk generation occurs at Step 5 of the document processing pipeline. The standard chunk size ranges from 500 to 1000 tokens, and the overlap size ranges from 100 to 150 tokens.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 9,
+    "question": "What are the target Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for disaster recovery, and what controls are implemented to meet these objectives?",
+    "expected_answer": "The target Recovery Time Objective (RTO) is 60 minutes, and the Recovery Point Objective (RPO) is 15 minutes. Controls to meet these objectives include cross-region backups, Infrastructure-as-Code deployment, and automated restoration procedures.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 10,
+    "question": "How does the platform enforce customer data isolation in the retrieval workflow?",
+    "expected_answer": "Customer data isolation is enforced throughout the retrieval workflow using role-based access controls, tenant isolation, and metadata filtering based on customer and other attributes. Security controls such as IAM integration, service identities, API authentication, and strict authorization mechanisms ensure tenant isolation.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 11,
+    "question": "What AWS services are used in the compute, storage, and security layers of the RAG Platform?",
+    "expected_answer": "Compute layer uses Amazon EKS and AWS Lambda. Storage layer uses Amazon S3 and Amazon RDS PostgreSQL. Security layer uses AWS IAM, AWS Secrets Manager, and AWS KMS.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 12,
+    "question": "What evaluation metrics are integrated into the RAG Platform's Evaluation Engine?",
+    "expected_answer": "The integrated evaluation metrics include recall, precision, context relevance, faithfulness, groundedness, and citation accuracy.",
+    "source_document": "ARCH-002"
+  },
+  {
+    "id": 13,
+    "question": "What are the Recovery Time Objective (RTO) and Recovery Point Objective (RPO) targets for critical services in the Multi Region Strategy?",
+    "expected_answer": "The Recovery Time Objective (RTO) is 60 minutes and the Recovery Point Objective (RPO) is 15 minutes. Critical services may require more aggressive targets.",
+    "source_document": "ARCH-003"
+  },
+  {
+    "id": 14,
+    "question": "Does the Multi Region Strategy support automated failover, and if so, what triggers a failover?",
+    "expected_answer": "Yes, the Multi Region Strategy supports automated failover. Failover triggers include regional outages, severe degradation, connectivity failures, and security events.",
+    "source_document": "ARCH-003"
+  },
+  {
+    "id": 15,
+    "question": "Which AWS services are used in the storage layer according to the Multi Region Strategy?",
+    "expected_answer": "The storage layer uses Amazon S3, Amazon RDS PostgreSQL, and Amazon OpenSearch.",
+    "source_document": "ARCH-003"
+  },
+  {
+    "id": 16,
+    "question": "How does the architecture ensure that security policies remain consistent across multiple regions?",
+    "expected_answer": "Security policies remain synchronized across regions through controls such as IAM policies, service roles, federated authentication, encryption at rest and in transit, regional secret replication with secure rotation controls, and centralized audit collection with regional logging redundancy.",
+    "source_document": "ARCH-003"
+  },
+  {
+    "id": 17,
+    "question": "Which AWS services are utilized for notification and storage in the Monitoring Architecture?",
+    "expected_answer": "Amazon SNS is used for notification services, and Amazon S3 is used for storage services.",
+    "source_document": "ARCH-004"
+  },
+  {
+    "id": 18,
+    "question": "What are the Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for disaster recovery in the Monitoring Architecture?",
+    "expected_answer": "The Recovery Time Objective (RTO) is 60 minutes, and the Recovery Point Objective (RPO) is 15 minutes.",
+    "source_document": "ARCH-004"
+  },
+  {
+    "id": 19,
+    "question": "What types of logs must applications generate and what key fields are required in these logs according to the Logging Architecture?",
+    "expected_answer": "Applications must generate structured logs using standardized formats. Required log fields include timestamp, service name, environment, request identifier, severity level, and event details.",
+    "source_document": "ARCH-004"
+  },
+  {
+    "id": 20,
+    "question": "How does the Monitoring Architecture handle sensitive information in logs?",
+    "expected_answer": "Sensitive information must be masked before storage to comply with organizational security policies.",
+    "source_document": "ARCH-004"
+  },
+  {
+    "id": 21,
+    "question": "What AWS services are used for processing data within the Data Lake architecture?",
+    "expected_answer": "The AWS services used for processing data within the Data Lake architecture are Amazon EKS and AWS Lambda.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 22,
+    "question": "How does the architecture ensure multi-tenant data isolation and secure access control?",
+    "expected_answer": "The architecture ensures multi-tenant data isolation and secure access control through identity controls such as IAM roles, service authentication, role-based permissions, dataset-level permissions, environment segregation, tenant isolation, encryption at rest and in transit, and audit logging of access events, administrative activities, and data modifications.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 23,
+    "question": "Describe the sequence of steps involved in the Data Ingestion Architecture.",
+    "expected_answer": "The sequence of steps in the Data Ingestion Architecture is: 1) Data source generates records. 2) Ingestion service validates payloads. 3) Metadata is assigned. 4) Security controls validate compliance requirements. 5) Data is stored in the Raw Zone. 6) Transformation workflows process records. 7) Processed and Curated datasets are generated.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 24,
+    "question": "What are the recovery time objective (RTO) and recovery point objective (RPO) targets for disaster recovery?",
+    "expected_answer": "The recovery time objective (RTO) target is 4 hours, and the recovery point objective (RPO) target is 15 minutes for disaster recovery.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 25,
+    "question": "What quality checks are performed as part of the Data Quality Framework?",
+    "expected_answer": "The quality checks performed include validation rules (schema validation, field validation, format validation), completeness checks (required field verification, missing data detection), and consistency checks (data integrity validation, cross-system verification). Quality metrics are continuously monitored.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 26,
+    "question": "In the case of a single storage component failure, how does the architecture maintain availability?",
+    "expected_answer": "The architecture maintains availability through a multi-AZ architecture, durable object storage, automated recovery workflows, and replication controls designed so that no single storage component creates a critical failure point.",
+    "source_document": "ARCH-005"
+  },
+  {
+    "id": 27,
+    "question": "What are the main mechanisms used for workload isolation in the EKS cluster design?",
+    "expected_answer": "Isolation mechanisms include Kubernetes namespaces, resource quotas, network policies, dedicated node pools, and service accounts.",
+    "source_document": "ARCH-006"
+  },
+  {
+    "id": 28,
+    "question": "How does the architecture ensure disaster recovery readiness with respect to recovery time objectives?",
+    "expected_answer": "Recovery objectives include RTO of 60 minutes and RPO of 15 minutes, supported by infrastructure-as-code templates, automated cluster provisioning, backup configurations, cross-region deployment readiness, and periodic testing of cluster recovery procedures.",
+    "source_document": "ARCH-006"
+  },
+  {
+    "id": 29,
+    "question": "Can worker nodes in the EKS cluster be shared among different workload types, and how is workload isolation maintained?",
+    "expected_answer": "Worker nodes are organized by workload type into node groups such as API, retrieval, inference, monitoring, and evaluation workloads, to improve workload isolation and resource management. Critical workloads have dedicated compute resources.",
+    "source_document": "ARCH-006"
+  },
+  {
+    "id": 30,
+    "question": "Are spot instances used in the EKS cluster to optimize costs, and if so, how is that balanced with availability requirements?",
+    "expected_answer": "Cost controls include use of spot instances where appropriate alongside autoscaling, resource quotas, and workload scheduling optimization. Availability design targets 99.95% with multi-AZ deployment, self-healing workloads, and automated scaling to balance cost optimization and high availability.",
+    "source_document": "ARCH-006"
+  },
+  {
+    "id": 31,
+    "question": "Which AWS services are used in the Authentication Architecture for monitoring purposes?",
+    "expected_answer": "CloudWatch and AWS X-Ray are the AWS services used for monitoring in the Authentication Architecture.",
+    "source_document": "ARCH-007"
+  },
+  {
+    "id": 32,
+    "question": "What are the recovery time objective (RTO) and recovery point objective (RPO) targets for disaster recovery in the Authentication Architecture?",
+    "expected_answer": "The recovery time objective (RTO) is 30 minutes and the recovery point objective (RPO) is 15 minutes.",
+    "source_document": "ARCH-007"
+  },
+  {
+    "id": 33,
+    "question": "Is SMS-based Multi-Factor Authentication allowed for privileged access according to the Authentication Architecture?",
+    "expected_answer": "No, SMS-based authentication is discouraged for privileged access.",
+    "source_document": "ARCH-007"
+  },
+  {
+    "id": 34,
+    "question": "What mechanisms are prohibited for production API access in the Authentication Architecture?",
+    "expected_answer": "Unauthenticated production API access is prohibited.",
+    "source_document": "ARCH-007"
+  },
+  {
+    "id": 35,
+    "question": "What are the key responsibilities of the Ranking Layer in the Vector Search Platform architecture?",
+    "expected_answer": "The Ranking Layer is responsible for result scoring, reranking, and context optimization.",
+    "source_document": "ARCH-008"
+  },
+  {
+    "id": 36,
+    "question": "Does the Vector Search Platform support continuous embedding refresh, and if so, which architectural layer handles it?",
+    "expected_answer": "Yes, the platform supports continuous embedding refresh, which is handled by the Embedding Layer.",
+    "source_document": "ARCH-008"
+  },
+  {
+    "id": 37,
+    "question": "What disaster recovery objectives does the platform aim to meet, and what recovery controls are in place?",
+    "expected_answer": "The platform targets a Recovery Time Objective (RTO) of 60 minutes and a Recovery Point Objective (RPO) of 15 minutes. Recovery controls include cross-region backups, index reconstruction procedures, metadata replication, and Infrastructure-as-Code deployment.",
+    "source_document": "ARCH-008"
+  },
+  {
+    "id": 38,
+    "question": "How does the system ensure tenant isolation within the vector index design?",
+    "expected_answer": "Tenant isolation is ensured through multi-tenant partitioning within the vector index design, metadata filtering, access control enforcement, and namespace segregation.",
+    "source_document": "ARCH-008"
+  },
+  {
+    "id": 39,
+    "question": "What are the five dataset categories included in the Golden Dataset Architecture?",
+    "expected_answer": "The five dataset categories are Retrieval Evaluation, Generation Evaluation, Agent Evaluation, Safety Evaluation, and Operational Evaluation.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 40,
+    "question": "Which AWS services are used for monitoring in the Evaluation Pipeline architecture?",
+    "expected_answer": "The monitoring services used are CloudWatch and AWS X-Ray.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 41,
+    "question": "What types of regressions block production releases according to the Regression Detection section?",
+    "expected_answer": "Critical regressions, which include significant quality degradation and safety failures, block production releases.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 42,
+    "question": "Which layer in the Evaluation Pipeline architecture is responsible for regression detection and release gating?",
+    "expected_answer": "The Decision Layer is responsible for release gating, approval workflows, and regression detection.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 43,
+    "question": "What recovery objectives and controls are defined under Disaster Recovery for the Evaluation Pipeline?",
+    "expected_answer": "Recovery Time Objective (RTO) is 60 minutes and Recovery Point Objective (RPO) is 15 minutes. Recovery controls include dataset backups, configuration replication, Infrastructure-as-Code deployment, and cross-region recovery readiness.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 44,
+    "question": "Can you describe the evaluation workflow steps triggered by a model change?",
+    "expected_answer": "Step 1: Evaluation trigger occurs (e.g., model changes). Step 2: Dataset selection occurs. Step 3: Evaluation jobs execute. Step 4: Metrics are calculated. Step 5: Regression analysis occurs. Step 6: Results are published. Step 7: Release decisions are generated.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 45,
+    "question": "What edge case might occur in evaluation triggers and how are such triggers handled in the workflow?",
+    "expected_answer": "An edge case trigger could be a production incident occurring outside normal development cycles. Such triggers initiate the evaluation workflow starting at dataset selection, progressing through execution, metric calculation, regression analysis, results publishing, and release decision generation, supporting both automated and manual review.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 46,
+    "question": "How does the platform ensure security and compliance for evaluation execution and dataset modifications?",
+    "expected_answer": "Security is ensured via IAM integration with role-based permissions, encryption at rest and in transit, and audit logging of evaluation execution records, dataset modifications, and release decisions aligned with organizational governance.",
+    "source_document": "ARCH-009"
+  },
+  {
+    "id": 47,
+    "question": "What are the Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) for Business-Critical Services as defined in the Disaster Recovery Architecture?",
+    "expected_answer": "The Recovery Time Objective (RTO) for Business-Critical Services is 4 hours, and the Recovery Point Objective (RPO) is 1 hour.",
+    "source_document": "ARCH-010"
+  },
+  {
+    "id": 48,
+    "question": "Describe the role and responsibilities of the Governance Layer in the Disaster Recovery Architecture.",
+    "expected_answer": "The Governance Layer is responsible for recovery planning, testing oversight, and compliance reporting.",
+    "source_document": "ARCH-010"
+  },
+  {
+    "id": 49,
+    "question": "In the event of a regional outage, which AWS service is primarily responsible for managing traffic routing and failover decisions within the Disaster Recovery Architecture?",
+    "expected_answer": "Route 53 manages traffic routing and failover decisions during regional outage events.",
+    "source_document": "ARCH-010"
+  },
+  {
+    "id": 50,
+    "question": "How does the architecture ensure infrastructure consistency and speed during recovery, and what approach is discouraged?",
+    "expected_answer": "Infrastructure recovery uses Infrastructure-as-Code to ensure consistency, speed, and repeatability; manual infrastructure reconstruction is discouraged.",
+    "source_document": "ARCH-010"
+  },
+  {
+    "id": 51,
+    "question": "What are the mandatory prerequisites that must be satisfied before initiating a production deployment according to the SOP-ENG-001?",
+    "expected_answer": "Before initiating a production deployment, the following prerequisites must be satisfied: 1) All code changes merged into the protected main branch, 2) Pull request approval by at least two reviewers, 3) Automated unit tests with a minimum pass rate of 95 percent, 4) Successful integration test execution, 5) Security scanning with no Critical or High vulnerabilities, 6) Container images stored within Amazon ECR, 7) Infrastructure changes having approved Terraform plans, 8) Documentation of release notes, 9) Validation of monitoring dashboards, and 10) Review of rollback procedures.",
+    "source_document": "SOP-ENG-001"
+  },
+  {
+    "id": 52,
+    "question": "If a deployment's API latency increases by 60 percent after rollout begins, what steps must be taken according to the SOP?",
+    "expected_answer": "If API latency increases by more than 50 percent, this triggers an automatic rollback condition. The deployment validation must halt further rollout activities, notify Platform Operations, initiate rollback procedures to restore the previously verified production version, capture logs and diagnostics, and open an incident record if there is customer impact.",
+    "source_document": "SOP-ENG-001"
+  },
+  {
+    "id": 53,
+    "question": "What are the prerequisites that must be met before any production deployment regarding rollback readiness?",
+    "expected_answer": "Before any production deployment, the following rollback prerequisites must be met: 1) A validated rollback plan must be documented; 2) Previous production artifacts must be retained; 3) Database backup snapshots must be available; 4) Infrastructure state files must be preserved; 5) Deployment manifests must be version controlled; 6) Monitoring dashboards must be operational; 7) Alerting systems must be functioning; 8) Recovery personnel must be identified; 9) Release versions must be traceable; 10) Rollback permissions must be verified.",
+    "source_document": "SOP-ENG-002"
+  },
+  {
+    "id": 54,
+    "question": "If the rollback procedure fails, who should be contacted at Level 3 of the escalation path?",
+    "expected_answer": "If rollback procedures fail, escalation must be immediate following the path: Level 1 - Platform Operations Engineer, Level 2 - Engineering Manager, Level 3 - Director of Engineering, Level 4 - Executive Incident Response Team. Therefore, Level 3 contact is the Director of Engineering.",
+    "source_document": "SOP-ENG-002"
+  },
+  {
+    "id": 55,
+    "question": "What are the prerequisites that must be completed before releasing a new API version according to SOP-ENG-003?",
+    "expected_answer": "Before releasing any API version, the prerequisites include: 1) API specifications must be documented, 2) OpenAPI definitions must be maintained, 3) Backward compatibility assessment must be completed, 4) Security review must be approved, 5) Integration testing must pass, 6) Monitoring instrumentation must be implemented, 7) Deprecation impact analysis must be completed, 8) Consumer notification plans must exist, 9) Version naming must follow approved standards, and 10) Release approval must be documented.",
+    "source_document": "SOP-ENG-003"
+  },
+  {
+    "id": 56,
+    "question": "In the case of an emergency retirement of an API version as described in the API Versioning Standard, what approvals are necessary?",
+    "expected_answer": "Emergency retirements require executive approval as stated in the Deprecation Process section of the API Versioning Standard.",
+    "source_document": "SOP-ENG-003"
+  },
+  {
+    "id": 57,
+    "question": "What are the required metadata fields for creating a feature flag according to SOP-ENG-004?",
+    "expected_answer": "The required metadata fields for creating a feature flag are: Flag name, Owner, Creation date, Expiration date, Description, Associated service.",
+    "source_document": "SOP-ENG-004"
+  },
+  {
+    "id": 58,
+    "question": "Can a production feature flag be created without an assigned owner?",
+    "expected_answer": "No, no production feature flag may be created without an assigned owner.",
+    "source_document": "SOP-ENG-004"
+  },
+  {
+    "id": 59,
+    "question": "What are the prerequisites that must be completed before executing a Blue-Green deployment?",
+    "expected_answer": "Before executing a Blue-Green deployment, the following conditions must be met: Deployment approval must be completed; Production release artifacts must be finalized; Rollback procedures must be documented; Monitoring systems must be operational; Logging systems must be functioning; Infrastructure capacity must support duplicate environments; Security validation must be completed; Automated testing must pass successfully; Database migration compatibility must be confirmed; Operations personnel must be available during deployment windows.",
+    "source_document": "SOP-ENG-005"
+  },
+  {
+    "id": 60,
+    "question": "What steps should the operations team take if deployment validation fails before traffic migration?",
+    "expected_answer": "If deployment validation fails before traffic migration, the Green deployment is terminated, deployment artifacts are preserved, findings are documented, release approval is revoked, and remediation activities begin.",
+    "source_document": "SOP-ENG-005"
+  },
+  {
+    "id": 61,
+    "question": "During the Blue-Green deployment process, what methods are used to perform traffic migration from Blue to Green?",
+    "expected_answer": "Traffic migration is performed using approved routing mechanisms including Route 53 updates, load balancer target group switching, and ingress controller updates.",
+    "source_document": "SOP-ENG-005"
+  },
+  {
+    "id": 62,
+    "question": "Can the Blue-Green deployment procedure be applied to environments other than production? If so, which?",
+    "expected_answer": "Yes, the procedure may also be applied to selected staging environments where production deployment simulations are required.",
+    "source_document": "SOP-ENG-005"
+  },
+  {
+    "id": 63,
+    "question": "What are the target response times for each incident severity level defined in the Incident Escalation Workflow SOP?",
+    "expected_answer": "Severity 1 (Critical) has a target response time of 15 minutes, Severity 2 (High) is 30 minutes, Severity 3 (Medium) is 2 hours, and Severity 4 (Low) is 1 business day.",
+    "source_document": "SOP-ENG-006"
+  },
+  {
+    "id": 64,
+    "question": "If an incident is classified as Severity 1, who must be assigned immediately and what additional communication protocol is required?",
+    "expected_answer": "For Severity 1 incidents, an Incident Commander must be assigned immediately. Additionally, executive escalation is required, notifying stakeholders such as the Chief Technology Officer, Chief Information Security Officer, and Executive Operations Team. Status updates must be provided every 30 minutes.",
+    "source_document": "SOP-ENG-006"
+  },
+  {
+    "id": 65,
+    "question": "What are the specific roles responsible for incident coordination, technical investigation, and security assessment in the escalation workflow?",
+    "expected_answer": "The Incident Commander is responsible for incident coordination, escalation decisions, resource assignment, communication oversight, and recovery approval. The Engineering Lead is responsible for technical investigation, recovery planning, and root cause analysis. The Security Representative handles security incident assessment, compliance review, and threat validation.",
+    "source_document": "SOP-ENG-006"
+  },
+  {
+    "id": 66,
+    "question": "In case recovery efforts fail after initial mitigation, what are the documented failure handling steps that must be followed?",
+    "expected_answer": "If recovery efforts fail, the steps are: escalate to the next response level, expand response teams, consider rollback procedures, evaluate disaster recovery activation, and initiate executive response processes.",
+    "source_document": "SOP-ENG-006"
+  },
+  {
+    "id": 67,
+    "question": "Which teams are required to follow the Capacity Planning SOP in the AetherAI Cloud platform?",
+    "expected_answer": "Engineering, platform operations, reliability engineering, MLOps, and infrastructure teams must follow the Capacity Planning SOP.",
+    "source_document": "SOP-ENG-007"
+  },
+  {
+    "id": 68,
+    "question": "What is the minimum duration of utilization data collection recommended in the Capacity Planning procedure?",
+    "expected_answer": "Data collection must cover a minimum of 90 days whenever possible.",
+    "source_document": "SOP-ENG-007"
+  },
+  {
+    "id": 69,
+    "question": "What are the key steps involved in the Capacity Planning procedure after data collection?",
+    "expected_answer": "After data collection, the key steps are Baseline Establishment, Trend Analysis, Forecast Development, Risk Assessment, Scaling Recommendations, Approval Process, Implementation, Validation, and Reporting.",
+    "source_document": "SOP-ENG-007"
+  },
+  {
+    "id": 70,
+    "question": "What actions must be taken if capacity thresholds are exceeded unexpectedly according to the failure handling section?",
+    "expected_answer": "If capacity thresholds are exceeded unexpectedly, the following actions must be taken: activate incident response procedures, scale resources immediately where possible, notify service owners, prioritize critical workloads, investigate root causes, and update future forecasts. Emergency scaling actions must be documented.",
+    "source_document": "SOP-ENG-007"
+  },
+  {
+    "id": 71,
+    "question": "What are the prerequisites that must be completed before a service enters production according to SOP-ENG-008?",
+    "expected_answer": "Before a service enters production, the following prerequisites must be completed: 1) A primary owner must be assigned. 2) A secondary owner must be designated. 3) Operational documentation must exist. 4) Monitoring coverage must be validated. 5) Incident response procedures must be documented. 6) Escalation contacts must be available. 7) Service inventory records must be updated. 8) Service Level Objectives must be defined. 9) Security responsibilities must be assigned. 10) Recovery procedures must be documented.",
+    "source_document": "SOP-ENG-008"
+  },
+  {
+    "id": 72,
+    "question": "If there is an incident and service ownership is unclear, what is the outlined failure handling process in SOP-ENG-008?",
+    "expected_answer": "If service ownership is unclear during an incident, the failure handling process is: 1) Escalate to Engineering Management. 2) Identify responsible teams. 3) Assign temporary ownership. 4) Update service records. 5) Conduct post-incident governance review. Ownership gaps must be addressed immediately.",
+    "source_document": "SOP-ENG-008"
+  },
+  {
+    "id": 73,
+    "question": "What are the prerequisite steps that must be completed before initiating a database migration?",
+    "expected_answer": "Before initiating a migration, the following prerequisites must be completed: migration scripts must be reviewed and approved; database backups must be verified; rollback procedures must be documented; performance impact assessments must be completed; staging environment testing must be successful; change management approval must be obtained; monitoring systems must be operational; maintenance windows must be scheduled when required; service owners must be notified; and Recovery Point Objectives and Recovery Time Objectives must be validated.",
+    "source_document": "SOP-ENG-009"
+  },
+  {
+    "id": 74,
+    "question": "What type of migration requires approval from the Architecture Review Board and Engineering Leadership?",
+    "expected_answer": "High-Risk Migrations require approval from the Architecture Review Board and Engineering Leadership. Examples of High-Risk Migrations include column removals, table removals, major schema redesigns, and large-scale data modifications.",
+    "source_document": "SOP-ENG-009"
+  },
+  {
+    "id": 75,
+    "question": "If a migration script causes data corruption, what is the documented rollback procedure?",
+    "expected_answer": "If data corruption is detected, the rollback procedure includes halting migration execution, restoring the previous schema state, recovering from backups if necessary, validating application functionality, notifying stakeholders, and conducting root cause analysis. Rollback execution must follow approved recovery procedures.",
+    "source_document": "SOP-ENG-009"
+  },
+  {
+    "id": 76,
+    "question": "Are direct manual production database changes allowed during migration execution?",
+    "expected_answer": "Direct manual production database changes are discouraged during migration execution except during emergency situations.",
+    "source_document": "SOP-ENG-009"
+  },
+  {
+    "id": 77,
+    "question": "What are the prerequisite conditions that must be met before entering the release approval process?",
+    "expected_answer": "Before entering the release approval process, the following requirements must be completed: 1. Development work must be finalized. 2. Source code must be merged into approved repositories. 3. Automated testing must pass. 4. Security scanning must be completed. 5. Documentation updates must be prepared. 6. Rollback procedures must be documented. 7. Monitoring requirements must be verified. 8. Release notes must be available. 9. Change records must be created. 10. Ownership assignments must be validated.",
+    "source_document": "SOP-ENG-010"
+  },
+  {
+    "id": 78,
+    "question": "Can a production deployment bypass the release approval workflow under any circumstances?",
+    "expected_answer": "No production deployment may bypass the release approval workflow. However, in emergency releases, certain scheduling requirements may be bypassed, but minimal approval requirements and post-deployment review are still mandatory.",
+    "source_document": "SOP-ENG-010"
+  },
+  {
+    "id": 79,
+    "question": "What was the primary root cause of the Vector Search Outage incident INC-001?",
+    "expected_answer": "A deployment of the index synchronization service introduced an unintended metadata mapping incompatibility between newly generated embeddings and the production vector index.",
+    "source_document": "INC-001"
+  },
+  {
+    "id": 80,
+    "question": "Were there any networking failures detected during the initial investigation of the outage?",
+    "expected_answer": "No networking failures were detected.",
+    "source_document": "INC-001"
+  },
+  {
+    "id": 81,
+    "question": "How many vector partitions were affected by the index corruption during the incident?",
+    "expected_answer": "Approximately 18 percent of active vector partitions were affected.",
+    "source_document": "INC-001"
+  },
+  {
+    "id": 82,
+    "question": "What proactive monitoring enhancements were implemented as preventive actions after the incident?",
+    "expected_answer": "Retrieval correctness dashboards, search quality monitoring, and index integrity alerts.",
+    "source_document": "INC-001"
+  },
+  {
+    "id": 83,
+    "question": "What was the primary root cause of the EKS Node Failure incident on October 8, 2025?",
+    "expected_answer": "A defective operating system patch introduced during a routine node image update caused kernel-level instability on newly provisioned worker nodes.",
+    "source_document": "INC-002"
+  },
+  {
+    "id": 84,
+    "question": "Did the incident result in any permanent data loss or service degradation?",
+    "expected_answer": "No, the incident did not result in data loss and no permanent service degradation remained after recovery.",
+    "source_document": "INC-002"
+  },
+  {
+    "id": 85,
+    "question": "Which services were affected by the EKS Node Failure incident?",
+    "expected_answer": "Enterprise RAG Platform, Inference Platform, Evaluation Engine, Monitoring Platform, and Internal APIs.",
+    "source_document": "INC-002"
+  },
+  {
+    "id": 86,
+    "question": "What phase involved launching healthy replacement nodes and expanding cluster capacity during recovery?",
+    "expected_answer": "Phase 2: Capacity Restoration",
+    "source_document": "INC-002"
+  },
+  {
+    "id": 87,
+    "question": "What were the primary services impacted by the OpenAI API Latency incident on November 3, 2025?",
+    "expected_answer": "The primary services impacted were the Enterprise RAG Platform, LLM Gateway, Agent Workflow Studio, Evaluation Engine, and Internal AI Assistants.",
+    "source_document": "INC-003"
+  },
+  {
+    "id": 88,
+    "question": "Did the incident cause any data integrity issues within the AetherAI Cloud environment?",
+    "expected_answer": "No, there were no data integrity issues during the incident.",
+    "source_document": "INC-003"
+  },
+  {
+    "id": 89,
+    "question": "What were some of the contributing factors that amplified the latency issue during the incident?",
+    "expected_answer": "The contributing factors included single provider concentration, aggressive retry policies that increased downstream traffic during latency spikes, queue saturation due to growing inference worker queues, and insufficient dynamic routing policies that were not aggressive enough to redirect workloads quickly.",
+    "source_document": "INC-003"
+  },
+  {
+    "id": 90,
+    "question": "Was the internal infrastructure health a cause of the incident according to the investigation?",
+    "expected_answer": "No, the investigation found no infrastructure failures within the AetherAI Cloud environment; internal service performance remained healthy.",
+    "source_document": "INC-003"
+  },
+  {
+    "id": 91,
+    "question": "What was the root cause of the RDS failover event on December 12, 2025?",
+    "expected_answer": "The root cause was degradation within the underlying storage infrastructure supporting the primary RDS instance, which triggered elevated I/O latency, database responsiveness issues, health check failures, and automatic failover activation.",
+    "source_document": "INC-004"
+  },
+  {
+    "id": 92,
+    "question": "Did the RDS failover event cause any data loss?",
+    "expected_answer": "No, the incident did not cause any data loss.",
+    "source_document": "INC-004"
+  },
+  {
+    "id": 93,
+    "question": "Which component failures or issues caused the delay in application recovery after the RDS failover?",
+    "expected_answer": "Several services maintained long-lived database connections and did not immediately refresh connection pools after failover, and the connection timeout settings were longer than recommended operational standards.",
+    "source_document": "INC-004"
+  },
+  {
+    "id": 94,
+    "question": "How long did the incident last from start to closure?",
+    "expected_answer": "The incident lasted 1 hour and 23 minutes, starting at 07:18 UTC and closing at 12:00 UTC on December 12, 2025.",
+    "source_document": "INC-004"
+  },
+  {
+    "id": 95,
+    "question": "What was the primary root cause of the Deployment Failure incident on January 17, 2026?",
+    "expected_answer": "A configuration schema change introduced in the retrieval service deployment was incompatible with the version of the metadata API currently operating in production. The deployment package expected additional metadata attributes, new validation rules, and updated response structures which the metadata service had not yet been upgraded to support, causing service requests to fail validation and retrieval workflows to terminate unexpectedly.",
+    "source_document": "INC-005"
+  },
+  {
+    "id": 96,
+    "question": "Did the incident result in any customer data loss during the Deployment Failure event?",
+    "expected_answer": "No, there was no customer data lost during the incident.",
+    "source_document": "INC-005"
+  },
+  {
+    "id": 97,
+    "question": "What containment actions were taken immediately to limit the impact of the Deployment Failure?",
+    "expected_answer": "Immediate containment actions included suspending production deployments, redirecting traffic to stable service instances, blocking configuration synchronization jobs, initiating rollback procedures, and increasing application monitoring.",
+    "source_document": "INC-005"
+  },
+  {
+    "id": 98,
+    "question": "Were there any issues with infrastructure components during the Deployment Failure incident?",
+    "expected_answer": "No, infrastructure stability remained unaffected throughout the incident.",
+    "source_document": "INC-005"
+  },
+  {
+    "id": 99,
+    "question": "What were the immediate containment actions taken after detecting the prompt injection attempt on February 11, 2026?",
+    "expected_answer": "The immediate containment actions included suspending ingestion of affected repositories, quarantining suspicious documents, enabling enhanced guardrail enforcement, restricting agent execution permissions, and increasing retrieval safety monitoring.",
+    "source_document": "INC-006"
+  },
+  {
+    "id": 100,
+    "question": "Was there any unauthorized data access or customer information exposure during the incident?",
+    "expected_answer": "No, there was no unauthorized data access and no customer information was exposed during the incident.",
+    "source_document": "INC-006"
+  },
+  {
+    "id": 101,
+    "question": "Which primary services were affected by the prompt injection incident?",
+    "expected_answer": "The affected services were the Enterprise RAG Platform, Agent Workflow Studio, Guardrails Gateway, Vector Search Platform, and Evaluation Platform.",
+    "source_document": "INC-006"
+  },
+  {
+    "id": 102,
+    "question": "According to the root cause analysis, why were the malicious documents able to influence model behavior?",
+    "expected_answer": "Because the ingestion pipeline treated uploaded content as retrievable knowledge without assigning trust scores, and retrieved content was incorporated into prompts without sufficient adversarial content weighting, allowing malicious documents containing hidden prompt injection instructions to be indexed and retrievable.",
+    "source_document": "INC-006"
+  },
+  {
+    "id": 103,
+    "question": "What was the main root cause of the Cost Spike Incident reported under Incident ID INC-007?",
+    "expected_answer": "The main root cause was a deployment affecting the Evaluation Pipeline that introduced a scheduling configuration error, which unintentionally triggered repeated execution of large-scale benchmark evaluations causing continuous evaluation job execution, excessive model invocations, duplicate benchmark runs, and increased retrieval workloads.",
+    "source_document": "INC-007"
+  },
+  {
+    "id": 104,
+    "question": "Was there any customer-facing service outage or data loss during the Cost Spike Incident?",
+    "expected_answer": "No, there was no customer-facing outage, no service degradation, and no data loss during the incident.",
+    "source_document": "INC-007"
+  },
+  {
+    "id": 105,
+    "question": "Which services were affected by the Cost Spike Incident, and did any customer workloads contribute to the cost increase?",
+    "expected_answer": "Affected services included the Enterprise RAG Platform, Inference Platform, Agent Workflow Studio, Evaluation Engine, and Reliability Platform. No customer workloads were responsible for the cost increase; the issue was caused by internal platform workloads.",
+    "source_document": "INC-007"
+  },
+  {
+    "id": 106,
+    "question": "Describe the containment actions taken to address the Cost Spike Incident and their immediate effect on spending.",
+    "expected_answer": "Containment actions included disabling affected scheduler workflows, suspending non-critical evaluation jobs, applying emergency budget controls, restricting automated benchmark execution, and increasing FinOps monitoring frequency. These actions immediately reduced spending growth.",
+    "source_document": "INC-007"
+  },
+  {
+    "id": 107,
+    "question": "What was the root cause of the authentication outage on April 14, 2026?",
+    "expected_answer": "A routine identity provider configuration update introduced an incorrect token validation policy that altered token audience validation rules, service identity trust relationships, and authentication policy mappings, causing valid tokens to be rejected and authentication requests to fail.",
+    "source_document": "INC-008"
+  },
+  {
+    "id": 108,
+    "question": "How long did it take from the incident start to service restoration during the authentication outage incident INC-008?",
+    "expected_answer": "The incident started at 09:06 UTC and service restoration occurred at 10:31 UTC, so it took 1 hour and 25 minutes.",
+    "source_document": "INC-008"
+  },
+  {
+    "id": 109,
+    "question": "What was the primary root cause of the Data Pipeline Failure incident on May 6, 2026?",
+    "expected_answer": "A schema modification introduced within a source ingestion workflow added new mandatory fields that were incompatible with downstream transformation logic, causing downstream transformation services to fail processing newly ingested records.",
+    "source_document": "INC-009"
+  },
+  {
+    "id": 110,
+    "question": "Did the incident impact the customer-facing AI services or cause data corruption?",
+    "expected_answer": "No, customer-facing AI services remained operational throughout the incident, and no data corruption occurred; source records remained intact.",
+    "source_document": "INC-009"
+  },
+  {
+    "id": 111,
+    "question": "What was the primary technical cause of the Hallucination Regression Incident INC-010?",
+    "expected_answer": "The primary technical cause was a retrieval optimization deployment that modified context assembly logic, introducing reduced context window allocation, aggressive document filtering, and lower retrieval candidate counts, which removed supporting evidence required for reliable answer generation.",
+    "source_document": "INC-010"
+  },
+  {
+    "id": 112,
+    "question": "Did the incident INC-010 affect infrastructure health or service availability?",
+    "expected_answer": "No, the infrastructure remained healthy and service availability was unaffected, despite the decline in response quality.",
+    "source_document": "INC-010"
+  },
+  {
+    "id": 113,
+    "question": "What metrics changed as a result of the incident INC-010, and by approximately how much?",
+    "expected_answer": "Average groundedness scores declined by approximately 18%, citation accuracy decreased by approximately 14%, and hallucination rates increased by approximately 22%.",
+    "source_document": "INC-010"
+  },
+  {
+    "id": 114,
+    "question": "Was the issue detected before or after the deployment of the retrieval optimization update?",
+    "expected_answer": "The issue was detected shortly after the deployment of the retrieval optimization update, which introduced the problem.",
+    "source_document": "INC-010"
+  },
+  {
+    "id": 115,
+    "question": "What approvals are required before beginning a model deployment according to the runbook?",
+    "expected_answer": "Before deployment begins, the following approvals must be completed: release approval, change request approval, security review, and reliability review.",
+    "source_document": "RUN-001"
+  },
+  {
+    "id": 116,
+    "question": "If hallucination rates increase during deployment, what are the prescribed immediate actions?",
+    "expected_answer": "If hallucination rates increase, the deployment must be stopped immediately, reliability validation executed, the previous model version restored, and an incident record opened.",
+    "source_document": "RUN-001"
+  },
+  {
+    "id": 117,
+    "question": "Which deployment strategy is preferred for production environments as stated in the runbook?",
+    "expected_answer": "Blue-green deployment is preferred for production environments.",
+    "source_document": "RUN-001"
+  },
+  {
+    "id": 118,
+    "question": "What steps should be taken if the evaluation suite fails after deployment initiation?",
+    "expected_answer": "If the evaluation suite fails, traffic progression must be halted, a rollback executed, evaluation results reviewed, and the issue escalated to Reliability Engineering.",
+    "source_document": "RUN-001"
+  },
+  {
+    "id": 119,
+    "question": "What are the prerequisites that must be met before executing a model rollback according to RUN-002?",
+    "expected_answer": "Before rollback execution, the prerequisites include operational requirements (rollback authority confirmed, incident severity assessed, previous model version available, recovery team assigned), documentation requirements (deployment record available, evaluation reports accessible, release approval history available, rollback procedures reviewed), and monitoring requirements (dashboards operational, alerts active, logging systems available, evaluation platform operational).",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 120,
+    "question": "Can emergency rollback authorization bypass the standard change approval workflows?",
+    "expected_answer": "Yes, emergency rollback authorization may bypass standard change approval workflows.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 121,
+    "question": "List the rollback targets supported under the rollback scope in RUN-002.",
+    "expected_answer": "Supported rollback targets include inference models, embedding models, retrieval configurations, model routing policies, agent workflows, and guardrail configurations.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 122,
+    "question": "What specific metrics should be monitored throughout rollback operations as per the monitoring section?",
+    "expected_answer": "The metrics to be monitored include infrastructure metrics (CPU utilization, memory utilization, network performance), application metrics (request volume, error rates, latency), reliability metrics (hallucination rate, groundedness score, citation accuracy, reliability score), and business metrics (customer impact indicators, support ticket volume, service usage).",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 123,
+    "question": "In the case of a hallucination regression, what are the key rollback actions described in RUN-002?",
+    "expected_answer": "The actions for hallucination regression are: execute immediate rollback, restore previous retrieval settings, validate groundedness recovery, and review evaluation history.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 124,
+    "question": "What must be included in rollback records according to the Documentation Requirements?",
+    "expected_answer": "Rollback records must include incident identifier, deployment identifier, rollback timestamp, recovery version, validation evidence, and stakeholder approvals.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 125,
+    "question": "If a rollback fails and customer impact continues, what escalation procedures are recommended?",
+    "expected_answer": "Immediate escalation is recommended for failed rollback execution and continued customer impact. Escalation contacts include Platform Engineering, Reliability Engineering, Site Reliability Engineering, and Security Operations.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 126,
+    "question": "Are agent workflows considered part of the rollback scope in RUN-002?",
+    "expected_answer": "Yes, agent workflows are listed among the supported rollback targets.",
+    "source_document": "RUN-002"
+  },
+  {
+    "id": 127,
+    "question": "What are the prerequisites that must be met before beginning dataset validation according to the RUN-003 Dataset Validation runbook?",
+    "expected_answer": "Before dataset validation begins, governance requirements must be met including dataset owner assigned, dataset registered, metadata available, and classification completed. Additionally, operational requirements must be satisfied such as having a validation environment available, processing resources allocated, monitoring systems operational, and logging systems active.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 128,
+    "question": "If a dataset fails schema validation during Phase 2, what steps should be taken according to the runbook?",
+    "expected_answer": "If schema validation fails, the runbook specifies to stop dataset promotion, review schema definitions, correct incompatibilities, and then re-run the validation.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 129,
+    "question": "What specific checks are performed in Phase 5 during AI-specific validation for evaluation datasets?",
+    "expected_answer": "During AI-specific validation for evaluation datasets, the runbook states that checks include benchmark coverage, label quality, and ground truth accuracy.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 130,
+    "question": "In the case of a security violation detected during dataset validation, what remediation actions does the runbook prescribe?",
+    "expected_answer": "Upon detecting a security violation, the runbook instructs to restrict dataset access, remove unauthorized content, and escalate the issue to Security Operations.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 131,
+    "question": "Is continuous monitoring required after dataset approval, and if so, what metrics are monitored?",
+    "expected_answer": "Yes, continuous monitoring is required after dataset approval. The monitored metrics include quality metrics such as completeness, accuracy, consistency, freshness; operational metrics such as processing success rates, validation failures, dataset growth; security metrics such as access events, classification violations, compliance findings; and AI reliability metrics including evaluation quality, retrieval effectiveness, and label consistency.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 132,
+    "question": "What actions are outlined for recovery if an evaluation dataset fails validation checks?",
+    "expected_answer": "For an evaluation dataset failure, the runbook outlines the following recovery steps: suspend benchmark execution, review labels and ground truth, and revalidate dataset integrity.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 133,
+    "question": "Are synthetic datasets included under the scope of this runbook, and what validation aspects are considered for them?",
+    "expected_answer": "Yes, synthetic datasets are included in the scope. The validation aspects for synthetic datasets include realism assessment, statistical consistency, and scenario coverage.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 134,
+    "question": "What documentation must be retained as part of validation records according to the runbook?",
+    "expected_answer": "Validation records must include dataset identifier, dataset version, validation results, findings, approval records, and remediation actions. Records are retained according to organizational governance requirements.",
+    "source_document": "RUN-003"
+  },
+  {
+    "id": 135,
+    "question": "What are the required artifacts that must be prepared before beginning an embedding refresh operation as per RUN-004?",
+    "expected_answer": "The required artifacts are: Dataset identifier, Embedding model version, Refresh scope definition, Validation criteria, and Rollback procedures.",
+    "source_document": "RUN-004"
+  },
+  {
+    "id": 136,
+    "question": "During which step of the operational procedure should you validate the completeness of metadata and the integrity of source documents?",
+    "expected_answer": "During Phase 2: Validation, Step 4, which involves validating source content by checking document integrity and metadata completeness.",
+    "source_document": "RUN-004"
+  },
+  {
+    "id": 137,
+    "question": "If index corruption is detected during embedding refresh, what are the prescribed recovery actions?",
+    "expected_answer": "The recovery actions for index corruption are: 1) Suspend index updates, 2) Restore backup index, 3) Validate integrity, and 4) Reattempt refresh.",
+    "source_document": "RUN-004"
+  },
+  {
+    "id": 138,
+    "question": "Is it permissible to initiate an embedding refresh if the embedding infrastructure is currently unavailable?",
+    "expected_answer": "No, embedding infrastructure must be available before refresh operations begin, as stated under Operational Requirements in the prerequisites.",
+    "source_document": "RUN-004"
+  },
+  {
+    "id": 139,
+    "question": "What are the prerequisites that must be met before initiating feature store recovery activities?",
+    "expected_answer": "The prerequisites before recovery include governance requirements: incident record created, recovery authorization approved, ownership verified; operational requirements: recovery team assigned, backup availability confirmed, monitoring systems active; and security requirements: access permissions verified, encryption controls validated, audit logging enabled.",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 140,
+    "question": "If a synchronization failure occurs during feature store operations, what are the recovery steps specified in this runbook?",
+    "expected_answer": "For a synchronization failure, the recovery steps are: 1) Pause updates, 2) Rebuild synchronization state, 3) Validate consistency.",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 141,
+    "question": "During the Validation phase, which steps ensure that downstream systems dependent on the feature store are functioning properly?",
+    "expected_answer": "Step 13 of the Validation phase verifies downstream systems such as training workflows, inference services, and evaluation pipelines to ensure they function properly.",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 142,
+    "question": "In the event that recovery progress cannot continue, what are the recommended rollback steps?",
+    "expected_answer": "The rollback procedure includes: Step 1) Suspend recovery changes; Step 2) Restore previous operational state; Step 3) Validate feature integrity; Step 4) Review recovery logs; Step 5) Escalate if recovery cannot proceed.",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 143,
+    "question": "What monitoring metrics must be continuously observed during recovery activities?",
+    "expected_answer": "Continuous monitoring must track infrastructure metrics (storage utilization, database health, resource consumption), data metrics (feature freshness, synchronization status, data quality indicators), application metrics (API latency, error rates, request volume), and reliability metrics (feature availability, serving success rates, recovery progress).",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 144,
+    "question": "If online serving APIs remain non-operational after recovery steps, which escalation contacts should be involved immediately?",
+    "expected_answer": "Immediate escalation should involve Data Engineering, Platform Engineering, Reliability Engineering, and Site Reliability Engineering.",
+    "source_document": "RUN-005"
+  },
+  {
+    "id": 145,
+    "question": "What are the three phases that involve metrics calculation in the AI evaluation pipeline execution according to RUN-006?",
+    "expected_answer": "Phase 4: Metrics Calculation involves calculating retrieval metrics (recall, precision, mean reciprocal rank, context relevance), generation metrics (answer correctness, groundedness, relevance, citation accuracy), reliability metrics (hallucination rate, reliability score, consistency score), and operational metrics (latency, error rates, resource utilization).",
+    "source_document": "RUN-006"
+  },
+  {
+    "id": 146,
+    "question": "What immediate actions should be taken according to the runbook if a critical regression is detected during the evaluation?",
+    "expected_answer": "If a critical regression is detected, the evaluation process should block deployment, escalate the issue to Reliability Engineering, and open an incident investigation.",
+    "source_document": "RUN-006"
+  },
+  {
+    "id": 147,
+    "question": "Which teams must be notified upon publishing the evaluation outcomes?",
+    "expected_answer": "Upon publishing evaluation outcomes, the Platform Engineering, Reliability Engineering, and Product teams must be notified.",
+    "source_document": "RUN-006"
+  },
+  {
+    "id": 148,
+    "question": "What are the mandatory security requirements that must be fulfilled before starting the evaluation execution?",
+    "expected_answer": "The mandatory security requirements include access permissions validated, sensitive data controls verified, and audit logging enabled.",
+    "source_document": "RUN-006"
+  },
+  {
+    "id": 149,
+    "question": "What are the key prerequisites required before the execution of a batch inference job?",
+    "expected_answer": "The prerequisites include governance requirements such as batch request approved, dataset ownership verified, and processing scope documented; operational requirements such as compute resources available, storage resources available, monitoring systems active, and scheduling platform operational.",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 150,
+    "question": "If a batch processing job fails due to data validation errors, what is the recommended recovery procedure?",
+    "expected_answer": "The recovery procedure for data validation failure involves suspending execution, correcting dataset issues, and then revalidating inputs.",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 151,
+    "question": "What security requirements must be validated before running batch inference processing?",
+    "expected_answer": "Security requirements include access permissions validated, data classification reviewed, encryption controls enabled, and audit logging active.",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 152,
+    "question": "In an edge case where output data is found to be corrupted after batch processing, what steps should be taken according to the runbook?",
+    "expected_answer": "The steps include stopping publication, regenerating outputs, and revalidating results.",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 153,
+    "question": "Which metrics are continuously monitored to ensure operational efficiency during batch processing?",
+    "expected_answer": "Metrics monitored continuously include infrastructure metrics (CPU utilization, memory utilization, storage consumption), processing metrics (throughput, queue depth, success rates), quality metrics (output completeness, validation failures, processing accuracy), and cost metrics (token consumption, compute costs, resource utilization).",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 154,
+    "question": "What documentation is required to be retained after batch inference execution, and how is retention managed?",
+    "expected_answer": "Execution records must include job identifier, dataset identifier, model version, processing metrics, validation results, and approval records. Records are retained according to governance requirements.",
+    "source_document": "RUN-007"
+  },
+  {
+    "id": 155,
+    "question": "What are the required artifacts needed for alert investigations according to the Monitoring Alerts runbook?",
+    "expected_answer": "Alert investigations require: Alert identifier, Alert timestamp, Service ownership details, Monitoring records, and Incident history.",
+    "source_document": "RUN-008"
+  },
+  {
+    "id": 156,
+    "question": "Can a Severity 4 alert require the same immediate escalation procedure as a Severity 1 alert?",
+    "expected_answer": "No. Immediate escalation is required for Severity 1 incidents, security events, customer-impacting failures, and reliability regressions, but Severity 4 alerts are informational events or preventive warnings with a response target of 1 business day and do not require immediate escalation.",
+    "source_document": "RUN-008"
+  },
+  {
+    "id": 157,
+    "question": "What are the prerequisites that must be met before initiating drift monitoring according to the RUN-009 Drift Detection runbook?",
+    "expected_answer": "Before drift monitoring begins, the following prerequisites must be satisfied: Governance Requirements including drift ownership assigned, monitoring policies approved, and alert thresholds defined; Operational Requirements including monitoring platform operational, evaluation platform available, historical baselines available, and alerting systems active.",
+    "source_document": "RUN-009"
+  },
+  {
+    "id": 158,
+    "question": "In the event of embedding drift, what specific recovery actions does the runbook recommend?",
+    "expected_answer": "For embedding drift, the recovery procedures recommended are: validate the embedding model, execute the refresh workflow, and compare retrieval performance.",
+    "source_document": "RUN-009"
+  },
+  {
+    "id": 159,
+    "question": "What are the prerequisites that must be satisfied before beginning a Golden Dataset update?",
+    "expected_answer": "Prerequisites before Golden Dataset updates include Governance Requirements: Dataset owner assigned, Update request approved, Change record created, Review committee identified. Operational Requirements: Evaluation platform operational, Dataset repository available, Monitoring systems active. Security Requirements: Access permissions validated, Audit logging enabled, Data classification reviewed.",
+    "source_document": "RUN-010"
+  },
+  {
+    "id": 160,
+    "question": "If a labeling error is detected after dataset publication, what are the recommended recovery steps?",
+    "expected_answer": "In case of a labeling error, the recovery steps are: 1. Isolate affected records. 2. Review ground truth. 3. Reissue corrected version.",
+    "source_document": "RUN-010"
+  },
+  {
+    "id": 161,
+    "question": "What must be included in the validation report generated during the approval phase of a Golden Dataset update?",
+    "expected_answer": "The validation report should include findings, risks, and recommendations.",
+    "source_document": "RUN-010"
+  },
+  {
+    "id": 162,
+    "question": "During the rollback procedure, what activities should be documented to ensure auditability?",
+    "expected_answer": "Rollback procedure must include documenting rollback activities after deactivating the updated dataset, restoring the previous approved version, updating evaluation configurations, and validating benchmark stability.",
+    "source_document": "RUN-010"
+  },
+  {
+    "id": 163,
+    "question": "What layers are included in the AetherAI Gateway architecture, and what is the primary responsibility of the Routing Layer?",
+    "expected_answer": "The AetherAI Gateway architecture consists of the Access Layer, Routing Layer, Policy Layer, Execution Layer, Observability Layer, and Storage Layer. The Routing Layer is responsible for model selection, request routing, and failover decisions.",
+    "source_document": "PRD-001"
+  },
+  {
+    "id": 164,
+    "question": "How does the AetherAI Gateway mitigate security risks related to AI workloads?",
+    "expected_answer": "The AetherAI Gateway mitigates security risks through security controls including authentication, authorization, data protection (encryption at rest and in transit, secure storage), and policy enforcement. It also supports threat protection features such as prompt injection detection, abuse prevention, and compliance monitoring.",
+    "source_document": "PRD-001"
+  },
+  {
+    "id": 165,
+    "question": "What limitations does the AetherAI Gateway currently have regarding model providers, and what strategies are in place to address these limitations?",
+    "expected_answer": "Current limitations include dependency on external model providers, provider-specific rate limits, model capability variation, and regional availability constraints. Mitigation strategies are implemented where possible to address these limitations.",
+    "source_document": "PRD-001"
+  },
+  {
+    "id": 166,
+    "question": "Can you describe the step-by-step usage workflow for a client request processed by the AetherAI Gateway?",
+    "expected_answer": "The client request workflow includes the following steps: 1) Client submits request, 2) Gateway validates authentication, 3) Policies are evaluated, 4) Routing engine selects provider, 5) Model executes request, 6) Response validation occurs, 7) Monitoring records are generated, 8) Response is returned to the client. All requests follow standardized governance workflows.",
+    "source_document": "PRD-001"
+  },
+  {
+    "id": 167,
+    "question": "What are the main challenges the Enterprise RAG Service aims to solve for organizations deploying AI systems?",
+    "expected_answer": "The main challenges include hallucinated responses where language models generate unsupported or incorrect information; knowledge accessibility issues due to distributed enterprise information; limited explainability with answers lacking supporting evidence; knowledge freshness challenges as model training data does not reflect changing organizational info; compliance concerns requiring source visibility; and operational complexity in building and maintaining retrieval systems.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 168,
+    "question": "How does the Enterprise RAG Service address hallucination in AI-generated responses?",
+    "expected_answer": "The service addresses hallucination through reliability controls that include hallucination detection, groundedness monitoring, retrieval quality validation, and evaluation integration, which collectively help detect unsupported or low-confidence responses and improve factual accuracy by augmenting language model outputs with retrieved, relevant enterprise knowledge.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 169,
+    "question": "Which layers are responsible for vector generation and embedding management in the Enterprise RAG Service architecture?",
+    "expected_answer": "The Embedding Layer is responsible for vector generation, embedding management, and model integration.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 170,
+    "question": "What operational monitoring metrics does the Enterprise RAG Service use to gauge system performance?",
+    "expected_answer": "Key metrics include retrieval success rate, search latency, groundedness score, citation accuracy, hallucination rate, and user satisfaction indicators.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 171,
+    "question": "Can the Enterprise RAG Service perform searches across multiple independent business domains and knowledge repositories simultaneously?",
+    "expected_answer": "Yes, it supports multi-repository search which allows searching across multiple knowledge sources simultaneously, as well as cross-domain retrieval to retrieve information from independent business domains.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 172,
+    "question": "What types of knowledge sources can be integrated into the Enterprise RAG Service?",
+    "expected_answer": "Supported knowledge sources include technical documentation, policies and procedures, architecture documents, incident reports, runbooks, product documentation, internal knowledge bases, and customer repositories, integrated through standardized ingestion workflows.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 173,
+    "question": "Are there any current limitations related to the embedding model used in the Enterprise RAG Service?",
+    "expected_answer": "Yes, current limitations include embedding model limitations, context window constraints, dependency on retrieval quality, knowledge source completeness, and index synchronization requirements.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 174,
+    "question": "What security mechanisms are implemented to protect data and access within the Enterprise RAG Service?",
+    "expected_answer": "Security mechanisms include enterprise authentication, role-based access control, service identities, encryption at rest and in transit, secure storage, access-aware retrieval, document-level permissions, audit logging, prompt injection mitigation, context sanitization, and abuse detection.",
+    "source_document": "PRD-002"
+  },
+  {
+    "id": 175,
+    "question": "What key features does the Prompt Management Platform provide to support version control of prompts?",
+    "expected_answer": "The platform provides version control features including change history, rollback support, version comparison, and release tracking.",
+    "source_document": "PRD-003"
+  },
+  {
+    "id": 176,
+    "question": "How does the Prompt Management Platform address the challenge of managing prompt deployment across multiple environments?",
+    "expected_answer": "It supports deployment features such as environment promotion, release workflows, controlled rollouts, rollback procedures, and deployment strategies including controlled releases, canary rollouts, approval gates, and rollback workflows.",
+    "source_document": "PRD-003"
+  },
+  {
+    "id": 177,
+    "question": "Can the Prompt Management Platform manage different categories of prompts independently while maintaining centralized governance? Please specify.",
+    "expected_answer": "Yes, the platform supports managing prompt categories independently such as system prompts, RAG prompts, agent prompts, evaluation prompts, safety prompts, classification prompts, summarization prompts, and workflow prompts, while maintaining centralized governance.",
+    "source_document": "PRD-003"
+  },
+  {
+    "id": 178,
+    "question": "What limitations exist in the current Prompt Management Platform related to prompt and template management?",
+    "expected_answer": "Current limitations include dependence on evaluation coverage, prompt complexity management challenges, template maintenance overhead, and multi-model behavior variability.",
+    "source_document": "PRD-003"
+  },
+  {
+    "id": 179,
+    "question": "What are the primary challenges that the Evaluation Engine aims to address for organizations?",
+    "expected_answer": "The primary challenges include lack of quality visibility, hallucination risks, regression detection difficulties, safety validation challenges, release governance gaps, and benchmark inconsistency.",
+    "source_document": "PRD-004"
+  },
+  {
+    "id": 180,
+    "question": "Which layer in the Evaluation Engine architecture is responsible for release approval and risk assessment?",
+    "expected_answer": "The Decision Layer is responsible for release approval, regression detection, and risk assessment.",
+    "source_document": "PRD-004"
+  },
+  {
+    "id": 181,
+    "question": "How does the Evaluation Engine support safety evaluation within AI systems?",
+    "expected_answer": "It supports prompt injection testing, policy validation, output safety analysis, and security benchmarking as part of its safety evaluation capabilities.",
+    "source_document": "PRD-004"
+  },
+  {
+    "id": 182,
+    "question": "Can evaluation workflows in the Evaluation Engine be combined, and if so, what types of evaluations can be integrated?",
+    "expected_answer": "Yes, evaluation workflows can be executed independently or combined into comprehensive validation pipelines. Supported evaluation types include model, RAG, retrieval, agent, prompt, safety, performance, and reliability evaluations.",
+    "source_document": "PRD-004"
+  },
+  {
+    "id": 183,
+    "question": "What specific challenges in AI model lifecycle management does the Model Registry platform aim to address?",
+    "expected_answer": "The Model Registry platform addresses challenges such as model sprawl across multiple repositories and environments, difficulties in version tracking, limited governance controls, operational visibility gaps, rollback complexity, and evaluation traceability issues.",
+    "source_document": "PRD-005"
+  },
+  {
+    "id": 184,
+    "question": "How does the Model Registry support rollback operations within model deployment?",
+    "expected_answer": "The Model Registry supports rollback operations by providing deployment tracking capabilities including rollback readiness and workflows linked to deployment governance that facilitate restoring previous model versions through centralized lifecycle tracking.",
+    "source_document": "PRD-005"
+  },
+  {
+    "id": 185,
+    "question": "What are the main operational layers involved in the Guardrails Gateway architecture?",
+    "expected_answer": "The main operational layers in the Guardrails Gateway architecture are: Ingress Layer (request intake, authentication, traffic management), Input Security Layer (prompt validation, threat detection, risk classification), Policy Layer (rule enforcement, governance controls, compliance validation), Execution Layer (model interactions, workflow orchestration, response processing), Output Security Layer (response validation, safety analysis, content filtering), and Observability Layer (monitoring, logging, analytics).",
+    "source_document": "PRD-006"
+  },
+  {
+    "id": 186,
+    "question": "Can the Guardrails Gateway platform handle multi-step attack detection effectively in its current version?",
+    "expected_answer": "No, one of the current limitations of the Guardrails Gateway platform is the challenge in detecting complex multi-step attacks effectively; continuous improvement processes are in place to address this limitation.",
+    "source_document": "PRD-006"
+  },
+  {
+    "id": 187,
+    "question": "Which types of policies can be managed by the policy engine in Guardrails Gateway?",
+    "expected_answer": "The policy engine supports managing Security policies, Compliance policies, Business policies, and Operational policies.",
+    "source_document": "PRD-006"
+  },
+  {
+    "id": 188,
+    "question": "What specific capabilities does the Guardrails Gateway provide to protect against data leakage?",
+    "expected_answer": "Guardrails Gateway supports data protection through sensitive data detection, data masking, access-aware controls, and leakage prevention to protect against data leakage.",
+    "source_document": "PRD-006"
+  },
+  {
+    "id": 189,
+    "question": "What are the responsibilities of the Governance Layer in Agent Workflow Studio's architecture?",
+    "expected_answer": "The Governance Layer is responsible for policy enforcement, security controls, and compliance validation.",
+    "source_document": "PRD-007"
+  },
+  {
+    "id": 190,
+    "question": "Can Agent Workflow Studio handle human intervention during workflow execution?",
+    "expected_answer": "Yes, the platform supports human-in-the-loop workflows where human approval or intervention can be incorporated into execution paths.",
+    "source_document": "PRD-007"
+  },
+  {
+    "id": 191,
+    "question": "What security features does Agent Workflow Studio provide to protect data?",
+    "expected_answer": "Agent Workflow Studio provides encryption at rest, encryption in transit, and secure credential storage to protect data.",
+    "source_document": "PRD-007"
+  },
+  {
+    "id": 192,
+    "question": "What kind of workflows does the platform support in terms of task execution order?",
+    "expected_answer": "The platform supports sequential workflows (tasks execute in defined order), parallel workflows (multiple tasks execute simultaneously), conditional workflows (execution paths vary based on business logic), human-in-the-loop workflows, and autonomous workflows.",
+    "source_document": "PRD-007"
+  },
+  {
+    "id": 193,
+    "question": "Which components does the Analytics Dashboard aggregate information from within the AetherAI Cloud ecosystem?",
+    "expected_answer": "The Analytics Dashboard aggregates information from AetherAI Gateway, Enterprise RAG Service, Evaluation Engine, Guardrails Gateway, Agent Workflow Studio, Knowledge Hub, Reliability Platform, and supporting infrastructure components.",
+    "source_document": "PRD-008"
+  },
+  {
+    "id": 194,
+    "question": "What are some of the current limitations of the Analytics Dashboard platform, and how are they addressed?",
+    "expected_answer": "Current limitations include dependence on telemetry quality, historical data retention requirements, cross-system integration complexity, and analytics processing overhead. These limitations are addressed through operational controls.",
+    "source_document": "PRD-008"
+  },
+  {
+    "id": 195,
+    "question": "Can you list the specific key features provided under Security Analytics in the Analytics Dashboard?",
+    "expected_answer": "Security Analytics provides policy violation reporting, security event visibility, compliance monitoring, and threat analytics.",
+    "source_document": "PRD-008"
+  },
+  {
+    "id": 196,
+    "question": "In what sequence does the Analytics Dashboard usage workflow operate from data collection to decision-making?",
+    "expected_answer": "Step 1: Operational data is collected. Step 2: Metrics are aggregated. Step 3: Analytics calculations occur. Step 4: Business KPIs are generated. Step 5: Dashboards are updated. Step 6: Alerts and reports are created. Step 7: Stakeholders access insights. Step 8: Optimization decisions are made.",
+    "source_document": "PRD-008"
+  },
+  {
+    "id": 197,
+    "question": "What are the main types of documents managed within Knowledge Hub?",
+    "expected_answer": "Knowledge Hub manages organizational knowledge assets including policies, procedures, architecture documents, runbooks, incident reports, product documentation, operational records, and institutional knowledge.",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 198,
+    "question": "Describe the workflow steps that occur from content creation to user access within Knowledge Hub.",
+    "expected_answer": "The workflow steps are: (1) Content creation or upload, (2) Metadata assignment, (3) Governance review, (4) Content approval and publishing, (5) Indexes and embeddings generation, (6) Search and retrieval services update, (7) User and AI system access to content, (8) Monitoring and analytics generation, (9) Periodic content quality reviews.",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 199,
+    "question": "Which AI platforms and capabilities does Knowledge Hub integrate with to support AI-driven workflows?",
+    "expected_answer": "Knowledge Hub integrates with Enterprise RAG Service, Agent Workflow Studio, Evaluation Engine, and Reliability Platform. Supported AI capabilities include embedding generation, retrieval optimization, context enrichment, and citation generation.",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 200,
+    "question": "What security measures does Knowledge Hub employ to protect organizational knowledge?",
+    "expected_answer": "Security measures include role-based access control, enterprise authentication, ownership permissions, encryption at rest and in transit, secure content storage, audit logging, compliance reporting, and access monitoring.",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 201,
+    "question": "What types of search are supported by Knowledge Hub, and how do they differ?",
+    "expected_answer": "Knowledge Hub supports keyword search (traditional text search), semantic search (embedding-based conceptual retrieval), hybrid search (combined keyword and vector retrieval), metadata search (filtering by document attributes), and cross-repository search (simultaneous retrieval across multiple domains).",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 202,
+    "question": "What are some limitations of Knowledge Hub mentioned in the document, and how are they addressed?",
+    "expected_answer": "Limitations include dependency on content quality, metadata maintenance requirements, repository synchronization complexity, and knowledge lifecycle overhead. These are mitigated through governance processes.",
+    "source_document": "PRD-009"
+  },
+  {
+    "id": 203,
+    "question": "What are the main challenges the Reliability Platform aims to solve for organizations deploying AI at scale?",
+    "expected_answer": "The Reliability Platform addresses challenges related to hallucination risks, quality visibility gaps, regression detection challenges, governance limitations, operational complexity, and lack of standardized metrics for AI quality.",
+    "source_document": "PRD-010"
+  },
+  {
+    "id": 204,
+    "question": "Which specific layers in the architecture are responsible for policy enforcement and alert generation respectively?",
+    "expected_answer": "The Governance Layer is responsible for policy enforcement, and the Automation Layer is responsible for alert generation.",
+    "source_document": "PRD-010"
+  },
+  {
+    "id": 205,
+    "question": "According to the Data Encryption Policy SEC-001, what encryption protocols must be used for data in transit within production environments?",
+    "expected_answer": "All network communications in production environments must utilize approved transport encryption protocols, specifically TLS 1.2 or TLS 1.3. Unencrypted communication channels are prohibited.",
+    "source_document": "SEC-001"
+  },
+  {
+    "id": 206,
+    "question": "Is plaintext storage of sensitive information ever permitted under the Data Encryption Policy SEC-001, and if so, under what circumstances?",
+    "expected_answer": "Plaintext storage of sensitive information is prohibited unless explicitly approved through a documented exception process that includes business justification, risk assessment, compensating controls, and expiration date.",
+    "source_document": "SEC-001"
+  },
+  {
+    "id": 207,
+    "question": "What are the mandatory authentication mechanisms for all production systems according to the Access Control Standard?",
+    "expected_answer": "Approved authentication mechanisms for all production systems include Single Sign-On, Multi-Factor Authentication, Federated identity providers, and Certificate-based authentication for approved workloads.",
+    "source_document": "SEC-002"
+  },
+  {
+    "id": 208,
+    "question": "Is it permissible to have shared user accounts for regular employees according to the Access Control Standard?",
+    "expected_answer": "No, shared user accounts are prohibited except for approved system-level service accounts.",
+    "source_document": "SEC-002"
+  },
+  {
+    "id": 209,
+    "question": "What are the approved platforms for storing encryption keys under the Secrets Management Policy?",
+    "expected_answer": "Approved platforms for storing encryption keys include AWS Key Management Service and AWS CloudHSM for cases where regulatory or security requirements dictate dedicated cryptographic controls.",
+    "source_document": "SEC-003"
+  },
+  {
+    "id": 210,
+    "question": "Is it permissible to store production secrets locally according to the policy?",
+    "expected_answer": "No, local storage of production secrets is prohibited.",
+    "source_document": "SEC-003"
+  },
+  {
+    "id": 211,
+    "question": "What steps must be included in the incident response procedure after discovering compromised secrets?",
+    "expected_answer": "The incident response procedure includes immediate containment, credential rotation, access review, security investigation, impact assessment, and documentation of findings.",
+    "source_document": "SEC-003"
+  },
+  {
+    "id": 212,
+    "question": "Can secrets be shared through email or messaging platforms as per the policy?",
+    "expected_answer": "No, secrets must never be shared through email or messaging platforms.",
+    "source_document": "SEC-003"
+  },
+  {
+    "id": 213,
+    "question": "What are the rotation intervals recommended for Tier 1, Tier 2, and Tier 3 keys according to the Key Rotation Procedure?",
+    "expected_answer": "Tier 1 Keys should be rotated every 90 days, Tier 2 Keys every 180 days, and Tier 3 Keys every 365 days.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 214,
+    "question": "Can key rotation be delayed if operational challenges arise, and what is required if a delay is necessary?",
+    "expected_answer": "No, key rotation must not be delayed without documented approval, as it is a preventative security control.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 215,
+    "question": "List three key types included within the scope of this Key Rotation Procedure.",
+    "expected_answer": "AWS KMS keys, TLS certificates and private keys, and service authentication keys are included in the scope.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 216,
+    "question": "In the event of an emergency rotation, what are the first three required actions?",
+    "expected_answer": "The first three required actions are: generate replacement key, update dependent systems, and disable compromised key.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 217,
+    "question": "What must be done during the validation step after key rotation execution?",
+    "expected_answer": "Validation must ensure service availability, encryption functionality, authentication systems, and application performance; any failures must trigger immediate investigation.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 218,
+    "question": "Are development and testing environment keys subject to the same rotation frequency as production Tier 1 keys?",
+    "expected_answer": "No, development and testing environment keys are classified as Tier 3 Keys, which have a recommended rotation interval of every 365 days, unlike Tier 1 Keys which rotate every 90 days.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 219,
+    "question": "What are the prerequisites that must be met before performing any key rotation activities?",
+    "expected_answer": "Prerequisites include documented key ownership, existing recovery procedures, completed backup validation, dependency analysis performed, operational monitoring systems, notification of service owners, documented rollback procedures, availability of testing environments, maintained rotation schedules, and enabled audit logging.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 220,
+    "question": "If a key is used across multiple services, what procedure step involves identifying and documenting these dependencies?",
+    "expected_answer": "Step 2: Dependency Analysis involves identifying all systems consuming the key, such as applications, databases, storage systems, authentication services, and monitoring integrations, and documenting these dependencies.",
+    "source_document": "SEC-004"
+  },
+  {
+    "id": 221,
+    "question": "What is the target remediation time for vulnerabilities classified as High according to the Vulnerability Management Policy?",
+    "expected_answer": "The target remediation time for High vulnerabilities is 14 days.",
+    "source_document": "SEC-005"
+  },
+  {
+    "id": 222,
+    "question": "Which teams are responsible for remediation implementation and validation testing as per the policy?",
+    "expected_answer": "Engineering teams are responsible for remediation implementation and validation testing.",
+    "source_document": "SEC-005"
+  },
+  {
+    "id": 223,
+    "question": "Are container images containing Critical vulnerabilities allowed to be deployed into production?",
+    "expected_answer": "No, container images containing Critical vulnerabilities must not be deployed into production.",
+    "source_document": "SEC-005"
+  },
+  {
+    "id": 224,
+    "question": "Does the Vulnerability Management Policy cover non-production environments like development and staging?",
+    "expected_answer": "Yes, the policy applies to production, staging, development, and testing environments.",
+    "source_document": "SEC-005"
+  },
+  {
+    "id": 225,
+    "question": "What are the required components that must be included in every third-party access request according to the Third Party Access Policy?",
+    "expected_answer": "All third-party access requests must include business justification, scope of access, duration of access, assigned sponsor, and risk assessment.",
+    "source_document": "SEC-006"
+  },
+  {
+    "id": 226,
+    "question": "Is shared password usage allowed for third-party accounts under this policy?",
+    "expected_answer": "No, shared passwords are prohibited for third-party accounts.",
+    "source_document": "SEC-006"
+  },
+  {
+    "id": 227,
+    "question": "How often must privileged third-party access be reviewed according to the policy?",
+    "expected_answer": "Privileged third-party access must undergo periodic review quarterly.",
+    "source_document": "SEC-006"
+  },
+  {
+    "id": 228,
+    "question": "What steps must be taken when a third party's contract expires in terms of access?",
+    "expected_answer": "Access must be revoked immediately following contract expiration.",
+    "source_document": "SEC-006"
+  },
+  {
+    "id": 229,
+    "question": "What types of environments and systems are covered by the Audit Logging Requirements Policy SEC-007?",
+    "expected_answer": "The policy applies to production environments, development environments, testing environments, cloud infrastructure, applications, databases, AI services, APIs, authentication systems, monitoring platforms, CI/CD pipelines, and administrative interfaces. It covers all personnel, service accounts, applications, and systems operating within the AetherAI Cloud ecosystem.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 230,
+    "question": "Are systems that cannot generate the required audit records allowed for production use according to the policy?",
+    "expected_answer": "No, systems unable to generate required audit records may not be approved for production use.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 231,
+    "question": "What are the required elements that every audit record must contain to support investigations and accountability?",
+    "expected_answer": "Audit records must contain the following fields: event timestamp, user or system identity, event type, source system, target resource, action performed, result status, and relevant contextual information. Timestamps must use synchronized and standardized time sources.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 232,
+    "question": "Does the policy allow sensitive information, like passwords or encryption keys, to be recorded in audit logs?",
+    "expected_answer": "No, audit logs must not expose sensitive information such as passwords, encryption keys, authentication tokens, customer secrets, or private cryptographic material. Sensitive values must be masked or excluded.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 233,
+    "question": "What are the steps outlined in the policy for handling audit logs from generation to review?",
+    "expected_answer": "The policy outlines eight steps: Step 1: Log Generation, Step 2: Collection of logs to centralized systems, Step 3: Validation of log completeness and integrity, Step 4: Storage in approved repositories, Step 5: Continuous Monitoring for suspicious activity, Step 6: Investigation of alerts and suspicious events, Step 7: Retention of logs according to requirements, and Step 8: Conducting periodic audits and validation activities.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 234,
+    "question": "Is there a provision for exceptions to the Audit Logging Requirements Policy and what are the conditions?",
+    "expected_answer": "Yes, exceptions require a security review, business justification, risk assessment, and a defined expiration period. Compensating controls must also be documented.",
+    "source_document": "SEC-007"
+  },
+  {
+    "id": 235,
+    "question": "What is the minimum retention period for audit logs according to the Data Retention Policy SEC-008?",
+    "expected_answer": "The minimum retention period for audit logs is 7 years.",
+    "source_document": "SEC-008"
+  },
+  {
+    "id": 236,
+    "question": "Can standard retention schedules be overridden in case of legal hold requirements, and who is authorized to remove such legal hold restrictions?",
+    "expected_answer": "Yes, standard retention schedules may be suspended during legal hold requirements. Only authorized legal or compliance personnel may remove legal hold restrictions.",
+    "source_document": "SEC-008"
+  },
+  {
+    "id": 237,
+    "question": "What is the response target time for a Severity 2 (High) security incident according to the Incident Response Standard?",
+    "expected_answer": "The response target time for a Severity 2 (High) security incident is 30 minutes.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 238,
+    "question": "Are development and disaster recovery environments included within the scope of the Incident Response Standard?",
+    "expected_answer": "Yes, the requirements apply across production, staging, development, testing, and disaster recovery environments.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 239,
+    "question": "Which teams are responsible for incident coordination and threat analysis during an incident response?",
+    "expected_answer": "The Information Security Team is responsible for incident coordination and threat analysis.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 240,
+    "question": "If an employee discovers a low-risk informational security finding, how soon should the incident response begin according to the severity classification?",
+    "expected_answer": "Response for a Severity 4 (Low) incident, which includes informational security findings, should begin within 1 business day.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 241,
+    "question": "What steps must be documented in real time during the containment phase of the incident lifecycle?",
+    "expected_answer": "Containment actions such as credential revocation, network isolation, access restriction, service suspension, and secret rotation must be documented in real time.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 242,
+    "question": "Is it permissible to permanently exempt certain incident response requirements without security leadership approval?",
+    "expected_answer": "No, permanent exceptions are discouraged and all exceptions require security leadership approval, risk assessment, and documentation of compensating controls.",
+    "source_document": "SEC-009"
+  },
+  {
+    "id": 243,
+    "question": "What security activities must be completed before production deployment according to the Secure Development Lifecycle policy?",
+    "expected_answer": "Security reviews are not optional and must be completed before production deployment. Activities include risk identification, secure architecture review, secure coding practices, security testing, vulnerability management, release governance, and continuous monitoring.",
+    "source_document": "SEC-010"
+  },
+  {
+    "id": 244,
+    "question": "Can developers store secrets such as credentials in source code repositories as per the policy?",
+    "expected_answer": "No, developers must not store secrets in source code repositories. Secrets must be managed using approved centralized systems such as AWS Secrets Manager or AWS Key Management Service.",
+    "source_document": "SEC-010"
+  },
+  {
+    "id": 245,
+    "question": "What are the requirements for AI-enabled systems under this Secure Development Lifecycle Standard?",
+    "expected_answer": "AI-enabled systems require additional controls including prompt injection protection, input validation, output filtering, model access controls, evaluation testing, and hallucination monitoring. AI-specific risks must be reviewed during architecture and testing phases.",
+    "source_document": "SEC-010"
+  },
+  {
+    "id": 246,
+    "question": "Is it permissible to disable security controls during development as per the policy?",
+    "expected_answer": "No, developers must not disable security controls during development as per the policy.",
+    "source_document": "SEC-010"
+  }
+]
