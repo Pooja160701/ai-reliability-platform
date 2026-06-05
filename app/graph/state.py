@@ -1,6 +1,5 @@
 from typing import TypedDict
 from typing import List
-from typing import Optional
 
 
 class GraphState(TypedDict):
@@ -24,3 +23,11 @@ class GraphState(TypedDict):
     input_validation_passed: bool
 
     output_validation_passed: bool
+
+    sources: List[str]
+
+    total_tokens: int
+
+    estimated_cost: float
+
+    latency_ms: float
