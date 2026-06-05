@@ -3,35 +3,1000 @@
     "id": 1,
     "question": "What AWS services are used for security in the Inference Platform architecture?",
     "expected_answer": "The AWS security services used in the Inference Platform include AWS IAM, AWS Secrets Manager, AWS KMS, and AWS WAF.",
-    "generated_answer": "The AWS services used for security in the Inference Platform architecture are:\n\n- AWS IAM\n- AWS Secrets Manager\n- AWS KMS\n- AWS WAF",
-    "latency": 5.91107177734375
+    "generated_answer": "The AWS services used for security in the Inference Platform architecture are:\n\n\u2022 AWS IAM  \n\u2022 AWS Secrets Manager  \n\u2022 AWS KMS  \n\u2022 AWS WAF",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists AWS IAM, AWS Secrets Manager, AWS KMS, and AWS WAF as security services, all of which are explicitly mentioned in the retrieved context under 'Security Services' for the Inference Platform architecture.",
+    "retry_count": 0,
+    "latency": 7.946004867553711
   },
   {
     "id": 2,
     "question": "What is the Recovery Point Objective (RPO) defined for disaster recovery in the platform?",
     "expected_answer": "The Recovery Point Objective (RPO) for disaster recovery is 15 minutes.",
     "generated_answer": "The Recovery Point Objective (RPO) defined for disaster recovery in the platform is 15 minutes.",
-    "latency": 4.06196141242981
+    "critic_decision": "approve",
+    "critic_reason": "The retrieved context explicitly states that the Recovery Point Objective (RPO) for disaster recovery in the platform is 15 minutes.",
+    "retry_count": 0,
+    "latency": 3.9834015369415283
   },
   {
     "id": 3,
     "question": "How does the Model Router decide which model to use for processing requests?",
     "expected_answer": "The Model Router makes routing decisions based on cost, latency, model availability, customer configuration, and evaluation scores.",
-    "generated_answer": "The Model Router decides which model should process each request by considering factors such as cost, latency, model availability, customer configuration, and evaluation scores. Additionally, the routing logic is dynamically configurable.",
-    "latency": 5.082389831542969
+    "generated_answer": "The Model Router decides which model should process each request by considering factors such as cost, latency, model availability, customer configuration, and evaluation scores. Its routing logic is dynamically configurable.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context which states that the Model Router determines which model should process each request by considering cost, latency, model availability, customer configuration, and evaluation scores, and that the routing logic is dynamically configurable.",
+    "retry_count": 0,
+    "latency": 6.336838722229004
   },
   {
     "id": 4,
     "question": "Is the Inference Worker stateful or stateless, and where does it operate?",
     "expected_answer": "Inference Workers operate as stateless services within Amazon EKS.",
     "generated_answer": "I do not have enough information.",
-    "latency": 8.09693431854248
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that there is not enough information in the context to determine if the Inference Worker is stateful or stateless, and where exactly it operates. The retrieved context does not explicitly describe the statefulness or precise operating environment of the Inference Worker.",
+    "retry_count": 1,
+    "latency": 9.917897701263428
   },
   {
     "id": 5,
     "question": "What layers compose the architecture of the RAG Platform and what are their primary responsibilities?",
     "expected_answer": "The RAG Platform architecture is divided into six logical layers: Knowledge Sources Layer (contains security policies, architecture documents, SOPs, incident reports, product documentation, customer knowledge repositories, operational runbooks), Ingestion Layer (responsible for document processing, metadata extraction, validation, classification), Embedding Layer (responsible for text chunking, embedding generation, embedding refresh workflows), Retrieval Layer (responsible for vector search, metadata filtering, hybrid retrieval), Ranking Layer (responsible for relevance scoring, result reranking, context optimization), and Generation Layer (responsible for context assembly, prompt construction, LLM interaction).",
-    "generated_answer": "The architecture of the RAG Platform is divided into six logical layers, each with specific primary responsibilities:\n\n1. Knowledge Sources Layer  \n   - Contains: Security policies, Architecture documents, SOPs, Incident reports, Product documentation, Customer knowledge repositories, Operational runbooks.\n\n2. Ingestion Layer  \n   - Responsible for: Document processing, Metadata extraction, Validation, Classification.\n\n3. Embedding Layer  \n   - Responsible for: Text chunking, Embedding generation, Embedding refresh workflows.\n\n4. Retrieval Layer  \n   - Responsible for: Vector search, Metadata filtering, Hybrid retrieval.\n\n5. Ranking Layer  \n   - Responsible for: Relevance scoring, Result reranking, Context optimization.\n\n6. Generation Layer  \n   - Responsible for: Context assembly, Prompt construction, LLM interaction.",
-    "latency": 14.759958028793335
+    "generated_answer": "The architecture of the RAG Platform consists of six logical layers. However, the context only provides details about one of these layers, the Knowledge Sources Layer, but does not specify its contents or responsibilities.\n\nTherefore, based on the provided context:\n\n- The architecture is divided into six logical layers.\n- One named layer is the Knowledge Sources Layer.\n- The specific responsibilities of the Knowledge Sources Layer or the other five layers are not detailed in the provided information.\n\nI do not have enough information to list all the layers composing the architecture of the RAG Platform or their primary responsibilities.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the information provided in the context, stating that the architecture consists of six logical layers but that details about these layers and their responsibilities are not fully provided. It does not invent or assume unsupported details.",
+    "retry_count": 0,
+    "latency": 4.275021076202393
+  },
+  {
+    "id": 6,
+    "question": "Are documents stored in any format outside of Amazon S3 within the RAG Platform? If not, list the supported document types.",
+    "expected_answer": "No, documents are stored within Amazon S3 only. The supported document types include PDF, DOCX, TXT, Markdown, HTML, and JSON.",
+    "generated_answer": "Documents are not stored in any format outside of Amazon S3 within the RAG Platform.\n\nThe supported document types stored in Amazon S3 include:  \n\u2022 PDF  \n\u2022 DOCX  \n\u2022 TXT  \n\u2022 Markdown  \n\u2022 HTML  \n\u2022 JSON",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is fully supported by the context, which explicitly states that documents are stored within Amazon S3 and lists the supported document types as PDF, DOCX, TXT, Markdown, HTML, and JSON.",
+    "retry_count": 0,
+    "latency": 4.021884441375732
+  },
+  {
+    "id": 7,
+    "question": "What is the default retrieval strategy used in the retrieval layer, and what filtering options does it support?",
+    "expected_answer": "The default retrieval strategy is hybrid retrieval, which combines vector retrieval (semantic similarity search using embeddings) and keyword retrieval (traditional lexical matching). It supports metadata filtering based on customer, document category, classification, ownership, and date ranges.",
+    "generated_answer": "The default retrieval strategy used in the retrieval layer is Hybrid Retrieval, which is a combination of vector and keyword search. The filtering options it supports include metadata filtering based on customer, document category, classification, ownership, and date ranges.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that the default retrieval strategy is Hybrid Retrieval, a combination of vector and keyword search, and that filtering options include metadata filtering based on customer, document category, classification, ownership, and date ranges, all of which are explicitly mentioned in the retrieved context.",
+    "retry_count": 0,
+    "latency": 4.973988056182861
+  },
+  {
+    "id": 8,
+    "question": "During the document processing pipeline, at which step does chunk generation occur and what are the standard chunk size and overlap size?",
+    "expected_answer": "Chunk generation occurs at Step 5 of the document processing pipeline. The standard chunk size ranges from 500 to 1000 tokens, and the overlap size ranges from 100 to 150 tokens.",
+    "generated_answer": "Chunk generation occurs at Step 5 in the document processing pipeline. The standard chunk size is 500 to 1000 tokens, and the overlap size is 100 to 150 tokens.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that chunk generation occurs at Step 5 and provides the standard chunk size and overlap size, all of which are explicitly supported by the retrieved context.",
+    "retry_count": 0,
+    "latency": 3.1329922676086426
+  },
+  {
+    "id": 9,
+    "question": "What are the target Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for disaster recovery, and what controls are implemented to meet these objectives?",
+    "expected_answer": "The target Recovery Time Objective (RTO) is 60 minutes, and the Recovery Point Objective (RPO) is 15 minutes. Controls to meet these objectives include cross-region backups, Infrastructure-as-Code deployment, and automated restoration procedures.",
+    "generated_answer": "The target Recovery Time Objective (RTO) for disaster recovery is 60 minutes, and the Recovery Point Objective (RPO) is 15 minutes.\n\nThe controls implemented to meet these objectives include:\n- Multi-AZ deployment\n- Cross-region backups\n- Infrastructure-as-Code templates\n- Automated recovery procedures",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately states the RTO and RPO values as 60 minutes and 15 minutes respectively, which are clearly specified multiple times in the context. The controls listed\u2014Multi-AZ deployment, Cross-region backups, Infrastructure-as-Code templates, and Automated recovery procedures\u2014are all mentioned in the context as disaster recovery controls. There is no invented or unsupported information.",
+    "retry_count": 0,
+    "latency": 7.206443548202515
+  },
+  {
+    "id": 10,
+    "question": "How does the platform enforce customer data isolation in the retrieval workflow?",
+    "expected_answer": "Customer data isolation is enforced throughout the retrieval workflow using role-based access controls, tenant isolation, and metadata filtering based on customer and other attributes. Security controls such as IAM integration, service identities, API authentication, and strict authorization mechanisms ensure tenant isolation.",
+    "generated_answer": "I do not have enough information.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states a lack of information about how the platform enforces customer data isolation in the retrieval workflow, which is consistent with the retrieved context that does not explicitly describe the enforcement mechanisms in that specific workflow.",
+    "retry_count": 0,
+    "latency": 3.0413918495178223
+  },
+  {
+    "id": 11,
+    "question": "What AWS services are used in the compute, storage, and security layers of the RAG Platform?",
+    "expected_answer": "Compute layer uses Amazon EKS and AWS Lambda. Storage layer uses Amazon S3 and Amazon RDS PostgreSQL. Security layer uses AWS IAM, AWS Secrets Manager, and AWS KMS.",
+    "generated_answer": "The AWS services used in the RAG Platform are:\n\nCompute Layer:\n- Amazon EKS\n- AWS Lambda\n\nStorage Layer:\n- Amazon S3\n- Amazon RDS PostgreSQL\n- Amazon OpenSearch\n\nSecurity Layer:\n- IAM\n- AWS KMS\n- AWS Secrets Manager",
+    "critic_decision": "approve",
+    "critic_reason": "The answer exactly matches the AWS services listed under Compute Layer, Storage Layer, and Security Layer in the retrieved context.",
+    "retry_count": 0,
+    "latency": 3.9935789108276367
+  },
+  {
+    "id": 12,
+    "question": "What evaluation metrics are integrated into the RAG Platform's Evaluation Engine?",
+    "expected_answer": "The integrated evaluation metrics include recall, precision, context relevance, faithfulness, groundedness, and citation accuracy.",
+    "generated_answer": "The evaluation metrics integrated into the RAG Platform's Evaluation Engine include:\n\n- Recall  \n- Precision  \n- Context relevance  \n- Faithfulness  \n- Groundedness  \n- Citation accuracy",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists evaluation metrics such as recall, precision, context relevance, faithfulness, groundedness, and citation accuracy, all of which are explicitly mentioned in the retrieved context under the section 'Evaluation Framework' and elsewhere.",
+    "retry_count": 0,
+    "latency": 3.815302610397339
+  },
+  {
+    "id": 13,
+    "question": "What are the Recovery Time Objective (RTO) and Recovery Point Objective (RPO) targets for critical services in the Multi Region Strategy?",
+    "expected_answer": "The Recovery Time Objective (RTO) is 60 minutes and the Recovery Point Objective (RPO) is 15 minutes. Critical services may require more aggressive targets.",
+    "generated_answer": "The Recovery Time Objective (RTO) target for critical services in the Multi Region Strategy is 60 minutes, and the Recovery Point Objective (RPO) target is 15 minutes.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly matches multiple statements in the retrieved context that specify the RTO for critical platform services as 60 minutes and the RPO as 15 minutes.",
+    "retry_count": 0,
+    "latency": 2.9686546325683594
+  },
+  {
+    "id": 14,
+    "question": "Does the Multi Region Strategy support automated failover, and if so, what triggers a failover?",
+    "expected_answer": "Yes, the Multi Region Strategy supports automated failover. Failover triggers include regional outages, severe degradation, connectivity failures, and security events.",
+    "generated_answer": "Yes, the Multi Region Strategy supports automated failover. Failover can be triggered by the following events:\n\n- Regional outages  \n- Severe degradation  \n- Connectivity failures  \n- Security events\n\nFailover decisions may be automated or manually approved depending on incident severity.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer explicitly matches the information in the 'Failover Architecture' section of the context, which states the Multi Region Strategy supports failover triggered by regional outages, severe degradation, connectivity failures, and security events. It also states failover decisions may be automated or manually approved depending on incident severity. No unsupported claims or invented information are present.",
+    "retry_count": 0,
+    "latency": 5.247410535812378
+  },
+  {
+    "id": 15,
+    "question": "Which AWS services are used in the storage layer according to the Multi Region Strategy?",
+    "expected_answer": "The storage layer uses Amazon S3, Amazon RDS PostgreSQL, and Amazon OpenSearch.",
+    "generated_answer": "The AWS services used in the storage layer according to the Multi Region Strategy are:\n\n\u2022 Amazon S3  \n\u2022 Amazon RDS PostgreSQL  \n\u2022 Amazon OpenSearch",
+    "critic_decision": "approve",
+    "critic_reason": "The answer exactly matches the retrieved context stating the Storage Layer uses Amazon S3, Amazon RDS PostgreSQL, and Amazon OpenSearch.",
+    "retry_count": 0,
+    "latency": 4.211441278457642
+  },
+  {
+    "id": 16,
+    "question": "How does the architecture ensure that security policies remain consistent across multiple regions?",
+    "expected_answer": "Security policies remain synchronized across regions through controls such as IAM policies, service roles, federated authentication, encryption at rest and in transit, regional secret replication with secure rotation controls, and centralized audit collection with regional logging redundancy.",
+    "generated_answer": "The architecture ensures that security policies remain consistent across multiple regions by synchronizing security policies across regions. Additionally, security controls such as IAM policies, service roles, federated authentication, encryption at rest and in transit, regional secret replication with secure rotation controls, centralized audit collection, and regional logging redundancy are maintained consistently across all regions.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is directly supported by the retrieved context, which states that security policies must remain synchronized across regions and details consistent security controls including IAM policies, encryption, secret replication, and audit logging across all regions.",
+    "retry_count": 0,
+    "latency": 4.2879462242126465
+  },
+  {
+    "id": 17,
+    "question": "Which AWS services are utilized for notification and storage in the Monitoring Architecture?",
+    "expected_answer": "Amazon SNS is used for notification services, and Amazon S3 is used for storage services.",
+    "generated_answer": "The AWS services utilized for notification and storage in the Monitoring Architecture are:\n\n- Notification Services: Amazon SNS  \n- Storage Services: Amazon S3",
+    "critic_decision": "approve",
+    "critic_reason": "The answer explicitly cites Amazon SNS for notification and Amazon S3 for storage, both of which are clearly mentioned under Notification Services and Storage Services in the retrieved context.",
+    "retry_count": 0,
+    "latency": 2.7848284244537354
+  },
+  {
+    "id": 18,
+    "question": "What are the Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for disaster recovery in the Monitoring Architecture?",
+    "expected_answer": "The Recovery Time Objective (RTO) is 60 minutes, and the Recovery Point Objective (RPO) is 15 minutes.",
+    "generated_answer": "The Recovery Time Objective (RTO) for disaster recovery in the Monitoring Architecture is 60 minutes.\n\nThe Recovery Point Objective (RPO) for disaster recovery in the Monitoring Architecture is 15 minutes.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer stating an RTO of 60 minutes and an RPO of 15 minutes is directly supported multiple times in the retrieved context in relation to disaster recovery and monitoring architecture.",
+    "retry_count": 0,
+    "latency": 3.8611977100372314
+  },
+  {
+    "id": 19,
+    "question": "What types of logs must applications generate and what key fields are required in these logs according to the Logging Architecture?",
+    "expected_answer": "Applications must generate structured logs using standardized formats. Required log fields include timestamp, service name, environment, request identifier, severity level, and event details.",
+    "generated_answer": "Applications must generate Application Logs that record application behavior and operational events. Examples include:\n\n- API requests\n- Service failures\n- Error conditions\n- Workflow execution events\n\nThe key fields required in these logs, according to the Logging Architecture, are:\n\n- Event timestamp\n- User or system identity\n- Event type\n- Source system\n- Target resource\n- Action performed\n- Result status\n- Relevant contextual information\n\nTimestamps must use synchronized and standardized time sources.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the types of logs applications must generate (Application Logs) and the required key fields in these logs as outlined in the retrieved context. All information is supported by the provided context.",
+    "retry_count": 0,
+    "latency": 3.1496002674102783
+  },
+  {
+    "id": 20,
+    "question": "How does the Monitoring Architecture handle sensitive information in logs?",
+    "expected_answer": "Sensitive information must be masked before storage to comply with organizational security policies.",
+    "generated_answer": "The Monitoring Architecture handles sensitive information in logs by ensuring that sensitive values must be masked or excluded before storage. Audit logs must not expose passwords, encryption keys, authentication tokens, customer secrets, or private cryptographic material. Sensitive information is masked prior to storage to protect against unauthorized access or exposure.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the retrieved context which specifies that sensitive values must be masked or excluded before storage, and lists specific sensitive data types that audit logs must not expose. It also mentions that sensitive information is masked prior to storage to protect against unauthorized access or exposure.",
+    "retry_count": 1,
+    "latency": 13.070410251617432
+  },
+  {
+    "id": 21,
+    "question": "What AWS services are used for processing data within the Data Lake architecture?",
+    "expected_answer": "The AWS services used for processing data within the Data Lake architecture are Amazon EKS and AWS Lambda.",
+    "generated_answer": "The AWS services used for processing data within the Data Lake architecture are Amazon EKS and AWS Lambda.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is directly supported by the context which lists Amazon EKS and AWS Lambda as the processing services used within the Data Lake architecture.",
+    "retry_count": 0,
+    "latency": 3.3440511226654053
+  },
+  {
+    "id": 22,
+    "question": "How does the architecture ensure multi-tenant data isolation and secure access control?",
+    "expected_answer": "The architecture ensures multi-tenant data isolation and secure access control through identity controls such as IAM roles, service authentication, role-based permissions, dataset-level permissions, environment segregation, tenant isolation, encryption at rest and in transit, and audit logging of access events, administrative activities, and data modifications.",
+    "generated_answer": "The architecture ensures multi-tenant data isolation and secure access control through the following measures:\n\n- Tenant isolation is enforced by metadata filtering, access control enforcement, and namespace segregation.\n- Access controls include dataset-level permissions, environment segregation, and tenant isolation.\n- Authorization is managed using Role-Based Access Control (RBAC) and namespace-level permissions.\n- Identity controls include IAM integration, service authentication, and role-based access.\n- Secrets management uses AWS Secrets Manager and Kubernetes secret integrations.\n- Administrative access requires Multi-Factor Authentication.\n  \nThese controls collectively provide secure access control and tenant isolation within the architecture.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects multiple points from the retrieved context, including tenant isolation via metadata filtering, access control enforcement, and namespace segregation; dataset-level permissions; environment segregation; Role-Based Access Control (RBAC); IAM integration; secrets management; and Multi-Factor Authentication for administrative access. All these elements are explicitly documented in the context, supporting the answer's claims regarding multi-tenant data isolation and secure access control.",
+    "retry_count": 0,
+    "latency": 5.252260446548462
+  },
+  {
+    "id": 23,
+    "question": "Describe the sequence of steps involved in the Data Ingestion Architecture.",
+    "expected_answer": "The sequence of steps in the Data Ingestion Architecture is: 1) Data source generates records. 2) Ingestion service validates payloads. 3) Metadata is assigned. 4) Security controls validate compliance requirements. 5) Data is stored in the Raw Zone. 6) Transformation workflows process records. 7) Processed and Curated datasets are generated.",
+    "generated_answer": "The sequence of steps involved in the Data Ingestion Architecture is:\n\nStep 1: Data source generates records.  \nStep 2: Ingestion service validates payloads.  \nStep 3: Metadata is assigned.  \nStep 4: Security controls validate compliance requirements.  \nStep 5: Data is stored in the Raw Zone.  \nStep 6: Transformation workflows process records.  \nStep 7: Processed and Curated datasets are generated.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer directly reflects the sequence of steps described in the Data Ingestion Architecture section of the context.",
+    "retry_count": 0,
+    "latency": 8.24814748764038
+  },
+  {
+    "id": 24,
+    "question": "What are the recovery time objective (RTO) and recovery point objective (RPO) targets for disaster recovery?",
+    "expected_answer": "The recovery time objective (RTO) target is 4 hours, and the recovery point objective (RPO) target is 15 minutes for disaster recovery.",
+    "generated_answer": "The recovery time objective (RTO) target for disaster recovery is 60 minutes, and the recovery point objective (RPO) target is 15 minutes.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer specifying an RTO of 60 minutes and an RPO of 15 minutes is explicitly supported by multiple statements in the retrieved context under 'Disaster Recovery Objectives' and 'Recovery Objectives' sections.",
+    "retry_count": 0,
+    "latency": 5.899417161941528
+  },
+  {
+    "id": 25,
+    "question": "What quality checks are performed as part of the Data Quality Framework?",
+    "expected_answer": "The quality checks performed include validation rules (schema validation, field validation, format validation), completeness checks (required field verification, missing data detection), and consistency checks (data integrity validation, cross-system verification). Quality metrics are continuously monitored.",
+    "generated_answer": "The quality checks performed as part of the Data Quality Framework include:\n\nValidation Rules:\n- Schema validation\n- Field validation\n- Format validation\n\nCompleteness Checks:\n- Required field verification\n- Missing data detection\n\nConsistency Checks:\n- Data integrity validation\n- Cross-system verification",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly lists the quality checks as part of the Data Quality Framework, including Validation Rules, Completeness Checks, and Consistency Checks, all of which are explicitly mentioned in the retrieved context.",
+    "retry_count": 0,
+    "latency": 4.676292896270752
+  },
+  {
+    "id": 26,
+    "question": "In the case of a single storage component failure, how does the architecture maintain availability?",
+    "expected_answer": "The architecture maintains availability through a multi-AZ architecture, durable object storage, automated recovery workflows, and replication controls designed so that no single storage component creates a critical failure point.",
+    "generated_answer": "The architecture maintains availability in the case of a single storage component failure by implementing multi-AZ architecture, durable object storage, automated recovery workflows, and replication controls to ensure that no single storage component creates a critical failure point. This design approach helps achieve high availability and ensures critical services remain operational despite such failures.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context. The retrieved context explicitly states that availability controls include multi-AZ architecture, durable object storage, automated recovery workflows, and replication controls, and that no single storage component should create a critical failure point, ensuring critical services remain operational despite such failures.",
+    "retry_count": 0,
+    "latency": 4.323724985122681
+  },
+  {
+    "id": 27,
+    "question": "What are the main mechanisms used for workload isolation in the EKS cluster design?",
+    "expected_answer": "Isolation mechanisms include Kubernetes namespaces, resource quotas, network policies, dedicated node pools, and service accounts.",
+    "generated_answer": "The main mechanisms used for workload isolation in the EKS cluster design are:\n\n\u2022 Kubernetes namespaces  \n\u2022 Resource quotas  \n\u2022 Network policies  \n\u2022 Dedicated node pools  \n\u2022 Service accounts",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists Kubernetes namespaces, Resource quotas, Network policies, Dedicated node pools, and Service accounts as workload isolation mechanisms, all of which are explicitly mentioned in the retrieved context under 'Workload Isolation'.",
+    "retry_count": 0,
+    "latency": 3.206914186477661
+  },
+  {
+    "id": 28,
+    "question": "How does the architecture ensure disaster recovery readiness with respect to recovery time objectives?",
+    "expected_answer": "Recovery objectives include RTO of 60 minutes and RPO of 15 minutes, supported by infrastructure-as-code templates, automated cluster provisioning, backup configurations, cross-region deployment readiness, and periodic testing of cluster recovery procedures.",
+    "generated_answer": "The architecture ensures disaster recovery readiness with respect to recovery time objectives (RTO) by implementing:\n\n- Recovery runbooks maintained by operations teams to guide recovery processes.\n- Backup schedules and replication monitoring to ensure data availability and integrity.\n- Automated recovery workflows and Infrastructure-as-Code recovery processes to support rapid service restoration.\n- Multi-region replication and automated failover mechanisms to minimize downtime.\n- Continuous monitoring through services like CloudWatch and AWS X-Ray to detect issues promptly.\n- Regular disaster recovery testing supported by testing calendars to validate recovery procedures.\n- Quarterly reviews of disaster recovery readiness to assess preparedness and improve processes.\n- Defined RTO targets tailored to service criticality (e.g., 60 minutes for critical platform services, 4 hours for business-critical services, 24 hours for non-critical services) which are reviewed annually.\n\nThese combined measures enable rapid service recovery within the defined RTOs, minimizing operational disruption during disaster scenarios.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the detailed information provided in the retrieved context about disaster recovery readiness, including the use of recovery runbooks, backup schedules, multi-region replication, automated workflows, monitoring services like CloudWatch and AWS X-Ray, regular testing, quarterly reviews, and specified RTO targets for different service criticalities.",
+    "retry_count": 0,
+    "latency": 10.277759313583374
+  },
+  {
+    "id": 29,
+    "question": "Can worker nodes in the EKS cluster be shared among different workload types, and how is workload isolation maintained?",
+    "expected_answer": "Worker nodes are organized by workload type into node groups such as API, retrieval, inference, monitoring, and evaluation workloads, to improve workload isolation and resource management. Critical workloads have dedicated compute resources.",
+    "generated_answer": "Worker nodes in the EKS cluster are organized by workload type, meaning they are not shared among different workload types. Dedicated node groups improve workload isolation and resource management. Workload isolation is maintained through mechanisms including Kubernetes namespaces, resource quotas, network policies, dedicated node pools, and service accounts. Critical workloads receive dedicated compute resources to ensure isolation.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that worker nodes are organized by workload type and not shared, supported by the context lines, 'Node groups are organized by workload type' and 'Dedicated node groups improve workload isolation and resource management.' The answer also accurately reflects workload isolation mechanisms listed in the context, including Kubernetes namespaces, resource quotas, network policies, dedicated node pools, and service accounts. The mention that critical workloads receive dedicated compute resources is also supported by the context. Therefore, the answer is fully grounded.",
+    "retry_count": 0,
+    "latency": 5.061505556106567
+  },
+  {
+    "id": 30,
+    "question": "Are spot instances used in the EKS cluster to optimize costs, and if so, how is that balanced with availability requirements?",
+    "expected_answer": "Cost controls include use of spot instances where appropriate alongside autoscaling, resource quotas, and workload scheduling optimization. Availability design targets 99.95% with multi-AZ deployment, self-healing workloads, and automated scaling to balance cost optimization and high availability.",
+    "generated_answer": "Yes, spot instances are used in the EKS cluster to optimize costs as part of cost controls. Cost controls include autoscaling, resource quotas, spot instances where appropriate, and workload scheduling optimization. Availability requirements are balanced through multiple availability and resiliency controls such as multi-AZ deployment, Kubernetes self-healing, horizontal pod autoscaling, load balancing, health monitoring, and automated failover to achieve a target availability of 99.95 percent, ensuring no single component or worker node represents a single point of failure.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that spot instances are used as part of cost controls in the EKS cluster and describes how availability is balanced using multi-AZ deployment, self-healing, autoscaling, and other resiliency controls to meet the target availability of 99.95%, all of which are supported by the retrieved context.",
+    "retry_count": 0,
+    "latency": 4.993178844451904
+  },
+  {
+    "id": 31,
+    "question": "Which AWS services are used in the Authentication Architecture for monitoring purposes?",
+    "expected_answer": "CloudWatch and AWS X-Ray are the AWS services used for monitoring in the Authentication Architecture.",
+    "generated_answer": "The AWS services used in the Authentication Architecture for monitoring purposes are:\n\n- Amazon CloudWatch\n- AWS X-Ray",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is supported by multiple instances in the context where Amazon CloudWatch and AWS X-Ray are explicitly mentioned as monitoring services used in the Authentication Architecture.",
+    "retry_count": 0,
+    "latency": 3.662841796875
+  },
+  {
+    "id": 32,
+    "question": "What are the recovery time objective (RTO) and recovery point objective (RPO) targets for disaster recovery in the Authentication Architecture?",
+    "expected_answer": "The recovery time objective (RTO) is 30 minutes and the recovery point objective (RPO) is 15 minutes.",
+    "generated_answer": "The recovery time objective (RTO) target for disaster recovery in the Authentication Architecture is 30 minutes, and the recovery point objective (RPO) target is 15 minutes.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states under 'Disaster Recovery' that the recovery objectives include an RTO of 30 minutes and an RPO of 15 minutes for the Authentication Architecture.",
+    "retry_count": 0,
+    "latency": 4.80402135848999
+  },
+  {
+    "id": 33,
+    "question": "Is SMS-based Multi-Factor Authentication allowed for privileged access according to the Authentication Architecture?",
+    "expected_answer": "No, SMS-based authentication is discouraged for privileged access.",
+    "generated_answer": "SMS-based Multi-Factor Authentication is discouraged for privileged access according to the Authentication Architecture.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that SMS-based authentication is discouraged for privileged access.",
+    "retry_count": 0,
+    "latency": 3.913078784942627
+  },
+  {
+    "id": 34,
+    "question": "What mechanisms are prohibited for production API access in the Authentication Architecture?",
+    "expected_answer": "Unauthenticated production API access is prohibited.",
+    "generated_answer": "Unauthenticated production API access is prohibited.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer 'Unauthenticated production API access is prohibited' is directly supported by the retrieved context under the 'API Authentication' section which states, 'Unauthenticated production API access is prohibited.'",
+    "retry_count": 0,
+    "latency": 2.904393434524536
+  },
+  {
+    "id": 35,
+    "question": "What are the key responsibilities of the Ranking Layer in the Vector Search Platform architecture?",
+    "expected_answer": "The Ranking Layer is responsible for result scoring, reranking, and context optimization.",
+    "generated_answer": "The key responsibilities of the Ranking Layer in the Vector Search Platform architecture are:\n\n\u2022 Result scoring  \n\u2022 Reranking  \n\u2022 Context optimization",
+    "critic_decision": "approve",
+    "critic_reason": "The answer explicitly matches the responsibilities of the Ranking Layer as described in multiple sections of the retrieved context: 'Result scoring', 'Reranking', and 'Context optimization' are clearly stated as the Ranking Layer's key responsibilities.",
+    "retry_count": 0,
+    "latency": 3.9195499420166016
+  },
+  {
+    "id": 36,
+    "question": "Does the Vector Search Platform support continuous embedding refresh, and if so, which architectural layer handles it?",
+    "expected_answer": "Yes, the platform supports continuous embedding refresh, which is handled by the Embedding Layer.",
+    "generated_answer": "Yes, the Vector Search Platform supports continuous embedding refresh. The architectural layer responsible for handling it is the Embedding Layer.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states 'Continuous embedding refresh' as a business requirement and indicates that the Embedding Architecture/Layer is responsible for 'Refresh management' among other embedding-related tasks.",
+    "retry_count": 0,
+    "latency": 3.2138941287994385
+  },
+  {
+    "id": 37,
+    "question": "What disaster recovery objectives does the platform aim to meet, and what recovery controls are in place?",
+    "expected_answer": "The platform targets a Recovery Time Objective (RTO) of 60 minutes and a Recovery Point Objective (RPO) of 15 minutes. Recovery controls include cross-region backups, index reconstruction procedures, metadata replication, and Infrastructure-as-Code deployment.",
+    "generated_answer": "The platform aims to meet the following disaster recovery objectives:\n\n- Recovery Time Objective (RTO): 60 minutes\n- Recovery Point Objective (RPO): 15 minutes\n\nThe disaster recovery controls in place include:\n\n- Multi-AZ deployment\n- Cross-region backups\n- Infrastructure-as-Code templates\n- Automated recovery procedures\n- Backup configurations\n- Cross-region deployment readiness\n- Automated cluster provisioning\n- Cluster recovery procedures tested periodically",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the recovery objectives (RTO 60 minutes, RPO 15 minutes) and recovery controls (multi-AZ deployment, cross-region backups, Infrastructure-as-Code templates, automated recovery procedures, backup configurations, cross-region deployment readiness, automated cluster provisioning, and tested cluster recovery procedures) as stated in the context.",
+    "retry_count": 0,
+    "latency": 4.083517789840698
+  },
+  {
+    "id": 38,
+    "question": "How does the system ensure tenant isolation within the vector index design?",
+    "expected_answer": "Tenant isolation is ensured through multi-tenant partitioning within the vector index design, metadata filtering, access control enforcement, and namespace segregation.",
+    "generated_answer": "The system ensures tenant isolation within the vector index design through multi-tenant partitioning, as part of the index architecture that supports metadata filtering and semantic similarity retrieval.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly references 'multi-tenant partitioning' within the vector index design described in the retrieved context, which specifically states that the index architecture supports multi-tenant partitioning. This supports the claim that tenant isolation is ensured through multi-tenant partitioning.",
+    "retry_count": 0,
+    "latency": 4.262359142303467
+  },
+  {
+    "id": 39,
+    "question": "What are the five dataset categories included in the Golden Dataset Architecture?",
+    "expected_answer": "The five dataset categories are Retrieval Evaluation, Generation Evaluation, Agent Evaluation, Safety Evaluation, and Operational Evaluation.",
+    "generated_answer": "The five dataset categories included in the Golden Dataset Architecture are:\n\n1. Retrieval Evaluation  \n2. Generation Evaluation  \n3. Agent Evaluation  \n4. Safety Evaluation  \n5. Operational Evaluation",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly lists the five dataset categories (Retrieval Evaluation, Generation Evaluation, Agent Evaluation, Safety Evaluation, Operational Evaluation) as explicitly mentioned in the context under the Golden Dataset Architecture section.",
+    "retry_count": 0,
+    "latency": 3.430685043334961
+  },
+  {
+    "id": 40,
+    "question": "Which AWS services are used for monitoring in the Evaluation Pipeline architecture?",
+    "expected_answer": "The monitoring services used are CloudWatch and AWS X-Ray.",
+    "generated_answer": "The AWS services used for monitoring in the Evaluation Pipeline architecture are:\n\n\u2022 Amazon CloudWatch  \n\u2022 AWS X-Ray",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly matches the AWS Monitoring Services listed in the retrieved context for the Evaluation Pipeline architecture, specifically Amazon CloudWatch and AWS X-Ray.",
+    "retry_count": 0,
+    "latency": 3.835726022720337
+  },
+  {
+    "id": 41,
+    "question": "What types of regressions block production releases according to the Regression Detection section?",
+    "expected_answer": "Critical regressions, which include significant quality degradation and safety failures, block production releases.",
+    "generated_answer": "According to the Regression Detection section, critical regressions block production releases.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that critical regressions block production releases, which is explicitly mentioned multiple times in the Regression Detection and related sections of the retrieved context.",
+    "retry_count": 0,
+    "latency": 2.8085978031158447
+  },
+  {
+    "id": 42,
+    "question": "Which layer in the Evaluation Pipeline architecture is responsible for regression detection and release gating?",
+    "expected_answer": "The Decision Layer is responsible for release gating, approval workflows, and regression detection.",
+    "generated_answer": "The Decision Layer is responsible for regression detection and release approval (release gating) in the Evaluation Pipeline architecture.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that the Decision Layer is responsible for 'Release approval' and 'Regression detection', which directly supports the answer.",
+    "retry_count": 0,
+    "latency": 4.105903387069702
+  },
+  {
+    "id": 43,
+    "question": "What recovery objectives and controls are defined under Disaster Recovery for the Evaluation Pipeline?",
+    "expected_answer": "Recovery Time Objective (RTO) is 60 minutes and Recovery Point Objective (RPO) is 15 minutes. Recovery controls include dataset backups, configuration replication, Infrastructure-as-Code deployment, and cross-region recovery readiness.",
+    "generated_answer": "Recovery objectives for the Evaluation Pipeline under Disaster Recovery are:\n\n- RTO (Recovery Time Objective): 60 minutes\n- RPO (Recovery Point Objective): 15 minutes\n\nRecovery controls include:\n\n- Dataset backups\n- Configuration replication\n- Infrastructure-as-Code deployment\n- Cross-region recovery readiness",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states the recovery objectives (RTO: 60 minutes, RPO: 15 minutes) and lists the recovery controls (dataset backups, configuration replication, infrastructure-as-code deployment, cross-region recovery readiness) as specified exactly in the retrieved context.",
+    "retry_count": 0,
+    "latency": 3.7790606021881104
+  },
+  {
+    "id": 44,
+    "question": "Can you describe the evaluation workflow steps triggered by a model change?",
+    "expected_answer": "Step 1: Evaluation trigger occurs (e.g., model changes). Step 2: Dataset selection occurs. Step 3: Evaluation jobs execute. Step 4: Metrics are calculated. Step 5: Regression analysis occurs. Step 6: Results are published. Step 7: Release decisions are generated.",
+    "generated_answer": "The evaluation workflow steps triggered by a model change are:\n\nStep 1: Evaluation trigger occurs (model changes trigger the evaluation).  \nStep 2: Dataset selection occurs.  \nStep 3: Evaluation jobs execute.  \nStep 4: Metrics are calculated.  \nStep 5: Regression analysis occurs.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly lists the evaluation workflow steps triggered by a model change as described in the context: Step 1 (Evaluation trigger occurs with model changes as triggers), Step 2 (Dataset selection), Step 3 (Evaluation jobs execute), Step 4 (Metrics calculation), and Step 5 (Regression analysis). These steps align exactly with the information provided in the retrieved context.",
+    "retry_count": 0,
+    "latency": 4.1698899269104
+  },
+  {
+    "id": 45,
+    "question": "What edge case might occur in evaluation triggers and how are such triggers handled in the workflow?",
+    "expected_answer": "An edge case trigger could be a production incident occurring outside normal development cycles. Such triggers initiate the evaluation workflow starting at dataset selection, progressing through execution, metric calculation, regression analysis, results publishing, and release decision generation, supporting both automated and manual review.",
+    "generated_answer": "I do not have enough information.",
+    "critic_decision": "reject",
+    "critic_reason": "The answer 'I do not have enough information' is not supported by the retrieved context, which provides detailed information on evaluation triggers including edge cases (such as evaluation infrastructure failure, dataset validation failure, critical regression detection, and safety failure) and handling procedures like pausing execution, suspending evaluation, blocking deployment, and escalating issues. The context sufficiently covers edge cases and their handling, so claiming insufficient information is unsupported.",
+    "retry_count": 2,
+    "latency": 14.352271795272827
+  },
+  {
+    "id": 46,
+    "question": "How does the platform ensure security and compliance for evaluation execution and dataset modifications?",
+    "expected_answer": "Security is ensured via IAM integration with role-based permissions, encryption at rest and in transit, and audit logging of evaluation execution records, dataset modifications, and release decisions aligned with organizational governance.",
+    "generated_answer": "The platform ensures security and compliance for evaluation execution and dataset modifications by aligning security controls with organizational governance requirements. Security validation includes access controls validation, encryption enabled, and compliance requirements being met. Additionally, escalation procedures mandate immediate escalation for security findings and compliance violations, involving contacts such as Security Operations and the Compliance Team. Governance workflows and records are maintained with documentation including approval records and validation results, retained according to organizational governance requirements. Continuous auditing, governance reviews, and monitoring are also part of the risk mitigation strategy to maintain security and compliance.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is supported by the context which details security controls aligned with organizational governance, security validation steps including access control and encryption, escalation procedures involving Security Operations and Compliance Team, governance records retention, and continuous auditing and monitoring as risk mitigation strategies.",
+    "retry_count": 0,
+    "latency": 4.0987138748168945
+  },
+  {
+    "id": 47,
+    "question": "What are the Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO) for Business-Critical Services as defined in the Disaster Recovery Architecture?",
+    "expected_answer": "The Recovery Time Objective (RTO) for Business-Critical Services is 4 hours, and the Recovery Point Objective (RPO) is 1 hour.",
+    "generated_answer": "The Recovery Time Objective (RTO) for Business-Critical Services is 4 hours.\n\nThe Recovery Point Objective (RPO) for Business-Critical Services is 1 hour.",
+    "critic_decision": "approve",
+    "critic_reason": "The retrieved context explicitly states that for Business-Critical Services, the RTO is 4 hours and the RPO is 1 hour, which exactly matches the provided answer.",
+    "retry_count": 0,
+    "latency": 3.767303705215454
+  },
+  {
+    "id": 48,
+    "question": "Describe the role and responsibilities of the Governance Layer in the Disaster Recovery Architecture.",
+    "expected_answer": "The Governance Layer is responsible for recovery planning, testing oversight, and compliance reporting.",
+    "generated_answer": "The Governance Layer in the Disaster Recovery Architecture is responsible for:\n\n\u2022 Recovery planning  \n\u2022 Testing oversight  \n\u2022 Compliance reporting",
+    "critic_decision": "approve",
+    "critic_reason": "The answer exactly matches the responsibilities of the Governance Layer as listed in the retrieved context.",
+    "retry_count": 0,
+    "latency": 2.8984954357147217
+  },
+  {
+    "id": 49,
+    "question": "In the event of a regional outage, which AWS service is primarily responsible for managing traffic routing and failover decisions within the Disaster Recovery Architecture?",
+    "expected_answer": "Route 53 manages traffic routing and failover decisions during regional outage events.",
+    "generated_answer": "In the event of a regional outage, Route 53 is primarily responsible for managing traffic routing and failover decisions within the Disaster Recovery Architecture.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that 'Traffic routing is controlled through Route 53' and that 'Route 53 manages traffic routing during failover events,' confirming that Route 53 is primarily responsible for managing traffic routing and failover decisions in the Disaster Recovery Architecture.",
+    "retry_count": 0,
+    "latency": 3.516453266143799
+  },
+  {
+    "id": 50,
+    "question": "How does the architecture ensure infrastructure consistency and speed during recovery, and what approach is discouraged?",
+    "expected_answer": "Infrastructure recovery uses Infrastructure-as-Code to ensure consistency, speed, and repeatability; manual infrastructure reconstruction is discouraged.",
+    "generated_answer": "The architecture ensures infrastructure consistency and speed during recovery by utilizing Infrastructure-as-Code for infrastructure recovery. This approach supports components such as EKS clusters, networking resources, security controls, and monitoring systems, providing consistency, speed, and repeatability.\n\nManual infrastructure reconstruction is discouraged.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer states that Infrastructure-as-Code is used to ensure consistency and speed during recovery, which matches the retrieved context explicitly describing Infrastructure Recovery Design utilizing Infrastructure-as-Code and its benefits. Additionally, the answer correctly identifies that manual infrastructure reconstruction is discouraged, which is clearly mentioned in the context.",
+    "retry_count": 0,
+    "latency": 3.540872573852539
+  },
+  {
+    "id": 51,
+    "question": "What are the mandatory prerequisites that must be satisfied before initiating a production deployment according to the SOP-ENG-001?",
+    "expected_answer": "Before initiating a production deployment, the following prerequisites must be satisfied: 1) All code changes merged into the protected main branch, 2) Pull request approval by at least two reviewers, 3) Automated unit tests with a minimum pass rate of 95 percent, 4) Successful integration test execution, 5) Security scanning with no Critical or High vulnerabilities, 6) Container images stored within Amazon ECR, 7) Infrastructure changes having approved Terraform plans, 8) Documentation of release notes, 9) Validation of monitoring dashboards, and 10) Review of rollback procedures.",
+    "generated_answer": "The mandatory prerequisites that must be satisfied before initiating a production deployment according to SOP-ENG-001 are:\n\n1. All code changes must be merged into the protected main branch.\n2. Pull request approval must be completed by at least two reviewers.\n3. Automated unit tests must achieve a minimum pass rate of 95 percent.\n4. Integration test execution must complete successfully.\n5. Security scanning must report no Critical or High vulnerabilities.\n6. Container images must be stored within Amazon ECR.\n7. Infrastructure changes must have approved Terraform plans.\n8. Release notes must be documented.\n9. Monitoring dashboards must be validated.\n10. Rollback procedures must be reviewed.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer accurately reflects the first list of prerequisites specified in the context before production deployment.",
+    "retry_count": 1,
+    "latency": 11.829424619674683
+  },
+  {
+    "id": 52,
+    "question": "If a deployment's API latency increases by 60 percent after rollout begins, what steps must be taken according to the SOP?",
+    "expected_answer": "If API latency increases by more than 50 percent, this triggers an automatic rollback condition. The deployment validation must halt further rollout activities, notify Platform Operations, initiate rollback procedures to restore the previously verified production version, capture logs and diagnostics, and open an incident record if there is customer impact.",
+    "generated_answer": "According to the SOP, if a deployment introduces performance degradation (such as a 60 percent increase in API latency) after rollout begins, the following steps must be taken:\n\n- Immediate rollback procedures must be initiated.\n- Platform Operations assumes incident ownership.\n- Executive escalation occurs for Severity 1 events (if applicable).",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by the context, which states that the SOP must be followed whenever a deployment introduces performance degradation and that immediate rollback procedures must be initiated. Additionally, Platform Operations assumes incident ownership, and executive escalation occurs for Severity 1 events. These steps directly address increased API latency after rollout.",
+    "retry_count": 0,
+    "latency": 4.7468554973602295
+  },
+  {
+    "id": 53,
+    "question": "What are the prerequisites that must be met before any production deployment regarding rollback readiness?",
+    "expected_answer": "Before any production deployment, the following rollback prerequisites must be met: 1) A validated rollback plan must be documented; 2) Previous production artifacts must be retained; 3) Database backup snapshots must be available; 4) Infrastructure state files must be preserved; 5) Deployment manifests must be version controlled; 6) Monitoring dashboards must be operational; 7) Alerting systems must be functioning; 8) Recovery personnel must be identified; 9) Release versions must be traceable; 10) Rollback permissions must be verified.",
+    "generated_answer": "The prerequisites that must be met before any production deployment regarding rollback readiness are:\n\n1. A validated rollback plan must be documented.  \n2. Previous production artifacts must be retained.  \n3. Database backup snapshots must be available.  \n4. Infrastructure state files must be preserved.  \n5. Deployment manifests must be version controlled.  \n6. Monitoring dashboards must be operational.  \n7. Alerting systems must be functioning.  \n8. Recovery personnel must be identified.  \n9. Release versions must be traceable.  \n10. Rollback permissions must be verified.\n\nRollback readiness is a mandatory release requirement.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly lists the prerequisites for rollback readiness before any production deployment exactly as stated in the retrieved context.",
+    "retry_count": 0,
+    "latency": 5.569043159484863
+  },
+  {
+    "id": 54,
+    "question": "If the rollback procedure fails, who should be contacted at Level 3 of the escalation path?",
+    "expected_answer": "If rollback procedures fail, escalation must be immediate following the path: Level 1 - Platform Operations Engineer, Level 2 - Engineering Manager, Level 3 - Director of Engineering, Level 4 - Executive Incident Response Team. Therefore, Level 3 contact is the Director of Engineering.",
+    "generated_answer": "At Level 3 of the escalation path, the Director of Engineering should be contacted if the rollback procedure fails.",
+    "critic_decision": "approve",
+    "critic_reason": "The retrieved context clearly states that Level 3 of the escalation path is the Director of Engineering, who should be contacted if rollback procedures fail.",
+    "retry_count": 0,
+    "latency": 3.289904832839966
+  },
+  {
+    "id": 55,
+    "question": "What are the prerequisites that must be completed before releasing a new API version according to SOP-ENG-003?",
+    "expected_answer": "Before releasing any API version, the prerequisites include: 1) API specifications must be documented, 2) OpenAPI definitions must be maintained, 3) Backward compatibility assessment must be completed, 4) Security review must be approved, 5) Integration testing must pass, 6) Monitoring instrumentation must be implemented, 7) Deprecation impact analysis must be completed, 8) Consumer notification plans must exist, 9) Version naming must follow approved standards, and 10) Release approval must be documented.",
+    "generated_answer": "The prerequisites that must be completed before releasing a new API version according to SOP-ENG-003 are:\n\n1. API specifications must be documented.  \n2. OpenAPI definitions must be maintained.  \n3. Backward compatibility assessment must be completed.  \n4. Security review must be approved.  \n5. Integration testing must pass.  \n6. Monitoring instrumentation must be implemented.  \n7. Deprecation impact analysis must be completed.  \n8. Consumer notification plans must exist.  \n9. Version naming must follow approved standards.  \n10. Release approval must be documented.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer exactly matches the prerequisites listed under the 'Prerequisites' section of SOP-ENG-003 in the retrieved context.",
+    "retry_count": 0,
+    "latency": 4.916628837585449
+  },
+  {
+    "id": 56,
+    "question": "In the case of an emergency retirement of an API version as described in the API Versioning Standard, what approvals are necessary?",
+    "expected_answer": "Emergency retirements require executive approval as stated in the Deprecation Process section of the API Versioning Standard.",
+    "generated_answer": "In the case of an emergency retirement of an API version, executive approval is required.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that emergency retirements require executive approval.",
+    "retry_count": 0,
+    "latency": 2.609295606613159
+  },
+  {
+    "id": 57,
+    "question": "What are the required metadata fields for creating a feature flag according to SOP-ENG-004?",
+    "expected_answer": "The required metadata fields for creating a feature flag are: Flag name, Owner, Creation date, Expiration date, Description, Associated service.",
+    "generated_answer": "The required metadata fields for creating a feature flag according to SOP-ENG-004 are:\n\n- Flag name  \n- Owner  \n- Creation date  \n- Expiration date  \n- Description  \n- Associated service",
+    "critic_decision": "approve",
+    "critic_reason": "The answer explicitly lists the required metadata fields for creating a feature flag as stated in Step 2: Flag Creation of the SOP-ENG-004 context: Flag name, Owner, Creation date, Expiration date, Description, and Associated service.",
+    "retry_count": 0,
+    "latency": 4.952764511108398
+  },
+  {
+    "id": 58,
+    "question": "Can a production feature flag be created without an assigned owner?",
+    "expected_answer": "No, no production feature flag may be created without an assigned owner.",
+    "generated_answer": "No, a production feature flag may not be created without an assigned owner.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states 'No production feature flag may be created without an assigned owner,' directly supporting the answer.",
+    "retry_count": 0,
+    "latency": 2.685190439224243
+  },
+  {
+    "id": 59,
+    "question": "What are the prerequisites that must be completed before executing a Blue-Green deployment?",
+    "expected_answer": "Before executing a Blue-Green deployment, the following conditions must be met: Deployment approval must be completed; Production release artifacts must be finalized; Rollback procedures must be documented; Monitoring systems must be operational; Logging systems must be functioning; Infrastructure capacity must support duplicate environments; Security validation must be completed; Automated testing must pass successfully; Database migration compatibility must be confirmed; Operations personnel must be available during deployment windows.",
+    "generated_answer": "The prerequisites that must be completed before executing a Blue-Green deployment are:\n\n1. Deployment approval must be completed.\n2. Production release artifacts must be finalized.\n3. Rollback procedures must be documented.\n4. Monitoring systems must be operational.\n5. Logging systems must be functioning.\n6. Infrastructure capacity must support duplicate environments.\n7. Security validation must be completed.\n8. Automated testing must pass successfully.\n9. Database migration compatibility must be confirmed.\n10. Operations personnel must be available during deployment windows.\n\nAdditional approvals and validations needed include:\n\n- Release approval completed\n- Change request approved\n- Security review completed\n- Reliability review completed\n- Evaluation benchmarks passed\n- Regression testing completed\n- Golden dataset validation completed\n- Security testing completed\n\nOperational requirements:\n\n- Monitoring dashboards available\n- Rollback plan documented\n- Deployment window approved\n- Incident response contacts available\n\nRequired artifacts:\n\n- Deployment package with model version identifier, configuration files, evaluation reports, release notes, rollback instructions",
+    "critic_decision": "approve",
+    "critic_reason": "The answer comprehensively lists all prerequisites as detailed in the retrieved context, including approvals, validations, operational requirements, and required artifacts. No information is invented or unsupported.",
+    "retry_count": 1,
+    "latency": 14.269694566726685
+  },
+  {
+    "id": 60,
+    "question": "What steps should the operations team take if deployment validation fails before traffic migration?",
+    "expected_answer": "If deployment validation fails before traffic migration, the Green deployment is terminated, deployment artifacts are preserved, findings are documented, release approval is revoked, and remediation activities begin.",
+    "generated_answer": "If deployment validation fails before traffic migration, the operations team must:\n\n\u2022 Terminate the Green deployment.  \n\u2022 Preserve deployment artifacts.  \n\u2022 Document findings.  \n\u2022 Revoke release approval.  \n\u2022 Begin remediation activities.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately summarizes the exact steps specified in the 'Failure Handling' section of the retrieved context for deployment validation failures before traffic migration.",
+    "retry_count": 0,
+    "latency": 4.276666641235352
+  },
+  {
+    "id": 61,
+    "question": "During the Blue-Green deployment process, what methods are used to perform traffic migration from Blue to Green?",
+    "expected_answer": "Traffic migration is performed using approved routing mechanisms including Route 53 updates, load balancer target group switching, and ingress controller updates.",
+    "generated_answer": "Traffic migration from Blue to Green is performed using approved routing mechanisms, including:\n\n\u2022 Route 53 updates  \n\u2022 Load balancer target group switching  \n\u2022 Ingress controller updates",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is directly supported by the context, which lists Route 53 updates, load balancer target group switching, and ingress controller updates as the methods used for traffic migration from Blue to Green.",
+    "retry_count": 0,
+    "latency": 3.8130240440368652
+  },
+  {
+    "id": 62,
+    "question": "Can the Blue-Green deployment procedure be applied to environments other than production? If so, which?",
+    "expected_answer": "Yes, the procedure may also be applied to selected staging environments where production deployment simulations are required.",
+    "generated_answer": "Yes, the Blue-Green deployment procedure may also be applied to selected staging environments where production deployment simulations are required.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is directly supported by the context under 'Scope' which states the procedure may be applied to selected staging environments where production deployment simulations are required.",
+    "retry_count": 0,
+    "latency": 5.443707227706909
+  },
+  {
+    "id": 63,
+    "question": "What are the target response times for each incident severity level defined in the Incident Escalation Workflow SOP?",
+    "expected_answer": "Severity 1 (Critical) has a target response time of 15 minutes, Severity 2 (High) is 30 minutes, Severity 3 (Medium) is 2 hours, and Severity 4 (Low) is 1 business day.",
+    "generated_answer": "The target response times for each incident severity level defined in the Incident Escalation Workflow SOP are:\n\n- Severity 1 (Critical): 15 minutes  \n- Severity 2 (High): 30 minutes  \n- Severity 3 (Medium): 4 hours  \n- Severity 4 (Low): 1 business day",
+    "critic_decision": "approve",
+    "critic_reason": "The target response times listed in the answer exactly match the target response times provided for each severity level in the context.",
+    "retry_count": 0,
+    "latency": 3.842585563659668
+  },
+  {
+    "id": 64,
+    "question": "If an incident is classified as Severity 1, who must be assigned immediately and what additional communication protocol is required?",
+    "expected_answer": "For Severity 1 incidents, an Incident Commander must be assigned immediately. Additionally, executive escalation is required, notifying stakeholders such as the Chief Technology Officer, Chief Information Security Officer, and Executive Operations Team. Status updates must be provided every 30 minutes.",
+    "generated_answer": "If an incident is classified as Severity 1, an Incident Commander must be assigned immediately. Additionally, executive notification is required, which may include stakeholders such as the Chief Technology Officer, Chief Information Security Officer, and Executive Operations Team. Executive escalation supports strategic decision-making and customer communication.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that an Incident Commander must be assigned immediately for Severity 1 incidents and that executive notification is required, including CTO, CISO, and Executive Operations Team. These details are explicitly supported by the provided context.",
+    "retry_count": 0,
+    "latency": 3.9330053329467773
+  },
+  {
+    "id": 65,
+    "question": "What are the specific roles responsible for incident coordination, technical investigation, and security assessment in the escalation workflow?",
+    "expected_answer": "The Incident Commander is responsible for incident coordination, escalation decisions, resource assignment, communication oversight, and recovery approval. The Engineering Lead is responsible for technical investigation, recovery planning, and root cause analysis. The Security Representative handles security incident assessment, compliance review, and threat validation.",
+    "generated_answer": "The specific roles responsible for the following in the escalation workflow are:\n\n- Incident coordination: Incident Commander and Incident Response Team  \n- Technical investigation: Engineering Lead and Engineering Teams  \n- Security assessment: Security Representative and Information Security Team",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly identifies the roles responsible for incident coordination (Incident Commander, Incident Response Team), technical investigation (Engineering Lead, Engineering Teams), and security assessment (Security Representative, Information Security Team) as stated explicitly in the retrieved context.",
+    "retry_count": 0,
+    "latency": 3.4689934253692627
+  },
+  {
+    "id": 66,
+    "question": "In case recovery efforts fail after initial mitigation, what are the documented failure handling steps that must be followed?",
+    "expected_answer": "If recovery efforts fail, the steps are: escalate to the next response level, expand response teams, consider rollback procedures, evaluate disaster recovery activation, and initiate executive response processes.",
+    "generated_answer": "If recovery efforts fail after initial mitigation, the documented failure handling steps are:\n\n1. Escalate to the next response level.  \n2. Expand response teams.  \n3. Consider rollback procedures.  \n4. Evaluate disaster recovery activation.  \n5. Initiate executive response processes.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly matches the documented 'Failure Handling' steps outlined in the context, including escalation, team expansion, rollback consideration, disaster recovery evaluation, and executive response initiation.",
+    "retry_count": 0,
+    "latency": 5.30854058265686
+  },
+  {
+    "id": 67,
+    "question": "Which teams are required to follow the Capacity Planning SOP in the AetherAI Cloud platform?",
+    "expected_answer": "Engineering, platform operations, reliability engineering, MLOps, and infrastructure teams must follow the Capacity Planning SOP.",
+    "generated_answer": "The teams required to follow the Capacity Planning SOP in the AetherAI Cloud platform are the engineering, platform operations, reliability engineering, MLOps, and infrastructure teams.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer explicitly matches the statement in the context: 'This procedure must be followed by engineering, platform operations, reliability engineering, MLOps, and infrastructure teams.'",
+    "retry_count": 0,
+    "latency": 4.051309823989868
+  },
+  {
+    "id": 68,
+    "question": "What is the minimum duration of utilization data collection recommended in the Capacity Planning procedure?",
+    "expected_answer": "Data collection must cover a minimum of 90 days whenever possible.",
+    "generated_answer": "The minimum duration of utilization data collection recommended in the Capacity Planning procedure is 5 years.",
+    "critic_decision": "approve",
+    "critic_reason": "The context includes a section titled 'Minimum Retention' which explicitly states a duration of 5 years for data retention, supporting the answer.",
+    "retry_count": 0,
+    "latency": 4.262476921081543
+  },
+  {
+    "id": 69,
+    "question": "What are the key steps involved in the Capacity Planning procedure after data collection?",
+    "expected_answer": "After data collection, the key steps are Baseline Establishment, Trend Analysis, Forecast Development, Risk Assessment, Scaling Recommendations, Approval Process, Implementation, Validation, and Reporting.",
+    "generated_answer": "The key steps involved in the Capacity Planning procedure after data collection are:\n\n1. Step 3: Trend Analysis  \n   - Analyze growth rates, resource consumption patterns, customer demand changes, and infrastructure utilization to identify emerging capacity constraints before they become operational risks.\n\n2. Step 4: Forecast Development  \n   - Develop capacity forecasts for 3-month, 6-month, and 12-month horizons, including expected business growth and new feature adoption.\n\n3. Step 5: Risk Assessment  \n   - Identify resources approaching operational limits (e.g., database storage nearing thresholds, high CPU saturation, memory pressure) and document and prioritize risks.\n\n4. Step 6: Scaling Recommendations  \n   - Develop recommendations such as node expansion, database scaling, storage increases, multi-region deployment, query optimization, and infrastructure redesign, including cost impact analysis.\n\n5. Step 7: Approval Process  \n   - Obtain approval for capacity expansion proposals from engineering leadership, platform operations leadership, and financial stakeholders when applicable, and retain approval records.\n\n6. Step 8: Implementation  \n   - Execute approved capacity improvements (e.g., adding EKS nodes, upgrading database instances, increasing storage allocations) following change management procedures.\n\n7. Step 9: Validation  \n   - Validate performance improvements, scalability objectives, resource utilization, and cost efficiency, and document results for future reviews.\n\n8. Step 10: Reporting  \n   - Produce a formal capacity report including current utilization, growth trends, forecasts, risks, and recommendations, then distribute reports to leadership and service owners.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly corresponds to the key steps detailed in the retrieved context starting from Step 3 (Trend Analysis) through Step 10 (Reporting). Each step, descriptions, and examples given in the answer are fully supported by the provided context without introducing any unsupported or invented information.",
+    "retry_count": 0,
+    "latency": 8.418572425842285
+  },
+  {
+    "id": 70,
+    "question": "What actions must be taken if capacity thresholds are exceeded unexpectedly according to the failure handling section?",
+    "expected_answer": "If capacity thresholds are exceeded unexpectedly, the following actions must be taken: activate incident response procedures, scale resources immediately where possible, notify service owners, prioritize critical workloads, investigate root causes, and update future forecasts. Emergency scaling actions must be documented.",
+    "generated_answer": "If capacity thresholds are exceeded unexpectedly, the following actions must be taken according to the failure handling section:\n\n1. Activate incident response procedures.\n2. Scale resources immediately where possible.\n3. Notify service owners.\n4. Prioritize critical workloads.\n5. Investigate root causes.\n6. Update future forecasts.\n\nAdditionally, emergency scaling actions must be documented.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer precisely matches the failure handling steps listed in the retrieved context for when capacity thresholds are exceeded unexpectedly.",
+    "retry_count": 0,
+    "latency": 4.477118015289307
+  },
+  {
+    "id": 71,
+    "question": "What are the prerequisites that must be completed before a service enters production according to SOP-ENG-008?",
+    "expected_answer": "Before a service enters production, the following prerequisites must be completed: 1) A primary owner must be assigned. 2) A secondary owner must be designated. 3) Operational documentation must exist. 4) Monitoring coverage must be validated. 5) Incident response procedures must be documented. 6) Escalation contacts must be available. 7) Service inventory records must be updated. 8) Service Level Objectives must be defined. 9) Security responsibilities must be assigned. 10) Recovery procedures must be documented.",
+    "generated_answer": "I do not have enough information.",
+    "critic_decision": "reject",
+    "critic_reason": "The answer states 'I do not have enough information' despite the retrieved context providing a detailed list of prerequisites that must be completed before a service enters production according to SOP-ENG-008.",
+    "retry_count": 2,
+    "latency": 14.78429126739502
+  },
+  {
+    "id": 72,
+    "question": "If there is an incident and service ownership is unclear, what is the outlined failure handling process in SOP-ENG-008?",
+    "expected_answer": "If service ownership is unclear during an incident, the failure handling process is: 1) Escalate to Engineering Management. 2) Identify responsible teams. 3) Assign temporary ownership. 4) Update service records. 5) Conduct post-incident governance review. Ownership gaps must be addressed immediately.",
+    "generated_answer": "The failure handling process in SOP-ENG-008 when service ownership is unclear during an incident is as follows:\n\n1. Escalate to Engineering Management.  \n2. Identify responsible teams.  \n3. Assign temporary ownership.  \n4. Update service records.  \n5. Conduct post-incident governance review.\n\nOwnership gaps must be addressed immediately.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer exactly matches the failure handling steps outlined in the context for when service ownership is unclear during an incident.",
+    "retry_count": 1,
+    "latency": 9.970941066741943
+  },
+  {
+    "id": 73,
+    "question": "What are the prerequisite steps that must be completed before initiating a database migration?",
+    "expected_answer": "Before initiating a migration, the following prerequisites must be completed: migration scripts must be reviewed and approved; database backups must be verified; rollback procedures must be documented; performance impact assessments must be completed; staging environment testing must be successful; change management approval must be obtained; monitoring systems must be operational; maintenance windows must be scheduled when required; service owners must be notified; and Recovery Point Objectives and Recovery Time Objectives must be validated.",
+    "generated_answer": "The prerequisite steps that must be completed before initiating a database migration are:\n\n1. Migration scripts must be reviewed and approved.  \n2. Database backups must be verified.  \n3. Rollback procedures must be documented.  \n4. Performance impact assessments must be completed.  \n5. Staging environment testing must be successful.  \n6. Change management approval must be obtained.  \n7. Monitoring systems must be operational.  \n8. Maintenance windows must be scheduled when required.  \n9. Service owners must be notified.  \n10. Recovery Point Objectives and Recovery Time Objectives must be validated.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly lists the prerequisite steps that are explicitly outlined in the retrieved context under 'Prerequisites' before initiating a migration, fully supported by the provided information.",
+    "retry_count": 0,
+    "latency": 7.903954744338989
+  },
+  {
+    "id": 74,
+    "question": "What type of migration requires approval from the Architecture Review Board and Engineering Leadership?",
+    "expected_answer": "High-Risk Migrations require approval from the Architecture Review Board and Engineering Leadership. Examples of High-Risk Migrations include column removals, table removals, major schema redesigns, and large-scale data modifications.",
+    "generated_answer": "A High-Risk Migration requires approval from the Architecture Review Board and Engineering Leadership.",
+    "critic_decision": "approve",
+    "critic_reason": "The retrieved context explicitly states that High-Risk Migration requires approval from the Architecture Review Board and Engineering Leadership.",
+    "retry_count": 0,
+    "latency": 3.18428635597229
+  },
+  {
+    "id": 75,
+    "question": "If a migration script causes data corruption, what is the documented rollback procedure?",
+    "expected_answer": "If data corruption is detected, the rollback procedure includes halting migration execution, restoring the previous schema state, recovering from backups if necessary, validating application functionality, notifying stakeholders, and conducting root cause analysis. Rollback execution must follow approved recovery procedures.",
+    "generated_answer": "If a migration script causes data corruption, the documented rollback procedure is as follows:\n\nRollback may be required when data corruption is detected.\n\nRollback activities include:\n\n1. Halt migration execution (Suspend traffic migration activities).\n2. Restore previous schema state (implied in recovery and rollback plans).\n3. Recover from backups if necessary.\n4. Validate application functionality (Validate service recovery).\n5. Notify stakeholders.\n6. Open incident records if necessary.\n7. Conduct root cause analysis.\n\nAdditional rollback steps include:\n\n- Redirect traffic back to the original environment (e.g., Blue).\n- Complete rollback within minutes of issue detection.\n- Follow approved recovery procedures.\n- Attach business justification, technical design, impact assessment, rollback plan, and validation criteria to the change request.\n- Notify and escalate to platform operations and service owners as needed.\n- Preserve logs and diagnostics.\n\nThis procedure ensures timely recovery from data corruption caused by migration scripts.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the rollback procedure detailed in the context, including detection of data corruption, halting migration, restoring schema, recovering from backups, validating functionality, notifying stakeholders, incident handling, root cause analysis, traffic redirection, timing expectations, and required documentation. All elements are explicitly or implicitly supported by the retrieved context without any invented or unsupported information.",
+    "retry_count": 0,
+    "latency": 6.356597423553467
+  },
+  {
+    "id": 76,
+    "question": "Are direct manual production database changes allowed during migration execution?",
+    "expected_answer": "Direct manual production database changes are discouraged during migration execution except during emergency situations.",
+    "generated_answer": "Direct manual production database changes are discouraged except during emergency situations.",
+    "critic_decision": "approve",
+    "critic_reason": "The retrieved context explicitly states 'Direct manual production changes are discouraged except during emergency situations,' which directly supports the answer.",
+    "retry_count": 0,
+    "latency": 3.7958052158355713
+  },
+  {
+    "id": 77,
+    "question": "What are the prerequisite conditions that must be met before entering the release approval process?",
+    "expected_answer": "Before entering the release approval process, the following requirements must be completed: 1. Development work must be finalized. 2. Source code must be merged into approved repositories. 3. Automated testing must pass. 4. Security scanning must be completed. 5. Documentation updates must be prepared. 6. Rollback procedures must be documented. 7. Monitoring requirements must be verified. 8. Release notes must be available. 9. Change records must be created. 10. Ownership assignments must be validated.",
+    "generated_answer": "The prerequisite conditions that must be met before entering the release approval process are:\n\n1. Development work must be finalized.  \n2. Source code must be merged into approved repositories.  \n3. Automated testing must pass.  \n4. Security scanning must be completed.  \n5. Documentation updates must be prepared.  \n6. Rollback procedures must be documented.  \n7. Monitoring requirements must be verified.  \n8. Release notes must be available.  \n9. Change records must be created.  \n10. Ownership assignments must be validated.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer exactly lists the prerequisite conditions before entering the release approval process as stated explicitly in the retrieved context.",
+    "retry_count": 0,
+    "latency": 5.56758975982666
+  },
+  {
+    "id": 78,
+    "question": "Can a production deployment bypass the release approval workflow under any circumstances?",
+    "expected_answer": "No production deployment may bypass the release approval workflow. However, in emergency releases, certain scheduling requirements may be bypassed, but minimal approval requirements and post-deployment review are still mandatory.",
+    "generated_answer": "No, a production deployment may not bypass the release approval workflow.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states multiple times that no production deployment may bypass the release approval workflow, including the emergency release exceptions which still require minimal approvals. Thus, the answer is fully supported by the provided context.",
+    "retry_count": 0,
+    "latency": 3.5874855518341064
+  },
+  {
+    "id": 79,
+    "question": "What was the primary root cause of the Vector Search Outage incident INC-001?",
+    "expected_answer": "A deployment of the index synchronization service introduced an unintended metadata mapping incompatibility between newly generated embeddings and the production vector index.",
+    "generated_answer": "The primary root cause of the Vector Search Outage incident INC-001 was a deployment of the index synchronization service that introduced an unintended metadata mapping incompatibility between newly generated embeddings and the production vector index.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by the context, which explicitly states that the primary root cause was a deployment of the index synchronization service introducing an unintended metadata mapping incompatibility.",
+    "retry_count": 0,
+    "latency": 4.529123783111572
+  },
+  {
+    "id": 80,
+    "question": "Were there any networking failures detected during the initial investigation of the outage?",
+    "expected_answer": "No networking failures were detected.",
+    "generated_answer": "I do not have enough information.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer 'I do not have enough information.' is appropriate because the retrieved context does not provide any explicit information about networking failures detected during the initial investigation of the outage.",
+    "retry_count": 0,
+    "latency": 3.2001736164093018
+  },
+  {
+    "id": 81,
+    "question": "How many vector partitions were affected by the index corruption during the incident?",
+    "expected_answer": "Approximately 18 percent of active vector partitions were affected.",
+    "generated_answer": "Approximately 18 percent of active vector partitions were affected by the index corruption during the incident.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer 'Approximately 18 percent of active vector partitions were affected' is explicitly stated twice in the retrieved context.",
+    "retry_count": 0,
+    "latency": 3.0034751892089844
+  },
+  {
+    "id": 82,
+    "question": "What proactive monitoring enhancements were implemented as preventive actions after the incident?",
+    "expected_answer": "Retrieval correctness dashboards, search quality monitoring, and index integrity alerts.",
+    "generated_answer": "The proactive monitoring enhancements implemented as preventive actions after the incident include:\n\n- Provider-specific dashboards  \n- External dependency monitoring  \n- Latency trend forecasting  \n- Cost anomaly dashboards  \n- Token consumption alerts  \n- Evaluation workload tracking  \n- Retrieval correctness dashboards  \n- Search quality monitoring  \n- Index integrity alerts  \n- Kernel health monitoring  \n- Node image deployment alerts  \n- Capacity exhaustion dashboards",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists multiple proactive monitoring enhancements found explicitly under 'Monitoring Improvements' and 'Monitoring Enhancements' sections in the retrieved context, correctly reflecting the preventive actions implemented after the incident.",
+    "retry_count": 0,
+    "latency": 4.3017494678497314
+  },
+  {
+    "id": 83,
+    "question": "What was the primary root cause of the EKS Node Failure incident on October 8, 2025?",
+    "expected_answer": "A defective operating system patch introduced during a routine node image update caused kernel-level instability on newly provisioned worker nodes.",
+    "generated_answer": "The primary root cause of the EKS Node Failure incident on October 8, 2025, was a defective operating system patch introduced during a routine node image update that caused kernel-level instability on newly provisioned worker nodes.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context. The retrieved information explicitly identifies the primary root cause of the EKS Node Failure as a defective operating system patch introduced during a routine node image update causing kernel-level instability on newly provisioned worker nodes.",
+    "retry_count": 0,
+    "latency": 4.288110256195068
+  },
+  {
+    "id": 84,
+    "question": "Did the incident result in any permanent data loss or service degradation?",
+    "expected_answer": "No, the incident did not result in data loss and no permanent service degradation remained after recovery.",
+    "generated_answer": "The incident did not result in any permanent data loss. No data integrity issues or data corruption occurred, and source records remained intact throughout the incident. However, there was temporary service degradation across multiple platform components, intermittent authentication failures, delayed API responses, and temporary service interruptions. Containment and recovery actions successfully prevented additional service degradation and preserved service availability.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately reflects the retrieved context, stating no permanent data loss occurred, no data corruption or integrity issues happened, and source records remained intact. It also correctly notes temporary service degradation and related impacts, all of which are supported by the provided information.",
+    "retry_count": 0,
+    "latency": 3.3102331161499023
+  },
+  {
+    "id": 85,
+    "question": "Which services were affected by the EKS Node Failure incident?",
+    "expected_answer": "Enterprise RAG Platform, Inference Platform, Evaluation Engine, Monitoring Platform, and Internal APIs.",
+    "generated_answer": "The services affected by the EKS Node Failure incident were:\n\n- Enterprise RAG Platform  \n- Inference Platform  \n- Evaluation Engine  \n- Monitoring Platform  \n- Internal APIs",
+    "critic_decision": "approve",
+    "critic_reason": "The answer directly matches the 'Affected Services' section in the retrieved context, which lists Enterprise RAG Platform, Inference Platform, Evaluation Engine, Monitoring Platform, and Internal APIs as impacted by the EKS Node Failure incident.",
+    "retry_count": 0,
+    "latency": 3.2395479679107666
+  },
+  {
+    "id": 86,
+    "question": "What phase involved launching healthy replacement nodes and expanding cluster capacity during recovery?",
+    "expected_answer": "Phase 2: Capacity Restoration",
+    "generated_answer": "Phase 2: Capacity Restoration involved launching healthy replacement nodes and expanding cluster capacity during recovery.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that Phase 2: Capacity Restoration includes launching healthy replacement nodes and expanding cluster capacity, which matches the answer.",
+    "retry_count": 0,
+    "latency": 4.7735443115234375
+  },
+  {
+    "id": 87,
+    "question": "What were the primary services impacted by the OpenAI API Latency incident on November 3, 2025?",
+    "expected_answer": "The primary services impacted were the Enterprise RAG Platform, LLM Gateway, Agent Workflow Studio, Evaluation Engine, and Internal AI Assistants.",
+    "generated_answer": "SAFE FALLBACK: Competitor discussion blocked",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists the same primary services impacted by the incident as stated in the 'Affected Services' section of the retrieved context.",
+    "retry_count": 3,
+    "latency": 8.965654134750366
+  },
+  {
+    "id": 88,
+    "question": "Did the incident cause any data integrity issues within the AetherAI Cloud environment?",
+    "expected_answer": "No, there were no data integrity issues during the incident.",
+    "generated_answer": "I do not have enough information.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer correctly states that there is no information regarding data integrity issues in the context. The context details service degradation and delays but does not mention any data integrity problems.",
+    "retry_count": 0,
+    "latency": 3.711282253265381
+  },
+  {
+    "id": 89,
+    "question": "What were some of the contributing factors that amplified the latency issue during the incident?",
+    "expected_answer": "The contributing factors included single provider concentration, aggressive retry policies that increased downstream traffic during latency spikes, queue saturation due to growing inference worker queues, and insufficient dynamic routing policies that were not aggressive enough to redirect workloads quickly.",
+    "generated_answer": "Some of the contributing factors that amplified the latency issue during the incident included:\n\n- Single Provider Concentration: A significant percentage of production traffic relied upon a single provider for high-capability inference workloads.\n- Aggressive Retry Policies: Existing retry configurations increased downstream traffic during latency spikes.\n- Queue Saturation: Inference worker queues expanded as response times increased.\n- Insufficient Dynamic Routing: Fallback routing policies were not aggressive enough to redirect workloads quickly.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer accurately lists contributing factors that amplified the latency issue as described in the retrieved context, including single provider concentration, aggressive retry policies, queue saturation, and insufficient dynamic routing.",
+    "retry_count": 0,
+    "latency": 4.068260192871094
+  },
+  {
+    "id": 90,
+    "question": "Was the internal infrastructure health a cause of the incident according to the investigation?",
+    "expected_answer": "No, the investigation found no infrastructure failures within the AetherAI Cloud environment; internal service performance remained healthy.",
+    "generated_answer": "No, according to the investigation, infrastructure stability remained unaffected throughout the incident, indicating that internal infrastructure health was not a cause of the incident.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states 'Infrastructure stability remained unaffected throughout the incident,' supporting the answer that internal infrastructure health was not a cause of the incident.",
+    "retry_count": 0,
+    "latency": 2.9489994049072266
+  },
+  {
+    "id": 91,
+    "question": "What was the root cause of the RDS failover event on December 12, 2025?",
+    "expected_answer": "The root cause was degradation within the underlying storage infrastructure supporting the primary RDS instance, which triggered elevated I/O latency, database responsiveness issues, health check failures, and automatic failover activation.",
+    "generated_answer": "The root cause of the RDS failover event on December 12, 2025, was degradation within the underlying storage infrastructure supporting the primary RDS instance.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context. The retrieved context explicitly states that the root cause was degradation within the underlying storage infrastructure supporting the primary RDS instance.",
+    "retry_count": 0,
+    "latency": 3.301515579223633
+  },
+  {
+    "id": 92,
+    "question": "Did the RDS failover event cause any data loss?",
+    "expected_answer": "No, the incident did not cause any data loss.",
+    "generated_answer": "No, the RDS failover event did not cause any data loss. The context states that AWS failover mechanisms successfully promoted a healthy replica, preventing data loss and preserving service continuity. Additionally, it confirms that no data corruption occurred.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context stating that AWS failover mechanisms promoted a healthy replica, preventing data loss and that no data corruption occurred.",
+    "retry_count": 0,
+    "latency": 3.633657932281494
+  },
+  {
+    "id": 93,
+    "question": "Which component failures or issues caused the delay in application recovery after the RDS failover?",
+    "expected_answer": "Several services maintained long-lived database connections and did not immediately refresh connection pools after failover, and the connection timeout settings were longer than recommended operational standards.",
+    "generated_answer": "The delay in application recovery after the RDS failover was caused by several services maintaining long-lived database connections and not immediately refreshing connection pools after failover, combined with connection timeout settings that were longer than recommended operational standards.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is directly supported by the retrieved context, which states that delays in application recovery were due to several services maintaining long-lived database connections and not immediately refreshing connection pools after failover, along with connection timeout settings longer than recommended.",
+    "retry_count": 0,
+    "latency": 3.9577481746673584
+  },
+  {
+    "id": 94,
+    "question": "How long did the incident last from start to closure?",
+    "expected_answer": "The incident lasted 1 hour and 23 minutes, starting at 07:18 UTC and closing at 12:00 UTC on December 12, 2025.",
+    "generated_answer": "The incident lasted 1 hour 36 minutes from start to closure.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer '1 hour 36 minutes' matches the Duration specified in the Incident timeline in the retrieved context.",
+    "retry_count": 0,
+    "latency": 2.71480655670166
+  },
+  {
+    "id": 95,
+    "question": "What was the primary root cause of the Deployment Failure incident on January 17, 2026?",
+    "expected_answer": "A configuration schema change introduced in the retrieval service deployment was incompatible with the version of the metadata API currently operating in production. The deployment package expected additional metadata attributes, new validation rules, and updated response structures which the metadata service had not yet been upgraded to support, causing service requests to fail validation and retrieval workflows to terminate unexpectedly.",
+    "generated_answer": "The primary root cause of the Deployment Failure incident on January 17, 2026, was a configuration schema change introduced in the retrieval service deployment that was incompatible with the version of the metadata API currently operating in production. Specifically, the deployment package expected additional metadata attributes, new validation rules, and updated response structures that the metadata service had not yet been upgraded to support.",
+    "critic_decision": "approve",
+    "critic_reason": "Answer is supported by context. The root cause section explicitly states that the primary root cause was a configuration schema change in the retrieval service deployment that was incompatible with the metadata API version, matching the details given in the answer.",
+    "retry_count": 0,
+    "latency": 5.001326560974121
+  },
+  {
+    "id": 96,
+    "question": "Did the incident result in any customer data loss during the Deployment Failure event?",
+    "expected_answer": "No, there was no customer data lost during the incident.",
+    "generated_answer": "No customer data was lost during the Deployment Failure event.",
+    "critic_decision": "approve",
+    "critic_reason": "The context clearly states that no customer data was lost during the Deployment Failure event.",
+    "retry_count": 0,
+    "latency": 3.110633373260498
+  },
+  {
+    "id": 97,
+    "question": "What containment actions were taken immediately to limit the impact of the Deployment Failure?",
+    "expected_answer": "Immediate containment actions included suspending production deployments, redirecting traffic to stable service instances, blocking configuration synchronization jobs, initiating rollback procedures, and increasing application monitoring.",
+    "generated_answer": "The immediate containment actions taken to limit the impact of the Deployment Failure included:\n\n1. Suspend production deployments.\n2. Redirect traffic to stable service instances.\n3. Block configuration synchronization jobs.\n4. Initiate rollback procedures.\n5. Increase application monitoring.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer lists immediate containment actions that match exactly the actions described in the retrieved context under 'Immediate containment actions included'.",
+    "retry_count": 0,
+    "latency": 5.0303966999053955
+  },
+  {
+    "id": 98,
+    "question": "Were there any issues with infrastructure components during the Deployment Failure incident?",
+    "expected_answer": "No, infrastructure stability remained unaffected throughout the incident.",
+    "generated_answer": "No, infrastructure stability remained unaffected throughout the Deployment Failure incident.",
+    "critic_decision": "approve",
+    "critic_reason": "The context explicitly states that infrastructure stability remained unaffected throughout the incident, clearly supporting the answer given.",
+    "retry_count": 0,
+    "latency": 2.984212636947632
+  },
+  {
+    "id": 99,
+    "question": "What were the immediate containment actions taken after detecting the prompt injection attempt on February 11, 2026?",
+    "expected_answer": "The immediate containment actions included suspending ingestion of affected repositories, quarantining suspicious documents, enabling enhanced guardrail enforcement, restricting agent execution permissions, and increasing retrieval safety monitoring.",
+    "generated_answer": "The immediate containment actions taken after detecting the prompt injection attempt on February 11, 2026, were:\n\n1. Suspend ingestion of affected repositories.  \n2. Quarantine suspicious documents.  \n3. Enable enhanced guardrail enforcement.  \n4. Restrict agent execution permissions.  \n5. Increase retrieval safety monitoring.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is directly supported by the 'Containment Actions' section of the retrieved context, which lists the five immediate containment actions exactly as presented.",
+    "retry_count": 0,
+    "latency": 3.6100516319274902
+  },
+  {
+    "id": 100,
+    "question": "Was there any unauthorized data access or customer information exposure during the incident?",
+    "expected_answer": "No, there was no unauthorized data access and no customer information was exposed during the incident.",
+    "generated_answer": "No unauthorized data access occurred. No customer information was exposed.",
+    "critic_decision": "approve",
+    "critic_reason": "The answer is explicitly supported by multiple statements in the context indicating no unauthorized data access or customer information exposure occurred during the incident.",
+    "retry_count": 0,
+    "latency": 8.588682889938354
   }
 ]

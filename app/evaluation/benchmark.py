@@ -76,6 +76,15 @@ def run_question(example):
         "generated_answer":
             result["final_response"],
 
+        "critic_decision":
+            result["critic_decision"],
+
+        "critic_reason":
+            result["critic_reason"],
+
+        "retry_count":
+            result["retry_count"],
+
         "latency":
             latency
     }
@@ -84,7 +93,7 @@ def main():
 
     dataset = load_dataset()
 
-    dataset = dataset[:5]
+    dataset = dataset[:100]
     
     results = []
 

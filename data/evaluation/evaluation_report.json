@@ -1,0 +1,10 @@
+{
+  "run_timestamp": "2026-06-05T16:54:46.858399",
+  "samples": 100,
+  "accuracy": 0.98,
+  "groundedness": 0.98,
+  "approval_rate": 0.98,
+  "failure_rate": 0.02,
+  "average_retries": 0.12,
+  "status": "PASS"
+}
