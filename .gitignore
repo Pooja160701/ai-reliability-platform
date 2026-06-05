@@ -1,0 +1,16 @@
+venv/
+venv310/
+.env
+.env.example
+
+__pycache__/
+*.pyc
+
+data/vectors/
+
+.pytest_cache/
+
+.idea/
+.vscode/
+
+.DS_Store
