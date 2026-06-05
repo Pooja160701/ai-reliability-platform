@@ -1,3 +1,5 @@
+import json
+
 from openai import OpenAI
 
 from app.config import (
@@ -8,6 +10,7 @@ from app.config import (
 client = OpenAI(
     api_key=OPENAI_API_KEY
 )
+
 
 def evaluate_answer(
     question: str,
@@ -37,11 +40,13 @@ Retrieved Context:
 Generated Answer:
 {answer}
 
-Return ONLY valid JSON:
+Return ONLY valid JSON.
+
+Example:
 
 {{
-    "decision": "approve" or "reject",
-    "reason": "short explanation"
+    "decision": "approve",
+    "reason": "Answer is supported by context"
 }}
 
 Rules:
@@ -60,4 +65,29 @@ Reject if:
         input=prompt
     )
 
-    return response.output_text
+    raw = response.output_text.strip()
+
+    raw = raw.replace(
+        "```json",
+        ""
+    )
+
+    raw = raw.replace(
+        "```",
+        ""
+    )
+
+    raw = raw.strip()
+
+    try:
+        return json.loads(raw)
+
+    except Exception:
+
+        print("\nCRITIC RAW RESPONSE:")
+        print(raw)
+
+        return {
+            "decision": "reject",
+            "reason": "Critic returned invalid JSON"
+        }

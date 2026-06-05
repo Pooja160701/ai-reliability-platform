@@ -1,5 +1,3 @@
-import json
-
 from app.rag.critic import evaluate_answer
 
 
@@ -10,8 +8,6 @@ def critic_node(state):
         state["generated_answer"],
         state["retrieved_docs"]
     )
-
-    result = json.loads(result)
 
     state["critic_decision"] = (
         result["decision"]

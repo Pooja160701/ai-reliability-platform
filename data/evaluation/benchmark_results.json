@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "What AWS services are used for security in the Inference Platform architecture?",
+    "expected_answer": "The AWS security services used in the Inference Platform include AWS IAM, AWS Secrets Manager, AWS KMS, and AWS WAF.",
+    "generated_answer": "The AWS services used for security in the Inference Platform architecture are:\n\n- AWS IAM\n- AWS Secrets Manager\n- AWS KMS\n- AWS WAF",
+    "latency": 5.91107177734375
+  },
+  {
+    "id": 2,
+    "question": "What is the Recovery Point Objective (RPO) defined for disaster recovery in the platform?",
+    "expected_answer": "The Recovery Point Objective (RPO) for disaster recovery is 15 minutes.",
+    "generated_answer": "The Recovery Point Objective (RPO) defined for disaster recovery in the platform is 15 minutes.",
+    "latency": 4.06196141242981
+  },
+  {
+    "id": 3,
+    "question": "How does the Model Router decide which model to use for processing requests?",
+    "expected_answer": "The Model Router makes routing decisions based on cost, latency, model availability, customer configuration, and evaluation scores.",
+    "generated_answer": "The Model Router decides which model should process each request by considering factors such as cost, latency, model availability, customer configuration, and evaluation scores. Additionally, the routing logic is dynamically configurable.",
+    "latency": 5.082389831542969
+  },
+  {
+    "id": 4,
+    "question": "Is the Inference Worker stateful or stateless, and where does it operate?",
+    "expected_answer": "Inference Workers operate as stateless services within Amazon EKS.",
+    "generated_answer": "I do not have enough information.",
+    "latency": 8.09693431854248
+  },
+  {
+    "id": 5,
+    "question": "What layers compose the architecture of the RAG Platform and what are their primary responsibilities?",
+    "expected_answer": "The RAG Platform architecture is divided into six logical layers: Knowledge Sources Layer (contains security policies, architecture documents, SOPs, incident reports, product documentation, customer knowledge repositories, operational runbooks), Ingestion Layer (responsible for document processing, metadata extraction, validation, classification), Embedding Layer (responsible for text chunking, embedding generation, embedding refresh workflows), Retrieval Layer (responsible for vector search, metadata filtering, hybrid retrieval), Ranking Layer (responsible for relevance scoring, result reranking, context optimization), and Generation Layer (responsible for context assembly, prompt construction, LLM interaction).",
+    "generated_answer": "The architecture of the RAG Platform is divided into six logical layers, each with specific primary responsibilities:\n\n1. Knowledge Sources Layer  \n   - Contains: Security policies, Architecture documents, SOPs, Incident reports, Product documentation, Customer knowledge repositories, Operational runbooks.\n\n2. Ingestion Layer  \n   - Responsible for: Document processing, Metadata extraction, Validation, Classification.\n\n3. Embedding Layer  \n   - Responsible for: Text chunking, Embedding generation, Embedding refresh workflows.\n\n4. Retrieval Layer  \n   - Responsible for: Vector search, Metadata filtering, Hybrid retrieval.\n\n5. Ranking Layer  \n   - Responsible for: Relevance scoring, Result reranking, Context optimization.\n\n6. Generation Layer  \n   - Responsible for: Context assembly, Prompt construction, LLM interaction.",
+    "latency": 14.759958028793335
+  }
+]
