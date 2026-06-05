@@ -23,8 +23,6 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: python -m scripts.ingest
-      
       - run: python -m app.evaluation.benchmark
 
       - run: python -m app.evaluation.evaluator

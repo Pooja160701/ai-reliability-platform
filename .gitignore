@@ -6,7 +6,7 @@ venv310/
 __pycache__/
 *.pyc
 
-data/vectors/
+# data/vectors/
 
 .pytest_cache/
 
