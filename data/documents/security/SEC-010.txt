@@ -1,0 +1,339 @@
+Policy ID: SEC-010
+
+Title: Secure Development Lifecycle
+
+Objective
+
+The purpose of this Secure Development Lifecycle (SDL) Standard is to establish mandatory security requirements that are integrated throughout the software development lifecycle for all applications, services, infrastructure components, AI systems, and automation workflows developed and operated by AetherAI Cloud. The objective is to proactively identify, prevent, and mitigate security risks before software reaches production environments.
+
+By embedding security controls into planning, design, development, testing, deployment, and maintenance activities, AetherAI Cloud reduces vulnerabilities, improves software quality, strengthens operational resilience, and protects customer information. This standard supports secure delivery of the Enterprise RAG Platform, LLM Gateway, Guardrails Gateway, Evaluation Engine, Knowledge Hub, Agent Workflow Studio, Reliability Platform, and all supporting cloud infrastructure.
+
+Scope
+
+This standard applies to:
+
+• Application development
+• AI platform development
+• Infrastructure-as-Code
+• CI/CD pipelines
+• APIs
+• Internal tools
+• Microservices
+• Data processing systems
+• Machine learning workflows
+• Agent orchestration systems
+• Cloud infrastructure automation
+• Third-party software integrations
+
+The standard applies to all employees, contractors, consultants, and development teams involved in software delivery activities.
+
+Policy Statements
+
+Security must be integrated into every phase of the development lifecycle.
+
+Security activities must include:
+
+• Risk identification
+• Secure architecture review
+• Secure coding practices
+• Security testing
+• Vulnerability management
+• Release governance
+• Continuous monitoring
+
+Security reviews are not optional and must be completed before production deployment.
+
+SDL Principles
+
+Security by Design
+
+Security requirements must be incorporated during system design rather than added after implementation.
+
+Least Privilege
+
+Applications and services must operate using the minimum permissions required.
+
+Defense in Depth
+
+Multiple layers of security controls must be implemented.
+
+Secure Defaults
+
+Systems must be deployed with secure configurations enabled by default.
+
+Continuous Improvement
+
+Security practices must evolve based on emerging threats, incidents, and lessons learned.
+
+SDL Phases
+
+Phase 1: Requirements and Planning
+
+Security activities begin during project planning.
+
+Requirements include:
+
+• Security objectives
+• Data classification review
+• Compliance assessment
+• Threat identification
+• Privacy considerations
+
+Security requirements must be documented alongside functional requirements.
+
+Deliverables:
+
+• Security requirements document
+• Initial risk assessment
+• Compliance review
+
+Phase 2: Architecture and Design
+
+Security reviews must be conducted before implementation begins.
+
+Review areas include:
+
+• Authentication architecture
+• Authorization design
+• Encryption requirements
+• Network segmentation
+• Secrets management
+• Logging requirements
+• Data protection controls
+
+Threat modeling must be performed for critical systems.
+
+Deliverables:
+
+• Architecture diagrams
+• Threat model documentation
+• Security design review records
+
+Phase 3: Development
+
+Development teams must follow approved secure coding practices.
+
+Requirements include:
+
+• Input validation
+• Output encoding
+• Secure error handling
+• Authentication controls
+• Authorization controls
+• Dependency management
+• Secret protection
+
+Developers must not:
+
+• Hardcode credentials
+• Disable security controls
+• Store secrets in source code
+• Bypass authentication mechanisms
+
+All code must be maintained within approved source control systems.
+
+Phase 4: Security Testing
+
+Security validation must occur before release approval.
+
+Required testing activities include:
+
+• Static Application Security Testing (SAST)
+• Dynamic Application Security Testing (DAST)
+• Dependency vulnerability scanning
+• Container security scanning
+• API security testing
+• Infrastructure security validation
+
+Critical findings must be remediated before deployment.
+
+Deliverables:
+
+• Security testing reports
+• Vulnerability assessments
+• Remediation records
+
+Phase 5: Release and Deployment
+
+Security controls must be validated before production deployment.
+
+Requirements include:
+
+• Release approval workflow completion
+• Secrets management validation
+• Access control verification
+• Monitoring readiness
+• Rollback preparation
+
+Production deployments must follow approved engineering procedures.
+
+Deliverables:
+
+• Deployment approval records
+• Security validation evidence
+• Release documentation
+
+Phase 6: Operations and Maintenance
+
+Security responsibilities continue after deployment.
+
+Activities include:
+
+• Vulnerability management
+• Security monitoring
+• Patch management
+• Access reviews
+• Incident response readiness
+
+Operational security controls must remain active throughout the service lifecycle.
+
+Security Requirements
+
+Authentication
+
+Systems must implement approved authentication mechanisms.
+
+Requirements include:
+
+• Multi-Factor Authentication for administrative access
+• Secure session management
+• Identity verification controls
+
+Authorization
+
+Authorization controls must enforce least privilege principles.
+
+Role-based access control is preferred.
+
+Encryption
+
+Sensitive information must be protected using approved encryption standards.
+
+Encryption must be applied to:
+
+• Data at rest
+• Data in transit
+• Backup repositories
+
+Secrets Management
+
+Secrets must be managed using approved centralized systems.
+
+Examples include:
+
+• AWS Secrets Manager
+• AWS Key Management Service
+
+Secrets must never be stored in source code repositories.
+
+Logging and Monitoring
+
+Applications must generate sufficient audit logs to support:
+
+• Security investigations
+• Operational troubleshooting
+• Compliance requirements
+
+Monitoring controls must be integrated into production services.
+
+Open Source Dependency Management
+
+Third-party dependencies introduce security risk and must be managed appropriately.
+
+Requirements include:
+
+• Dependency inventory maintenance
+• Vulnerability scanning
+• Version management
+• Security advisory review
+
+Unsupported dependencies must be replaced or upgraded.
+
+AI Security Controls
+
+AI-enabled systems require additional controls.
+
+Examples include:
+
+• Prompt injection protection
+• Input validation
+• Output filtering
+• Model access controls
+• Evaluation testing
+• Hallucination monitoring
+
+AI-specific risks must be reviewed during architecture and testing phases.
+
+Roles and Responsibilities
+
+Development Teams
+
+Responsible for:
+
+• Secure implementation
+• Security testing participation
+• Vulnerability remediation
+
+Security Team
+
+Responsible for:
+
+• Security guidance
+• Review activities
+• Policy enforcement
+
+Platform Operations
+
+Responsible for:
+
+• Infrastructure security
+• Monitoring systems
+• Deployment controls
+
+Engineering Leadership
+
+Responsible for:
+
+• Governance oversight
+• Resource allocation
+• Compliance accountability
+
+Exceptions
+
+Exceptions require:
+
+• Business justification
+• Security assessment
+• Management approval
+• Defined expiration period
+
+Compensating controls must be documented and implemented.
+
+Compliance Requirements
+
+Compliance verification includes:
+
+• SDL audits
+• Architecture reviews
+• Security testing assessments
+• Deployment governance reviews
+• Vulnerability management reviews
+
+Evidence must be retained according to organizational governance requirements.
+
+Enforcement
+
+The Information Security team is responsible for oversight and enforcement of this standard.
+
+Failure to comply may result in:
+
+• Security findings
+• Deployment restrictions
+• Additional reviews
+• Corrective action requirements
+
+Critical violations may prevent production release approval.
+
+Summary
+
+The Secure Development Lifecycle Standard establishes a comprehensive framework for integrating security throughout the software delivery process within AetherAI Cloud. By embedding security controls into planning, design, development, testing, deployment, and operational activities, the organization reduces risk, improves software quality, and protects customer data and business operations. Compliance with this standard is mandatory for all software, infrastructure, AI systems, and services developed or maintained within the AetherAI Cloud environment.

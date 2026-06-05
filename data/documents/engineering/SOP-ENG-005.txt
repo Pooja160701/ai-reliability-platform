@@ -1,0 +1,293 @@
+Document ID: SOP-ENG-005
+
+Title: Blue Green Deployment
+
+Purpose
+
+This Standard Operating Procedure (SOP) defines the Blue-Green Deployment methodology used within AetherAI Cloud production environments. The purpose of this procedure is to enable near-zero downtime releases, reduce deployment risk, simplify rollback operations, and improve production stability across critical AI and cloud services.
+
+Blue-Green Deployment is the preferred deployment strategy for customer-facing systems where availability, reliability, and rapid recovery are business-critical requirements. This approach maintains two identical production environments, allowing traffic to be switched from the currently active environment to a newly deployed environment only after successful validation.
+
+This procedure supports the Enterprise RAG Platform, LLM Gateway, AI Reliability Platform, Guardrails Gateway, Evaluation Engine, Knowledge Hub, and supporting AWS infrastructure.
+
+Scope
+
+This SOP applies to:
+
+• Production API services
+• FastAPI microservices
+• Amazon EKS applications
+• AI inference services
+• Retrieval services
+• Evaluation pipelines
+• Authentication services
+• Agent orchestration services
+• Internal platform services
+• Customer-facing workloads
+
+The procedure may also be applied to selected staging environments where production deployment simulations are required.
+
+Prerequisites
+
+Before executing a Blue-Green deployment, the following conditions must be met:
+
+1. Deployment approval must be completed.
+2. Production release artifacts must be finalized.
+3. Rollback procedures must be documented.
+4. Monitoring systems must be operational.
+5. Logging systems must be functioning.
+6. Infrastructure capacity must support duplicate environments.
+7. Security validation must be completed.
+8. Automated testing must pass successfully.
+9. Database migration compatibility must be confirmed.
+10. Operations personnel must be available during deployment windows.
+
+Technical Details
+
+AetherAI Cloud operates production services primarily on Amazon EKS clusters distributed across multiple Availability Zones.
+
+The deployment model consists of:
+
+Blue Environment
+
+The currently active production environment receiving customer traffic.
+
+Green Environment
+
+The newly deployed environment containing the updated application version.
+
+Supporting AWS services include:
+
+• Amazon EKS
+• Amazon ECR
+• Application Load Balancer
+• AWS Route 53
+• Amazon RDS PostgreSQL
+• Amazon OpenSearch
+• AWS CloudWatch
+• AWS Secrets Manager
+• AWS IAM
+• Amazon S3
+
+Both environments must remain functionally identical except for the application version being deployed.
+
+Architecture Overview
+
+The Blue environment handles all live production requests before deployment begins.
+
+A new application version is deployed into the Green environment while Blue continues serving customer traffic.
+
+After successful validation:
+
+• Traffic routing is updated.
+• Green becomes the active production environment.
+• Blue remains available as the rollback target.
+
+This architecture minimizes customer disruption and significantly reduces deployment risk.
+
+Step-by-Step Procedure
+
+Step 1: Release Preparation
+
+Engineering teams verify:
+
+• Release approvals
+• Test results
+• Security scans
+• Infrastructure readiness
+• Monitoring dashboards
+
+All deployment artifacts must be available within Amazon ECR.
+
+Step 2: Green Environment Provisioning
+
+Provision or update the Green environment using approved infrastructure templates.
+
+Validation includes:
+
+• Pod deployment status
+• Service configuration
+• Network connectivity
+• Secret availability
+• Database connectivity
+
+Green must be isolated from customer traffic during this phase.
+
+Step 3: Application Deployment
+
+Deploy the new application version to the Green environment.
+
+Deployment activities include:
+
+• Container image deployment
+• Configuration updates
+• Secret injection
+• Service registration
+• Health probe verification
+
+Deployment completion does not authorize traffic switching.
+
+Step 4: Validation Testing
+
+The Green environment undergoes comprehensive validation.
+
+Required checks include:
+
+• API functionality
+• Authentication workflows
+• Database transactions
+• Vector search operations
+• AI inference requests
+• Agent execution workflows
+• Evaluation pipelines
+• Logging verification
+
+All critical workflows must pass validation.
+
+Step 5: Performance Verification
+
+Operations teams evaluate:
+
+• CPU utilization
+• Memory utilization
+• Network performance
+• API latency
+• Error rates
+• Database response times
+• OpenAI API integration performance
+
+Performance metrics must meet production standards.
+
+Step 6: Security Validation
+
+Security verification includes:
+
+• IAM permission checks
+• Secret access validation
+• Authentication testing
+• Encryption verification
+• Audit logging confirmation
+
+No unresolved security findings may exist prior to traffic migration.
+
+Step 7: Traffic Switch Approval
+
+The release team reviews:
+
+• Validation results
+• Performance metrics
+• Security findings
+• Operational readiness
+
+Formal approval is required before customer traffic is redirected.
+
+Step 8: Traffic Migration
+
+Traffic migration is performed using approved routing mechanisms.
+
+Methods include:
+
+• Route 53 updates
+• Load balancer target group switching
+• Ingress controller updates
+
+Traffic is redirected from Blue to Green.
+
+The migration event must be logged and monitored in real time.
+
+Step 9: Post-Deployment Monitoring
+
+Following traffic migration, teams continuously monitor:
+
+• Availability
+• Error rates
+• Request latency
+• User activity
+• AI inference quality
+• Retrieval accuracy
+• Authentication success rates
+
+Monitoring continues for a minimum of sixty minutes.
+
+Step 10: Deployment Completion
+
+If no issues are identified:
+
+• Green becomes the official production environment.
+• Deployment records are updated.
+• Release documentation is finalized.
+• Blue remains available during the observation period.
+
+The deployment is formally marked as complete.
+
+Rollback Procedure
+
+Rollback is significantly simplified under the Blue-Green model.
+
+Rollback triggers include:
+
+• Increased error rates
+• Availability degradation
+• Performance regression
+• Authentication failures
+• Database connectivity issues
+• AI quality regressions
+
+Rollback execution steps:
+
+1. Suspend traffic migration activities.
+2. Redirect traffic back to Blue.
+3. Validate service recovery.
+4. Notify stakeholders.
+5. Open incident records if necessary.
+6. Begin root cause investigation.
+
+Rollback should be completed within minutes of issue detection.
+
+Failure Handling
+
+If deployment validation fails before traffic migration:
+
+• Green deployment is terminated.
+• Deployment artifacts are preserved.
+• Findings are documented.
+• Release approval is revoked.
+• Remediation activities begin.
+
+If issues occur after migration:
+
+• Immediate rollback procedures must be initiated.
+• Platform Operations assumes incident ownership.
+• Executive escalation occurs for Severity 1 events.
+
+Risks
+
+Potential deployment risks include:
+
+• Configuration drift
+• Database incompatibility
+• Environment inconsistency
+• Infrastructure provisioning failures
+• Hidden application defects
+• Cost increases from duplicate environments
+• Traffic routing errors
+
+Risk mitigation depends on automation, validation testing, monitoring, and deployment governance.
+
+Compliance Considerations
+
+Blue-Green deployment activities must support:
+
+• Change management policies
+• Audit requirements
+• Security controls
+• Release traceability
+• Operational governance
+
+All deployment events must be recorded within approved audit systems.
+
+Deployment approvals, validation evidence, rollback activities, and monitoring results must remain available for compliance reviews.
+
+Summary
+
+The Blue-Green Deployment Standard provides AetherAI Cloud with a reliable, low-risk mechanism for releasing production changes while maintaining high availability and rapid recovery capabilities. By operating parallel production environments, validating releases before customer exposure, and enabling immediate rollback through traffic redirection, the organization significantly reduces deployment-related incidents and improves platform reliability. This methodology is mandatory for critical production services where downtime and service degradation cannot be tolerated.

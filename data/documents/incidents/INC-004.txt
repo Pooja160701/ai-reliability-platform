@@ -1,0 +1,302 @@
+Incident ID: INC-004
+
+Title: RDS Failover Event
+
+Severity
+
+Severity 2 – High
+
+Timeline
+
+Incident Start
+
+2025-12-12 07:18 UTC
+
+Detection Time
+
+2025-12-12 07:20 UTC
+
+Incident Declared
+
+2025-12-12 07:23 UTC
+
+Containment Initiated
+
+2025-12-12 07:30 UTC
+
+Root Cause Identified
+
+2025-12-12 08:02 UTC
+
+Recovery Initiated
+
+2025-12-12 08:08 UTC
+
+Service Restoration
+
+2025-12-12 08:41 UTC
+
+Incident Closed
+
+2025-12-12 12:00 UTC
+
+Duration
+
+1 hour 23 minutes
+
+Executive Summary
+
+On December 12, 2025, the AetherAI Cloud platform experienced a database availability incident involving the primary Amazon RDS PostgreSQL cluster supporting metadata services, authentication systems, evaluation workflows, and operational analytics.
+
+A failover event was triggered after the primary database instance became unresponsive due to storage subsystem degradation within the underlying infrastructure. Although Multi-AZ failover mechanisms activated successfully, application recovery took longer than expected because several services maintained stale database connections and failed to reconnect automatically.
+
+The incident resulted in temporary service degradation across multiple platform components but did not cause data loss.
+
+Impact
+
+Affected Services
+
+• Authentication Platform
+• Enterprise RAG Platform
+• Evaluation Engine
+• Analytics Platform
+• Knowledge Hub
+
+Customer Impact
+
+• Intermittent authentication failures
+• Delayed API responses
+• Temporary service interruptions
+• Increased request retry activity
+
+Operational Impact
+
+• Elevated incident response activity
+• Increased support inquiries
+• Delayed evaluation workloads
+• Increased monitoring alerts
+
+Business Impact
+
+• Reduced service availability
+• Temporary degradation of customer experience
+• SLA exposure for affected services
+
+Systems Affected
+
+Primary Components
+
+• Amazon RDS PostgreSQL Primary Instance
+• Connection Pooling Services
+• Metadata Repositories
+• Authentication Databases
+
+Supporting Components
+
+• Evaluation Services
+• Reporting Systems
+• Monitoring Dashboards
+
+Detection
+
+The incident was detected through automated monitoring systems.
+
+Generated Alerts
+
+• Database availability alert
+• Connection failure threshold exceeded
+• Authentication service degradation
+• API latency increase alert
+
+Operational dashboards indicated:
+
+• Increased database connection errors
+• Elevated application latency
+• Reduced query throughput
+• Replication synchronization warnings
+
+Customer reports confirmed login failures and intermittent application issues.
+
+Investigation
+
+Initial investigation focused on:
+
+• Database health metrics
+• Infrastructure telemetry
+• Replication status
+• Query performance
+• Application connectivity
+
+Analysis confirmed that the primary database instance became unavailable unexpectedly.
+
+Root Cause Analysis
+
+Primary Root Cause
+
+The incident was caused by degradation within the underlying storage infrastructure supporting the primary RDS instance.
+
+The degradation triggered:
+
+• Elevated I/O latency
+• Database responsiveness issues
+• Health check failures
+• Automatic failover activation
+
+AWS Multi-AZ protection mechanisms correctly initiated failover procedures.
+
+Contributing Factors
+
+Application Connection Management
+
+Several services maintained long-lived database connections and did not immediately refresh connection pools after failover.
+
+Connection Pool Configuration
+
+Connection timeout settings were longer than recommended operational standards.
+
+Recovery Validation Gaps
+
+Failover testing scenarios did not fully simulate production-scale workload behavior.
+
+Monitoring Visibility Limitations
+
+Database failover events were detected quickly, but application-level recovery indicators lacked sufficient granularity.
+
+Technical Findings
+
+Investigation identified:
+
+• Elevated storage latency
+• Connection pool exhaustion
+• Delayed application reconnection
+• Increased authentication service errors
+
+Database replication remained healthy prior to failover.
+
+No data corruption occurred.
+
+Containment Actions
+
+Immediate actions included:
+
+1. Activate database incident response procedures.
+2. Freeze production deployments.
+3. Verify replica health.
+4. Restart affected application services.
+5. Increase database monitoring frequency.
+
+Containment prevented additional service instability.
+
+Resolution
+
+Recovery occurred in four phases.
+
+Phase 1: Database Failover Validation
+
+Actions:
+
+• Verify failover completion
+• Confirm replica promotion
+• Validate database availability
+
+Phase 2: Application Recovery
+
+Actions:
+
+• Restart affected services
+• Refresh connection pools
+• Validate authentication workflows
+
+Phase 3: Data Integrity Verification
+
+Actions:
+
+• Validate transaction consistency
+• Verify replication status
+• Review database health metrics
+
+Phase 4: Operational Validation
+
+Actions:
+
+• Confirm service functionality
+• Validate API performance
+• Review monitoring dashboards
+
+Recovery validation completed successfully.
+
+Performance After Recovery
+
+Post-incident metrics showed:
+
+• Query latency normalized
+• Authentication success rates recovered
+• API response times stabilized
+• Database throughput returned to baseline
+
+No residual customer impact remained.
+
+Preventive Actions
+
+Database Resilience Improvements
+
+Actions:
+
+• Enhanced failover testing
+• Improved connection management
+• Additional recovery validation procedures
+
+Application Improvements
+
+Actions:
+
+• Automatic connection refresh logic
+• Reduced connection timeout settings
+• Improved retry handling
+
+Monitoring Enhancements
+
+Actions:
+
+• Database failover dashboards
+• Application recovery indicators
+• Connection pool monitoring
+
+Operational Improvements
+
+Actions:
+
+• Updated recovery runbooks
+• Expanded failover simulations
+• Improved escalation workflows
+
+Lessons Learned
+
+Positive Outcomes
+
+• Multi-AZ failover mechanisms functioned correctly.
+• Database integrity was preserved.
+• Recovery procedures were effective.
+
+Areas for Improvement
+
+• Application reconnection logic required enhancement.
+• Failover testing lacked production realism.
+• Monitoring visibility was insufficient at the application layer.
+• Connection management policies required revision.
+
+Long-Term Recommendations
+
+Approved initiatives include:
+
+• Automated failover validation
+• Connection pool optimization
+• Chaos engineering exercises
+• Database recovery drills
+• Enhanced application resilience testing
+
+Ownership was assigned to Platform Engineering, Database Engineering, and Site Reliability Engineering teams.
+
+Summary
+
+The RDS Failover Event was triggered by underlying storage subsystem degradation that caused the primary PostgreSQL instance to become unavailable. AWS failover mechanisms successfully promoted a healthy replica, preventing data loss and preserving service continuity. However, application connection management limitations delayed full recovery. The incident reinforced the importance of failover testing, connection resiliency, application recovery automation, and end-to-end monitoring visibility within distributed cloud-native environments.

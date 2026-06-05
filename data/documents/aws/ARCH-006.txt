@@ -1,0 +1,384 @@
+Architecture ID: ARCH-006
+
+Title: EKS Cluster Design
+
+Business Requirements
+
+The Amazon Elastic Kubernetes Service (EKS) Cluster Design provides the foundational compute platform for hosting containerized workloads across the AetherAI Cloud ecosystem. The architecture supports AI inference services, retrieval platforms, evaluation systems, agent orchestration workflows, APIs, monitoring components, and operational tooling.
+
+The platform must satisfy the following business requirements:
+
+• High availability
+• Horizontal scalability
+• Multi-tenant workload support
+• Secure workload isolation
+• Automated deployments
+• Cost optimization
+• Operational resilience
+• Infrastructure standardization
+• Disaster recovery readiness
+• Observability integration
+
+The architecture supports all major platform services including the Enterprise RAG Platform, LLM Gateway, Guardrails Gateway, Evaluation Engine, Knowledge Hub, Reliability Platform, and internal engineering systems.
+
+Architecture Overview
+
+The EKS environment follows a multi-node, multi-availability-zone Kubernetes architecture designed for resiliency, scalability, and operational consistency.
+
+The architecture consists of:
+
+Control Plane Layer
+
+Managed by AWS and responsible for:
+
+• Cluster management
+• API server operations
+• Scheduling coordination
+• State management
+
+Worker Node Layer
+
+Responsible for:
+
+• Application execution
+• Resource allocation
+• Container lifecycle management
+
+Platform Services Layer
+
+Responsible for:
+
+• Ingress management
+• Monitoring agents
+• Security services
+• Deployment tooling
+
+Application Layer
+
+Responsible for:
+
+• AI workloads
+• Retrieval services
+• APIs
+• Business applications
+
+AWS Services Used
+
+Compute Services
+
+• Amazon EKS
+• EC2 Managed Node Groups
+
+Networking Services
+
+• VPC
+• Application Load Balancer
+• Route 53
+
+Storage Services
+
+• Amazon EBS
+• Amazon S3
+
+Security Services
+
+• IAM
+• AWS KMS
+• Secrets Manager
+
+Monitoring Services
+
+• CloudWatch
+• AWS X-Ray
+
+Architecture Components
+
+EKS Control Plane
+
+The Kubernetes control plane is fully managed by AWS.
+
+Responsibilities include:
+
+• API management
+• Scheduling decisions
+• Cluster state management
+• Service discovery coordination
+
+Control plane availability is maintained by AWS.
+
+Worker Nodes
+
+Worker nodes host production workloads.
+
+Node groups are organized by workload type.
+
+Examples include:
+
+• API workloads
+• Retrieval workloads
+• Inference workloads
+• Monitoring workloads
+• Evaluation workloads
+
+Dedicated node groups improve workload isolation and resource management.
+
+Namespace Design
+
+Namespaces provide logical separation.
+
+Examples:
+
+• platform-system
+• inference-services
+• retrieval-services
+• evaluation-services
+• monitoring-services
+• security-services
+
+Namespace isolation supports governance and operational controls.
+
+Workload Isolation
+
+Isolation mechanisms include:
+
+• Kubernetes namespaces
+• Resource quotas
+• Network policies
+• Dedicated node pools
+• Service accounts
+
+Critical workloads receive dedicated compute resources.
+
+Networking Architecture
+
+The cluster operates within a private AWS VPC.
+
+Networking components include:
+
+Private Subnets
+
+Host worker nodes and internal services.
+
+Public Subnets
+
+Host load balancers and public-facing entry points.
+
+Security Groups
+
+Restrict network access.
+
+Network Policies
+
+Control pod-to-pod communication.
+
+Ingress Architecture
+
+Traffic enters through:
+
+• Application Load Balancer
+• Kubernetes Ingress Controllers
+
+Ingress responsibilities include:
+
+• TLS termination
+• Request routing
+• Load balancing
+
+Only approved services may expose public endpoints.
+
+Storage Architecture
+
+Persistent storage utilizes:
+
+• Amazon EBS volumes
+• Amazon S3 integrations
+
+Storage requirements include:
+
+• Encryption
+• Backup support
+• High availability
+
+Persistent volumes are provisioned dynamically.
+
+Security Design
+
+Identity Management
+
+Authentication utilizes:
+
+• IAM Roles for Service Accounts
+• Kubernetes service accounts
+
+Authorization
+
+Controls include:
+
+• Role-Based Access Control (RBAC)
+• Namespace-level permissions
+
+Secrets Management
+
+Secrets are stored using:
+
+• AWS Secrets Manager
+• Kubernetes secret integrations
+
+Encryption
+
+Protection includes:
+
+• Encryption at rest
+• Encryption in transit
+
+Administrative access requires Multi-Factor Authentication.
+
+Deployment Architecture
+
+Applications are deployed through CI/CD pipelines.
+
+Deployment methods include:
+
+• Rolling deployments
+• Blue-green deployments
+• Canary deployments
+
+All deployments follow organizational release governance standards.
+
+Autoscaling Design
+
+Horizontal Pod Autoscaler
+
+Scales workloads based on:
+
+• CPU utilization
+• Memory utilization
+• Custom metrics
+
+Cluster Autoscaler
+
+Adjusts node capacity according to workload demand.
+
+Autoscaling reduces operational costs while maintaining performance.
+
+Observability Design
+
+Metrics
+
+Collected metrics include:
+
+• Node utilization
+• Pod health
+• Deployment status
+• Resource consumption
+
+Logs
+
+Collected logs include:
+
+• Application logs
+• Kubernetes events
+• Audit logs
+
+Tracing
+
+Distributed tracing supports:
+
+• Request visibility
+• Dependency analysis
+
+Alerting
+
+Alerts are generated for:
+
+• Pod failures
+• Node failures
+• Resource exhaustion
+• Deployment issues
+
+Availability Design
+
+Target availability:
+
+99.95 percent
+
+Availability controls include:
+
+• Multi-AZ deployment
+• Self-healing workloads
+• Automated scaling
+• Health monitoring
+
+No single worker node should represent a critical dependency.
+
+Capacity Planning
+
+Capacity reviews evaluate:
+
+• Node utilization
+• Resource consumption
+• Growth projections
+• Cost optimization opportunities
+
+Capacity planning occurs quarterly.
+
+Cost Optimization
+
+Cost controls include:
+
+• Autoscaling
+• Resource quotas
+• Spot instances where appropriate
+• Workload scheduling optimization
+
+Cluster utilization is continuously monitored.
+
+Disaster Recovery
+
+Recovery objectives:
+
+RTO:
+
+60 minutes
+
+RPO:
+
+15 minutes
+
+Recovery controls include:
+
+• Infrastructure-as-Code templates
+• Automated cluster provisioning
+• Backup configurations
+• Cross-region deployment readiness
+
+Cluster recovery procedures are tested periodically.
+
+Risks
+
+Key architectural risks include:
+
+• Node failures
+• Resource contention
+• Configuration drift
+• Misconfigured permissions
+• Networking issues
+• Capacity shortages
+
+Mitigation strategies include automation, monitoring, governance reviews, and operational testing.
+
+Operational Considerations
+
+Operations teams maintain:
+
+• Cluster upgrades
+• Security patching
+• Capacity reviews
+• Backup validation
+• Monitoring configuration
+
+Regular operational reviews are mandatory.
+
+Summary
+
+The EKS Cluster Design provides a scalable, secure, and highly available Kubernetes foundation for all AetherAI Cloud workloads. Through workload isolation, automated scaling, strong security controls, integrated observability, and resilient deployment patterns, the architecture enables reliable operation of enterprise AI platforms while supporting future growth, operational excellence, and business continuity.

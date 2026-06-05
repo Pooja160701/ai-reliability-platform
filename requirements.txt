@@ -25,3 +25,5 @@ pytest
 tiktoken
 
 sentence-transformers
+
+tenacity

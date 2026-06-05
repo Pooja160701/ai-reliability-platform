@@ -1,0 +1,300 @@
+Incident ID: INC-007
+
+Title: Cost Spike Incident
+
+Severity
+
+Severity 2 – High
+
+Timeline
+
+Incident Start
+
+2026-03-08 04:12 UTC
+
+Detection Time
+
+2026-03-08 04:27 UTC
+
+Incident Declared
+
+2026-03-08 04:35 UTC
+
+Containment Initiated
+
+2026-03-08 04:42 UTC
+
+Root Cause Identified
+
+2026-03-08 05:21 UTC
+
+Recovery Initiated
+
+2026-03-08 05:35 UTC
+
+Service Stabilized
+
+2026-03-08 06:18 UTC
+
+Incident Closed
+
+2026-03-08 12:00 UTC
+
+Duration
+
+2 hours 6 minutes
+
+Executive Summary
+
+On March 8, 2026, the AetherAI Cloud FinOps and Platform Engineering teams identified an abnormal increase in infrastructure and AI inference costs across multiple production services. Automated cost monitoring systems detected a rapid increase in token consumption, model invocation volume, and compute utilization that significantly exceeded expected operational baselines.
+
+The incident primarily affected the Enterprise RAG Platform, Agent Workflow Studio, Evaluation Platform, and Inference Gateway. Although service availability remained unaffected, operational spending increased at a rate that would have exceeded monthly budget allocations if left unresolved.
+
+Rapid containment actions prevented significant financial impact and restored normal consumption patterns.
+
+Impact
+
+Affected Services
+
+• Enterprise RAG Platform
+• Inference Platform
+• Agent Workflow Studio
+• Evaluation Engine
+• Reliability Platform
+
+Customer Impact
+
+• No customer-facing outage
+• No service degradation
+• No data loss
+
+Operational Impact
+
+• Emergency FinOps investigation
+• Increased monitoring activity
+• Temporary workload restrictions
+• Evaluation workload suspension
+
+Business Impact
+
+• Elevated cloud expenditure
+• Increased model usage costs
+• Budget threshold violations
+• Financial risk exposure
+
+Systems Affected
+
+Primary Components
+
+• Model Routing Services
+• Evaluation Pipelines
+• Agent Execution Workflows
+• Token Analytics Services
+
+Supporting Components
+
+• Cost Monitoring Platform
+• Usage Reporting Systems
+• Scheduling Services
+
+Detection
+
+The incident was identified through automated cost governance controls.
+
+Generated Alerts
+
+• Daily spend threshold exceeded
+• Token consumption anomaly detected
+• Inference request volume spike
+• Budget forecast violation alert
+
+Operational dashboards indicated:
+
+• Significant increase in LLM usage
+• Elevated evaluation workload execution
+• Increased agent workflow activity
+• Unexpected token consumption growth
+
+Investigation
+
+Initial investigation focused on:
+
+• AI model utilization metrics
+• Evaluation execution history
+• Agent workflow activity
+• Scheduling platform records
+• Customer usage reports
+
+No unusual customer activity was identified.
+
+Analysis shifted toward internal platform workloads.
+
+Root Cause Analysis
+
+Primary Root Cause
+
+A deployment affecting the Evaluation Pipeline introduced a scheduling configuration error that unintentionally triggered repeated execution of large-scale benchmark evaluations.
+
+The misconfiguration caused:
+
+• Continuous evaluation job execution
+• Excessive model invocations
+• Duplicate benchmark runs
+• Increased retrieval workloads
+
+The scheduler repeatedly re-queued completed jobs instead of marking them as finalized.
+
+Contributing Factors
+
+Missing Cost Guardrails
+
+Evaluation workloads were not subject to strict spending limits.
+
+Insufficient Scheduling Validation
+
+Configuration changes were not validated against execution frequency policies.
+
+Delayed Cost Detection Thresholds
+
+Cost alerts triggered after significant consumption had already occurred.
+
+Evaluation Isolation Gaps
+
+Production evaluation workloads shared infrastructure with customer-facing workloads.
+
+Technical Findings
+
+Investigation identified:
+
+• More than 2,300 duplicate evaluation executions
+• Significant increase in token usage
+• Elevated embedding generation activity
+• Excessive retrieval benchmark execution
+
+No customer workloads were responsible for the cost increase.
+
+Containment Actions
+
+Immediate actions included:
+
+1. Disable affected scheduler workflows.
+2. Suspend non-critical evaluation jobs.
+3. Apply emergency budget controls.
+4. Restrict automated benchmark execution.
+5. Increase FinOps monitoring frequency.
+
+Containment immediately reduced spending growth.
+
+Resolution
+
+Recovery occurred in four phases.
+
+Phase 1: Scheduler Shutdown
+
+Actions:
+
+• Disable faulty scheduling configuration
+• Stop duplicate job execution
+• Verify queue state
+
+Phase 2: Workload Cleanup
+
+Actions:
+
+• Remove duplicate jobs
+• Clear processing queues
+• Validate execution history
+
+Phase 3: Cost Validation
+
+Actions:
+
+• Review consumption metrics
+• Verify spending trends
+• Confirm workload normalization
+
+Phase 4: Platform Restoration
+
+Actions:
+
+• Re-enable approved evaluation workflows
+• Restore scheduling services
+• Monitor operational metrics
+
+Recovery validation confirmed stable platform operation.
+
+Performance After Recovery
+
+Post-recovery metrics showed:
+
+• Token consumption returned to baseline
+• Evaluation execution volume normalized
+• Infrastructure utilization stabilized
+• Daily spending forecasts recovered
+
+No customer-facing impact remained.
+
+Preventive Actions
+
+FinOps Improvements
+
+Actions:
+
+• Automated spending limits
+• Workload budget controls
+• Real-time consumption enforcement
+
+Evaluation Platform Enhancements
+
+Actions:
+
+• Execution frequency validation
+• Duplicate job detection
+• Cost-aware scheduling policies
+
+Monitoring Improvements
+
+Actions:
+
+• Cost anomaly dashboards
+• Token consumption alerts
+• Evaluation workload tracking
+
+Governance Improvements
+
+Actions:
+
+• FinOps review requirements
+• Cost impact assessments
+• Deployment approval enhancements
+
+Lessons Learned
+
+Positive Outcomes
+
+• Cost monitoring systems detected abnormal activity.
+• Incident response procedures functioned effectively.
+• Rapid containment minimized financial exposure.
+
+Areas for Improvement
+
+• Evaluation workloads lacked spending safeguards.
+• Scheduling validation was insufficient.
+• Budget enforcement controls required enhancement.
+• Cost visibility needed greater granularity.
+
+Long-Term Recommendations
+
+Approved initiatives include:
+
+• Autonomous cost governance
+• Cost-aware workload scheduling
+• AI workload budgeting controls
+• FinOps integration within CI/CD pipelines
+• Automated anomaly remediation
+
+Implementation ownership was assigned to Platform Engineering, FinOps Engineering, Reliability Engineering, and Evaluation Platform teams.
+
+Summary
+
+The Cost Spike Incident resulted from a scheduling misconfiguration that repeatedly executed large-scale evaluation workloads, causing excessive model usage and infrastructure consumption. Although no customer services were disrupted, the event created significant financial risk. Through rapid detection, scheduler remediation, workload cleanup, and enhanced governance controls, the platform returned to normal operating conditions. The incident emphasized the importance of FinOps automation, workload governance, cost observability, and budget enforcement within large-scale AI systems.

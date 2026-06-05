@@ -1,0 +1,219 @@
+Document ID: SOP-ENG-001
+
+Title: Production Deployment Process
+
+Purpose
+
+This Standard Operating Procedure (SOP) defines the mandatory process for deploying application, infrastructure, machine learning, and AI platform changes into the AetherAI Cloud production environment. The objective is to ensure safe, repeatable, auditable, and low-risk deployments while maintaining platform availability and compliance requirements. This procedure applies to all services supporting the Enterprise RAG Platform, LLM Gateway, AI Reliability Platform, Evaluation Engine, Agent Workflow Studio, and supporting AWS infrastructure.
+
+Scope
+
+This procedure applies to:
+
+• Backend services deployed to Amazon EKS
+• FastAPI microservices
+• AI Gateway components
+• LangGraph orchestration services
+• Vector database services
+• Data processing pipelines
+• Infrastructure managed through Terraform
+• CI/CD workflows executed through GitHub Actions
+• Monitoring and observability integrations
+
+This SOP is mandatory for engineering, platform, MLOps, DevOps, and reliability teams.
+
+Prerequisites
+
+Before initiating a production deployment, the following requirements must be satisfied:
+
+1. All code changes must be merged into the protected main branch.
+2. Pull request approval must be completed by at least two reviewers.
+3. Automated unit tests must achieve a minimum pass rate of 95 percent.
+4. Integration test execution must complete successfully.
+5. Security scanning must report no Critical or High vulnerabilities.
+6. Container images must be stored within Amazon ECR.
+7. Infrastructure changes must have approved Terraform plans.
+8. Release notes must be documented.
+9. Monitoring dashboards must be validated.
+10. Rollback procedures must be reviewed.
+
+Technical Details
+
+The AetherAI production environment is hosted within AWS and consists of multiple Amazon EKS clusters deployed across multiple Availability Zones. Deployments are executed through GitHub Actions pipelines integrated with AWS Identity and Access Management roles.
+
+Primary deployment components include:
+
+• Amazon EKS
+• Amazon ECR
+• AWS Load Balancer Controller
+• Amazon RDS PostgreSQL
+• Amazon OpenSearch
+• Amazon S3
+• AWS Secrets Manager
+• AWS CloudWatch
+• AWS X-Ray
+• GitHub Actions
+
+Deployment artifacts are packaged as immutable Docker images. Each image receives a unique version tag linked to the associated Git commit SHA. Direct deployments from local workstations are prohibited.
+
+Step-by-Step Procedure
+
+Step 1: Release Validation
+
+The release engineer reviews the deployment request and verifies completion of all prerequisite activities. Release documentation, test evidence, security reports, and infrastructure plans must be attached to the release ticket.
+
+Step 2: Version Creation
+
+A production version tag is created within the source repository. The version must follow semantic versioning standards.
+
+Example:
+
+v2.4.1
+
+The version tag becomes the authoritative release identifier.
+
+Step 3: Build Pipeline Execution
+
+The CI pipeline automatically performs:
+
+• Source code validation
+• Unit testing
+• Dependency scanning
+• Container image creation
+• Container image signing
+• Artifact publication
+
+Build outputs are stored within Amazon ECR.
+
+Step 4: Deployment Approval
+
+The deployment request enters the release approval workflow. Required approvers include:
+
+• Engineering Manager
+• Platform Operations Lead
+• Security Representative
+
+Approval records are retained for audit purposes.
+
+Step 5: Production Deployment Initiation
+
+Upon approval, the deployment workflow is triggered from GitHub Actions.
+
+The workflow performs:
+
+• Cluster authentication
+• Manifest validation
+• Secret retrieval from AWS Secrets Manager
+• Configuration synchronization
+• Deployment execution
+
+Step 6: Progressive Rollout
+
+All production services must use progressive deployment strategies.
+
+Approved strategies include:
+
+• Rolling Deployment
+• Blue-Green Deployment
+• Canary Deployment
+
+Traffic is gradually shifted to newly deployed workloads while monitoring service health metrics.
+
+Step 7: Health Verification
+
+Engineering teams validate:
+
+• Pod readiness
+• Application startup status
+• API response times
+• Error rates
+• Database connectivity
+• Vector search functionality
+• Authentication workflows
+• AI model inference performance
+
+Validation duration must be no less than fifteen minutes.
+
+Step 8: Monitoring Validation
+
+Operations teams verify platform metrics including:
+
+• CPU utilization
+• Memory utilization
+• Network throughput
+• Request latency
+• HTTP error rates
+• OpenAI API performance
+• Retrieval quality metrics
+• Cost monitoring dashboards
+
+No significant degradation may be observed.
+
+Step 9: Release Completion
+
+After validation is complete, the deployment ticket is updated with:
+
+• Release version
+• Deployment timestamp
+• Validation evidence
+• Responsible personnel
+• Monitoring screenshots
+
+The release is formally marked as completed.
+
+Failure Handling
+
+If deployment validation fails, the following actions must occur immediately:
+
+1. Halt further rollout activities.
+2. Notify Platform Operations.
+3. Initiate rollback procedures.
+4. Capture logs and diagnostics.
+5. Open an incident record if customer impact exists.
+6. Preserve deployment artifacts for investigation.
+
+Automatic rollback conditions include:
+
+• Error rate exceeding 5 percent
+• API latency increasing by more than 50 percent
+• Service availability below 99 percent
+• Authentication failures exceeding thresholds
+• Critical business workflow failures
+
+Rollback execution must restore the previously verified production version.
+
+Risks
+
+Primary deployment risks include:
+
+• Service interruption
+• Database migration failures
+• Configuration drift
+• Dependency incompatibilities
+• AI model regressions
+• Increased operational costs
+• Authentication failures
+• Vector index corruption
+• Data loss scenarios
+
+Risk mitigation controls include automated testing, progressive deployment, observability validation, rollback readiness, and approval workflows.
+
+Compliance Considerations
+
+Production deployments are subject to organizational governance and audit requirements.
+
+Mandatory controls include:
+
+• Change approval documentation
+• Release traceability
+• Access control enforcement
+• Immutable audit logs
+• Vulnerability assessment validation
+• Security review completion
+• Infrastructure change tracking
+
+All deployment activities must be logged and retained according to corporate retention requirements.
+
+Summary
+
+This Production Deployment Process establishes a controlled and repeatable framework for releasing software and infrastructure changes into AetherAI Cloud production environments. By enforcing validation, approvals, progressive deployment strategies, monitoring verification, and rollback readiness, the organization minimizes operational risk while maintaining platform reliability, security, and compliance standards. All engineering and operations personnel are required to follow this procedure for every production release.

@@ -1,0 +1,473 @@
+Runbook ID: RUN-010
+
+Title: Golden Dataset Update
+
+Purpose
+
+This runbook defines the operational procedures for updating, validating, approving, versioning, and maintaining Golden Datasets within the AetherAI Cloud ecosystem. Golden Datasets serve as the authoritative benchmark used to evaluate AI systems, Retrieval-Augmented Generation workflows, agent platforms, safety controls, retrieval quality, groundedness, and overall reliability.
+
+The objective is to ensure that benchmark datasets remain accurate, representative, stable, auditable, and aligned with evolving business requirements while preserving evaluation integrity and historical comparability.
+
+Golden Datasets are foundational to AI governance and directly influence deployment approval decisions, regression detection, reliability scoring, safety validation, and production readiness assessments.
+
+This runbook applies to:
+
+• RAG evaluation datasets
+• Groundedness benchmarks
+• Hallucination test datasets
+• Agent workflow benchmarks
+• Retrieval evaluation datasets
+• Safety evaluation datasets
+• Security testing datasets
+• Reliability benchmark datasets
+
+Prerequisites
+
+The following requirements must be satisfied before Golden Dataset updates begin.
+
+Governance Requirements
+
+• Dataset owner assigned
+• Update request approved
+• Change record created
+• Review committee identified
+
+Operational Requirements
+
+• Evaluation platform operational
+• Dataset repository available
+• Monitoring systems active
+
+Required Artifacts
+
+Update activities require:
+
+• Dataset identifier
+• Current version
+• Proposed modifications
+• Validation criteria
+• Approval records
+
+Security Requirements
+
+• Access permissions validated
+• Audit logging enabled
+• Data classification reviewed
+
+Update Triggers
+
+Golden Dataset updates may be initiated due to:
+
+Business Changes
+
+Examples:
+
+• New product capabilities
+• New customer requirements
+• Domain expansion
+
+Reliability Improvements
+
+Examples:
+
+• Hallucination discoveries
+• Evaluation gaps
+• Benchmark deficiencies
+
+Security Enhancements
+
+Examples:
+
+• New attack patterns
+• Prompt injection scenarios
+• Safety vulnerabilities
+
+Operational Reviews
+
+Examples:
+
+• Quarterly reviews
+• Annual governance assessments
+• Benchmark modernization efforts
+
+Dataset Governance Principles
+
+Golden Datasets must maintain:
+
+• Accuracy
+• Consistency
+• Stability
+• Auditability
+• Reproducibility
+• Representative coverage
+
+Changes must not compromise historical evaluation integrity.
+
+Operational Procedure
+
+Phase 1: Update Planning
+
+Step 1
+
+Define update scope.
+
+Identify:
+
+• Dataset sections affected
+• Benchmark categories impacted
+• Evaluation workflows affected
+
+Step 2
+
+Document rationale.
+
+Examples:
+
+• Coverage improvement
+• Quality enhancement
+• Security expansion
+
+Step 3
+
+Assess impact.
+
+Review:
+
+• Historical benchmarks
+• Evaluation pipelines
+• Release approval workflows
+
+Phase 2: Dataset Modification
+
+Step 4
+
+Prepare candidate updates.
+
+Examples:
+
+• New benchmark questions
+• Updated ground truth answers
+• Additional adversarial tests
+
+Step 5
+
+Review content quality.
+
+Verify:
+
+• Accuracy
+• Relevance
+• Coverage
+
+Step 6
+
+Validate benchmark design.
+
+Confirm:
+
+• Representative scenarios
+• Balanced coverage
+• Evaluation usefulness
+
+Phase 3: Validation
+
+Step 7
+
+Execute dataset validation.
+
+Checks include:
+
+• Data quality
+• Consistency
+• Completeness
+
+Step 8
+
+Validate labels and ground truth.
+
+Verify:
+
+• Correctness
+• Reliability
+• Review approval
+
+Step 9
+
+Execute benchmark simulations.
+
+Evaluate:
+
+• Metric stability
+• Evaluation reproducibility
+• Historical comparability
+
+Step 10
+
+Review reliability impact.
+
+Assess:
+
+• Groundedness coverage
+• Hallucination coverage
+• Safety coverage
+
+Phase 4: Approval
+
+Step 11
+
+Generate validation report.
+
+Include:
+
+• Findings
+• Risks
+• Recommendations
+
+Step 12
+
+Conduct governance review.
+
+Participants include:
+
+• Reliability Engineering
+• Platform Engineering
+• Security Engineering
+• Product Leadership
+
+Step 13
+
+Approve dataset release.
+
+Approval criteria include:
+
+• Quality standards satisfied
+• Governance requirements met
+• Validation completed
+
+Phase 5: Versioning and Publication
+
+Step 14
+
+Assign dataset version.
+
+Version records include:
+
+• Release date
+• Owner
+• Change summary
+
+Step 15
+
+Publish approved dataset.
+
+Actions:
+
+• Update repository
+• Register metadata
+• Notify stakeholders
+
+Step 16
+
+Archive previous version.
+
+Ensure:
+
+• Historical preservation
+• Auditability
+• Reproducibility
+
+Phase 6: Post-Release Monitoring
+
+Step 17
+
+Monitor evaluation outcomes.
+
+Review:
+
+• Benchmark stability
+• Reliability scores
+• Regression indicators
+
+Step 18
+
+Validate operational impact.
+
+Confirm:
+
+• Evaluation consistency
+• Release gate stability
+• Reporting accuracy
+
+Monitoring
+
+Continuous monitoring is required after publication.
+
+Dataset Metrics
+
+Monitor:
+
+• Dataset size
+• Coverage distribution
+• Version adoption
+
+Evaluation Metrics
+
+Monitor:
+
+• Groundedness scores
+• Hallucination rates
+• Citation accuracy
+
+Reliability Metrics
+
+Monitor:
+
+• Regression frequency
+• Benchmark consistency
+• Evaluation stability
+
+Operational Metrics
+
+Monitor:
+
+• Pipeline success rates
+• Processing times
+• Validation failures
+
+Recovery Procedures
+
+Scenario 1: Dataset Quality Failure
+
+Actions:
+
+1. Suspend publication.
+2. Correct quality issues.
+3. Revalidate dataset.
+
+Scenario 2: Labeling Error
+
+Actions:
+
+1. Isolate affected records.
+2. Review ground truth.
+3. Reissue corrected version.
+
+Scenario 3: Benchmark Instability
+
+Actions:
+
+1. Compare historical results.
+2. Review modifications.
+3. Restore prior version if necessary.
+
+Scenario 4: Governance Failure
+
+Actions:
+
+1. Suspend approval process.
+2. Complete governance review.
+3. Reassess publication readiness.
+
+Rollback Procedure
+
+Step 1
+
+Deactivate updated dataset.
+
+Step 2
+
+Restore previous approved version.
+
+Step 3
+
+Update evaluation configurations.
+
+Step 4
+
+Validate benchmark stability.
+
+Step 5
+
+Document rollback activities.
+
+Validation Criteria
+
+Dataset approval requires:
+
+Quality Validation
+
+• Accuracy verified
+• Coverage sufficient
+• Labels validated
+
+Reliability Validation
+
+• Stable evaluation outcomes
+• Consistent benchmark performance
+• Historical comparability maintained
+
+Governance Validation
+
+• Approvals completed
+• Audit requirements satisfied
+• Documentation complete
+
+Risks
+
+Key risks include:
+
+• Labeling errors
+• Benchmark instability
+• Coverage gaps
+• Governance failures
+• Historical inconsistency
+• Evaluation bias
+
+Mitigation controls include reviews, simulations, validation testing, governance oversight, and version management.
+
+Escalation Procedures
+
+Escalate immediately for:
+
+• Dataset corruption
+• Reliability concerns
+• Governance violations
+• Evaluation instability
+• Critical labeling errors
+
+Escalation contacts:
+
+• Reliability Engineering
+• Data Engineering
+• Security Engineering
+• Platform Engineering
+
+Documentation Requirements
+
+Dataset update records must include:
+
+• Dataset identifier
+• Version number
+• Change summary
+• Validation results
+• Approval records
+• Rollback history
+
+Records are retained according to governance requirements.
+
+Continuous Improvement
+
+Golden Dataset effectiveness should be reviewed regularly.
+
+Review activities include:
+
+• Coverage analysis
+• Benchmark expansion
+• Reliability assessment
+• Governance optimization
+
+Comprehensive reviews are performed quarterly.
+
+Summary
+
+This runbook establishes the standardized operational procedure for maintaining Golden Datasets throughout the AetherAI Cloud ecosystem. Through structured governance, rigorous validation, controlled versioning, benchmark management, and continuous monitoring, the organization ensures that evaluation datasets remain accurate, trustworthy, and representative of real-world conditions. Compliance with this runbook is mandatory for all benchmark datasets supporting AI evaluation, reliability engineering, release governance, and production quality assurance.

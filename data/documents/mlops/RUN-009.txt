@@ -1,0 +1,435 @@
+Runbook ID: RUN-009
+
+Title: Drift Detection
+
+Purpose
+
+This runbook defines the operational procedures for detecting, investigating, validating, and responding to data drift, concept drift, embedding drift, retrieval drift, model performance drift, and AI reliability degradation across the AetherAI Cloud ecosystem.
+
+The objective is to identify changes that may negatively affect model quality, retrieval accuracy, groundedness, citation quality, customer experience, operational reliability, and business outcomes before significant production impact occurs.
+
+Drift detection is a foundational component of AI Reliability Engineering and supports continuous quality assurance, model governance, deployment safety, and long-term platform stability.
+
+This runbook applies to:
+
+• Large language models
+• Retrieval systems
+• Vector search platforms
+• Evaluation pipelines
+• Agent workflows
+• Embedding systems
+• Feature stores
+• Monitoring platforms
+
+Prerequisites
+
+The following requirements must be satisfied before drift monitoring begins.
+
+Governance Requirements
+
+• Drift ownership assigned
+• Monitoring policies approved
+• Alert thresholds defined
+
+Operational Requirements
+
+• Monitoring platform operational
+• Evaluation platform available
+• Historical baselines available
+• Alerting systems active
+
+Required Artifacts
+
+Drift investigations require:
+
+• Baseline datasets
+• Historical metrics
+• Evaluation reports
+• Monitoring records
+• Deployment history
+
+Security Requirements
+
+• Access permissions verified
+• Audit logging enabled
+• Governance controls active
+
+Drift Categories
+
+Data Drift
+
+Occurs when input data characteristics differ from historical baselines.
+
+Examples:
+
+• New customer behavior
+• Document distribution changes
+• Query pattern shifts
+
+Concept Drift
+
+Occurs when relationships between inputs and outputs change.
+
+Examples:
+
+• Business process changes
+• Domain evolution
+• New operational workflows
+
+Embedding Drift
+
+Occurs when semantic representations change significantly.
+
+Examples:
+
+• Embedding model upgrades
+• Vocabulary changes
+• Knowledge base expansion
+
+Retrieval Drift
+
+Occurs when retrieval effectiveness declines.
+
+Examples:
+
+• Lower recall
+• Reduced precision
+• Citation degradation
+
+Model Performance Drift
+
+Occurs when output quality deteriorates.
+
+Examples:
+
+• Hallucination increases
+• Accuracy decline
+• Reliability degradation
+
+Evaluation Drift
+
+Occurs when benchmark performance changes unexpectedly.
+
+Examples:
+
+• Groundedness decline
+• Reliability score reduction
+• Benchmark instability
+
+Operational Procedure
+
+Phase 1: Baseline Establishment
+
+Step 1
+
+Identify monitored systems.
+
+Examples:
+
+• RAG Platform
+• Inference Platform
+• Evaluation Platform
+
+Step 2
+
+Define baseline metrics.
+
+Examples:
+
+• Accuracy
+• Recall
+• Precision
+• Groundedness
+
+Step 3
+
+Register monitoring thresholds.
+
+Document:
+
+• Warning thresholds
+• Critical thresholds
+• Escalation rules
+
+Phase 2: Continuous Monitoring
+
+Step 4
+
+Collect operational data.
+
+Sources include:
+
+• Production traffic
+• Evaluation datasets
+• Monitoring systems
+
+Step 5
+
+Calculate drift indicators.
+
+Examples:
+
+• Distribution changes
+• Performance changes
+• Reliability changes
+
+Step 6
+
+Compare against baselines.
+
+Evaluate:
+
+• Statistical deviation
+• Quality degradation
+• Trend direction
+
+Phase 3: Drift Identification
+
+Step 7
+
+Classify detected drift.
+
+Categories include:
+
+• Minor
+• Moderate
+• Critical
+
+Step 8
+
+Determine affected systems.
+
+Review:
+
+• Models
+• Retrieval systems
+• Agent workflows
+
+Step 9
+
+Assess business impact.
+
+Evaluate:
+
+• Customer impact
+• Operational risk
+• Reliability implications
+
+Phase 4: Investigation
+
+Step 10
+
+Review recent changes.
+
+Examples:
+
+• Deployments
+• Dataset updates
+• Embedding refreshes
+
+Step 11
+
+Analyze evaluation results.
+
+Review:
+
+• Benchmark scores
+• Reliability metrics
+• Historical comparisons
+
+Step 12
+
+Identify root cause.
+
+Examples:
+
+• Dataset evolution
+• Retrieval degradation
+• Infrastructure changes
+
+Phase 5: Remediation
+
+Step 13
+
+Develop response plan.
+
+Possible actions include:
+
+• Retraining
+• Embedding refresh
+• Dataset updates
+• Configuration adjustments
+
+Step 14
+
+Execute remediation.
+
+Actions depend on drift type.
+
+Step 15
+
+Validate effectiveness.
+
+Verify:
+
+• Baseline recovery
+• Quality improvements
+• Reduced drift indicators
+
+Monitoring
+
+Continuous monitoring is required for all production systems.
+
+Data Metrics
+
+Monitor:
+
+• Distribution changes
+• Record characteristics
+• Data freshness
+
+Retrieval Metrics
+
+Monitor:
+
+• Recall
+• Precision
+• Search relevance
+
+Reliability Metrics
+
+Monitor:
+
+• Groundedness
+• Hallucination rate
+• Citation accuracy
+
+Operational Metrics
+
+Monitor:
+
+• Latency
+• Error rates
+• Throughput
+
+Business Metrics
+
+Monitor:
+
+• Customer satisfaction
+• Support volume
+• Service adoption
+
+Recovery Procedures
+
+Scenario 1: Data Drift
+
+Actions:
+
+1. Review source data.
+2. Update validation rules.
+3. Recalculate baselines.
+
+Scenario 2: Retrieval Drift
+
+Actions:
+
+1. Execute retrieval evaluation.
+2. Review embedding quality.
+3. Refresh indexes if required.
+
+Scenario 3: Hallucination Increase
+
+Actions:
+
+1. Run evaluation benchmarks.
+2. Review groundedness metrics.
+3. Escalate to Reliability Engineering.
+
+Scenario 4: Embedding Drift
+
+Actions:
+
+1. Validate embedding model.
+2. Execute refresh workflow.
+3. Compare retrieval performance.
+
+Validation Criteria
+
+Drift remediation success requires:
+
+Quality Validation
+
+• Metrics return to acceptable ranges
+• Reliability restored
+• No critical regressions
+
+Operational Validation
+
+• Monitoring operational
+• Alerting functional
+• Services stable
+
+Business Validation
+
+• Customer impact resolved
+• Stakeholder approval received
+
+Risks
+
+Key risks include:
+
+• Undetected drift
+• Delayed response
+• Quality degradation
+• Hallucination increases
+• Retrieval failures
+• Customer trust erosion
+
+Mitigation controls include continuous monitoring, evaluation automation, governance reviews, and reliability testing.
+
+Escalation Procedures
+
+Escalate immediately for:
+
+• Critical drift events
+• Hallucination spikes
+• Reliability regressions
+• Customer-facing degradation
+
+Escalation contacts:
+
+• Reliability Engineering
+• Platform Engineering
+• Data Engineering
+• Site Reliability Engineering
+
+Documentation Requirements
+
+Drift investigation records must include:
+
+• Drift identifier
+• Affected systems
+• Metrics
+• Root cause
+• Remediation actions
+• Validation evidence
+
+Records are retained according to governance requirements.
+
+Continuous Improvement
+
+Drift management effectiveness should be reviewed regularly.
+
+Review activities include:
+
+• Threshold optimization
+• Monitoring improvements
+• Baseline refinement
+• Automation enhancements
+
+Periodic reviews are conducted quarterly.
+
+Summary
+
+This runbook establishes the standardized operational procedure for detecting and managing drift across AI systems within the AetherAI Cloud ecosystem. Through continuous monitoring, statistical analysis, evaluation benchmarking, remediation workflows, and governance oversight, the organization ensures long-term model reliability, retrieval effectiveness, operational stability, and customer trust. Compliance with this runbook is mandatory for all production AI systems.

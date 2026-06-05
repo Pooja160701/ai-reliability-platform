@@ -1,0 +1,299 @@
+Document ID: SOP-ENG-003
+
+Title: API Versioning Standard
+
+Purpose
+
+This Standard Operating Procedure (SOP) establishes the API versioning standards for all services developed and operated within the AetherAI Cloud platform. The objective is to ensure backward compatibility, predictable client integrations, controlled feature evolution, and reliable service interoperability across internal and external consumers.
+
+As AetherAI Cloud provides AI-powered services including the Enterprise RAG Platform, LLM Gateway, Guardrails Gateway, Evaluation Engine, Knowledge Hub, and Reliability Platform, API stability is critical to maintaining customer trust and platform reliability. This document defines mandatory versioning practices, lifecycle management requirements, deprecation procedures, and governance controls.
+
+Scope
+
+This standard applies to:
+
+• Public REST APIs
+• Internal microservice APIs
+• AI inference endpoints
+• Retrieval APIs
+• Evaluation APIs
+• Authentication services
+• Administrative APIs
+• Event-driven APIs
+• SDK-supported APIs
+• Third-party integration endpoints
+
+All engineering teams developing or modifying APIs must comply with this standard.
+
+Prerequisites
+
+Prior to releasing any API version, the following requirements must be met:
+
+1. API specifications must be documented.
+2. OpenAPI definitions must be maintained.
+3. Backward compatibility assessment must be completed.
+4. Security review must be approved.
+5. Integration testing must pass.
+6. Monitoring instrumentation must be implemented.
+7. Deprecation impact analysis must be completed.
+8. Consumer notification plans must exist.
+9. Version naming must follow approved standards.
+10. Release approval must be documented.
+
+Technical Details
+
+AetherAI Cloud APIs are primarily deployed within Amazon EKS and exposed through API Gateway and Application Load Balancers.
+
+Core API categories include:
+
+• LLM inference services
+• Retrieval services
+• Agent orchestration services
+• Evaluation services
+• Prompt management services
+• User management services
+• Analytics services
+
+Version identifiers must be explicitly included within API routes.
+
+Approved format:
+
+/api/v1/resource
+
+Example:
+
+/api/v1/chat/completions
+
+/api/v2/chat/completions
+
+Version identifiers must not be hidden within headers unless specifically approved by the Architecture Review Board.
+
+Versioning Principles
+
+The following principles govern all API version decisions:
+
+1. Predictability
+
+Clients must always know which API version they are consuming.
+
+2. Backward Compatibility
+
+Existing integrations should continue functioning whenever possible.
+
+3. Explicit Versioning
+
+Version information must be visible and documented.
+
+4. Controlled Evolution
+
+Breaking changes must only occur through major version releases.
+
+5. Consumer Protection
+
+Customers must receive sufficient migration notice before version retirement.
+
+Version Types
+
+Major Version
+
+A major version indicates breaking changes.
+
+Examples:
+
+v1 → v2
+
+Breaking changes include:
+
+• Request schema modifications
+• Response structure changes
+• Endpoint removals
+• Authentication changes
+• Business logic modifications affecting integrations
+
+Minor Version
+
+Minor updates introduce functionality without breaking compatibility.
+
+Examples:
+
+v2.1
+v2.2
+
+Examples include:
+
+• New optional fields
+• Additional endpoints
+• Performance improvements
+• Extended capabilities
+
+Patch Version
+
+Patch releases address defects and operational issues.
+
+Examples:
+
+v2.2.1
+v2.2.2
+
+Patch releases must not modify API contracts.
+
+Step-by-Step Procedure
+
+Step 1: Change Classification
+
+Engineering teams classify proposed changes as:
+
+• Breaking
+• Non-breaking
+• Bug fix
+
+Classification determines versioning requirements.
+
+Step 2: Impact Assessment
+
+Teams evaluate:
+
+• Existing consumers
+• Internal dependencies
+• External integrations
+• SDK compatibility
+• Documentation requirements
+
+Results are recorded within the change request.
+
+Step 3: Version Assignment
+
+Assign the appropriate version based on impact analysis.
+
+Examples:
+
+Breaking Change:
+v1 → v2
+
+New Feature:
+v2.1 → v2.2
+
+Bug Fix:
+v2.2.1 → v2.2.2
+
+Step 4: Documentation Updates
+
+Update:
+
+• OpenAPI specifications
+• Developer guides
+• Integration examples
+• Release notes
+• Internal architecture documentation
+
+Documentation must be published before production release.
+
+Step 5: Compatibility Testing
+
+Execute:
+
+• Unit tests
+• Integration tests
+• Contract tests
+• Regression tests
+• Load tests
+
+All tests must pass prior to deployment approval.
+
+Step 6: Deployment
+
+Deploy new API versions using approved deployment strategies:
+
+• Rolling deployment
+• Canary deployment
+• Blue-green deployment
+
+Multiple API versions may coexist during migration periods.
+
+Step 7: Monitoring
+
+Monitor:
+
+• Request volume
+• Error rates
+• Response latency
+• Consumer adoption
+• Authentication failures
+
+Metrics must be retained for lifecycle analysis.
+
+Deprecation Process
+
+Deprecation is required when an API version approaches retirement.
+
+Mandatory deprecation process:
+
+Phase 1: Announcement
+
+Notify consumers at least 180 days before retirement.
+
+Phase 2: Warning Period
+
+Add deprecation notices to:
+
+• API documentation
+• Response headers
+• Customer communication channels
+
+Phase 3: Migration Support
+
+Provide:
+
+• Migration guides
+• Example implementations
+• Compatibility recommendations
+
+Phase 4: Retirement
+
+Disable the deprecated version after approval from architecture governance teams.
+
+Emergency retirements require executive approval.
+
+Failure Handling
+
+If version-related issues occur:
+
+1. Suspend deployment.
+2. Assess customer impact.
+3. Initiate rollback if necessary.
+4. Restore previous API version.
+5. Open incident records.
+6. Conduct root cause analysis.
+
+Version-related incidents must be reviewed by engineering leadership.
+
+Risks
+
+Potential risks include:
+
+• Client integration failures
+• Unexpected breaking changes
+• Documentation inconsistencies
+• Migration delays
+• Increased operational complexity
+• Legacy version maintenance costs
+• Security exposure from unsupported versions
+
+Mitigation controls include automated testing, contract validation, governance reviews, and deprecation planning.
+
+Compliance Considerations
+
+API lifecycle management must support:
+
+• Auditability
+• Change management controls
+• Security requirements
+• Data governance policies
+• Customer notification obligations
+• Operational transparency
+
+Version history must remain traceable through source control, deployment records, and architecture documentation.
+
+Summary
+
+The API Versioning Standard ensures that AetherAI Cloud services evolve in a predictable, secure, and manageable manner while protecting consumers from unexpected disruptions. By enforcing explicit versioning, structured lifecycle management, compatibility validation, and controlled deprecation practices, the organization maintains reliable integrations across its AI infrastructure and enterprise platform ecosystem. Compliance with this standard is mandatory for all engineering teams responsible for API development and maintenance.
